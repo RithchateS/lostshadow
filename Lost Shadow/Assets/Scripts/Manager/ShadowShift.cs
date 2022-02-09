@@ -7,11 +7,11 @@ public class ShadowShift : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other) {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if (currentSceneIndex != 1){
-            SceneManager.LoadScene(1);
+        if (currentSceneIndex != 3){
+            SceneManager.LoadScene(3);
         }
         else {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(2);
         }
     }
 }
