@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] float climbSpeed = 5f;
     
+    private void Awake() {
+        DontDestroyOnLoad(transform.gameObject);
+    }
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -43,6 +47,22 @@ public class PlayerMovement : MonoBehaviour
 
         if (value.isPressed) {
             myRigidbody.velocity += new Vector2(0f, jumpSpeed);
+        }
+    }
+
+    void OnShadowShift(InputValue value) {
+        if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
+            return;
+        }
+
+        if (value.isPressed) {
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            if ((currentSceneIndex % 2) == 0){
+                SceneManager.LoadScene(currentSceneIndex + 1);
+            }
+            else {
+                SceneManager.LoadScene(currentSceneIndex - 1);
+            }
         }
     }
 
