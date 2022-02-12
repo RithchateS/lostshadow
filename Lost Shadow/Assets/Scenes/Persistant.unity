@@ -236,6 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c16b86e56406f14db5aeabe4b9f1bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LoadingCanvas: {fileID: 942382944912301985, guid: f4287b7206fbe9b43bcb702ac0222b49, type: 3}
+  StartScene: 1
 --- !u!4 &1896237759
 Transform:
   m_ObjectHideFlags: 0
