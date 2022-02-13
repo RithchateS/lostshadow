@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/SampleScene Shadow.unity
-    guid: 3b1a1f9e63f267046a4752274e760c7b
+    path: Assets/Scenes/Desert_1_Shadow.unity
+    guid: d7b6c4651412a3c4aa56fbdd8a238d55
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: b7a7ec417ec5aa54784164ccae971640, type: 2}
