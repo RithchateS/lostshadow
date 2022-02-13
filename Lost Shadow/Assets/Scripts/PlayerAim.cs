@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerAim : MonoBehaviour
 {
-    /*
     [SerializeField] GameObject playerPrefab;
     CinemachineStateDrivenCamera _cam;
     bool foundPlayer = false;
@@ -19,13 +19,16 @@ public class PlayerAim : MonoBehaviour
     {
         if (!foundPlayer) {
             playerPrefab = GameObject.FindWithTag("Player");
+            if (playerPrefab != null)
+            {
+                foundPlayer = true;
+            }
         }
         else {
             if (!followPlayer) {
-                _cam.follow = playerPrefab;
-                _can.animatedTarget = playerPrefab.Animator;
+                _cam.m_Follow = playerPrefab.transform;
+                _cam.m_AnimatedTarget = playerPrefab.GetComponent<Animator>();
             }
         }
     }
-    */
 }
