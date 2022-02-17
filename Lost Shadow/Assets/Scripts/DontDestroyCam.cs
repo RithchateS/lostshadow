@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 
-public class DontDestroy : MonoBehaviour
+public class DontDestroyCam : MonoBehaviour
 {
     private static GameObject camInstance;
     private void Awake()

@@ -621,10 +621,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4099521978087882244}
-  - component: {fileID: 5481124703388837537}
+  - component: {fileID: 7304808950653256281}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -646,7 +646,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5481124703388837537
+--- !u!114 &7304808950653256281
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
