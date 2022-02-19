@@ -45,6 +45,9 @@ TagManager:
   - name: Background
     uniqueID: 1552656977
     locked: 0
+  - name: Prop
+    uniqueID: 1395715829
+    locked: 0
   - name: Water
     uniqueID: 2662637713
     locked: 0
