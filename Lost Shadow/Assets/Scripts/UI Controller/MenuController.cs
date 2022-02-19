@@ -19,6 +19,7 @@ public class MenuController : MonoBehaviour
 {
     [SerializeField] private GameObject back_Button;
     private Menulist _CurrentPage;
+
     public Menulist CurrentPage
     {
         get { return _CurrentPage; }
@@ -28,7 +29,9 @@ public class MenuController : MonoBehaviour
             OnMenuListChange();
         }
     }
+
     [SerializeField] private TMP_Text pageTitle;
+
     // GameObject
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject newGamePage;
@@ -37,10 +40,7 @@ public class MenuController : MonoBehaviour
 
     private void Start()
     {
-        back_Button.GetComponent<Button>().onClick.AddListener(delegate
-        {
-            ChangePage(0);
-        });
+        back_Button.GetComponent<Button>().onClick.AddListener(delegate { ChangePage(0); });
         pageTitle.text = "";
     }
 
@@ -48,12 +48,12 @@ public class MenuController : MonoBehaviour
     {
         CurrentPage = page;
     }
-    
+
     public void ChangePage(int pageIndex)
-    { 
-        CurrentPage = (Menulist)pageIndex;
+    {
+        CurrentPage = (Menulist) pageIndex;
     }
-    
+
     private void OnMenuListChange()
     {
         mainMenu.SetActive(false);
@@ -61,7 +61,7 @@ public class MenuController : MonoBehaviour
         loadGamePage.SetActive(false);
         newGamePage.SetActive(false);
         back_Button.SetActive(false);
-        
+
         switch (CurrentPage)
         {
             case Menulist.Main:
@@ -86,6 +86,7 @@ public class MenuController : MonoBehaviour
                 break;
         }
     }
+}
 
 #if UNITY_EDITOR
     [CustomEditor(typeof(MenuController))]
@@ -119,5 +120,4 @@ public class MenuController : MonoBehaviour
 
         }
     }
-}
 #endif
