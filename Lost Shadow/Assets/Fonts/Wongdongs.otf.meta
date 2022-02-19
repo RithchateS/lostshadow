@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 3a2df0e52ec37a44bbfd9d00b46f7c44
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Wongdongs
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 01adc51e912932240beab9a124538f60, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

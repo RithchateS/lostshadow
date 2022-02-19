@@ -6,7 +6,7 @@ public class LoadSceneController : MonoBehaviour
 {
     [SerializeField] private SceneCollection StartScene;
     [SerializeField] private GameObject LoadingCanvas;
-    
+
     void Awake()
     {
         LoadSceneManager.Instance.SetLoadingCanvas(LoadingCanvas);

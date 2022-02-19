@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: fcebc845b289a58489a93cb9b5b3e3df
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Spacerunner
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 2a1a38e4eeaef8442bb09cb6c8c0ff9d, type: 3}
+  - {fileID: 12800000, guid: 75bc3ef4aa3358942bc309292f6035b2, type: 3}
+  - {fileID: 12800000, guid: 36828148db17a7245bf25f48e13d8874, type: 3}
+  - {fileID: 12800000, guid: a33e0d74645d95249b890e247f0e77c6, type: 3}
+  - {fileID: 12800000, guid: f77cc585ca531cd4da2605633b1ad640, type: 3}
+  - {fileID: 12800000, guid: 570d0e2b1caa5ed44a2488b3e4235860, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

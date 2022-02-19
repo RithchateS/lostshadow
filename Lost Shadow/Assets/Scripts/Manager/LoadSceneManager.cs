@@ -8,8 +8,8 @@ public enum SceneCollection
 { 
     Persistant,
     MainMenu ,
-    SampleScene , 
-    SampleScene2 ,
+    Prolouge1_Shadow , 
+    Prolouge1 ,
     LoadScene
 }
 public class LoadSceneManager : Singleton<LoadSceneManager>

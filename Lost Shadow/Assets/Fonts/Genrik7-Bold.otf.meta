@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: c717cca06361c2d48ae02f113d9ca7eb
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Genrik7
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c5f03071ae257324e8d20367f0c5d87e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
