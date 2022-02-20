@@ -65,9 +65,7 @@ public class PlayerMovement : MonoBehaviour
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         myAnimator.SetTrigger("isShadowShift");
-        Debug.Log("1");
         yield return new WaitForSeconds(0.8f);
-        Debug.Log("2");
         if ((currentSceneIndex % 2) == 0){
             SceneManager.LoadScene(currentSceneIndex + 1);
         }
@@ -78,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")))
         {
             myAnimator.SetBool("isJumping", true);
         }
@@ -106,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void ClimbLadder() {
-        if (!myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ladder"))) {
+        if (!myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) && !myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
             myRigidbody.gravityScale = gravityScaleAtStart;
             myAnimator.SetBool("isClimbing", false);
             return;
