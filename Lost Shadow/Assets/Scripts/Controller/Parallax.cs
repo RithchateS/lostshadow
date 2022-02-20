@@ -24,6 +24,7 @@ namespace Controller
         
         void Update()
         {
+            cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
             Vector2 newPos = startPosition + travel * parallaxFactor;
             transform.position = new Vector3(newPos.x, newPos.y, startZ);
         }

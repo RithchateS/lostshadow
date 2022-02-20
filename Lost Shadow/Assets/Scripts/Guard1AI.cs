@@ -24,10 +24,10 @@ public class Guard1AI : MonoBehaviour
     private void Start() {
         _guardAnimator = GetComponent<Animator>();
         _guardRb2D = GetComponent<Rigidbody2D>();
-        _player = GameObject.FindWithTag("Player");
     }
 
     void Update() {
+        _player = GameObject.FindWithTag("Player");
         _distXtoPlayer = _player.transform.position.x - transform.position.x;
         _distYtoPlayer = _player.transform.position.y - transform.position.y;
 

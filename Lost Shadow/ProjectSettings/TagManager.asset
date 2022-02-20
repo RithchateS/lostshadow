@@ -6,6 +6,8 @@ TagManager:
   tags:
   - DontDestroy
   - Enemy
+  - GuardStop
+  - Camera
   layers:
   - Default
   - TransparentFX
