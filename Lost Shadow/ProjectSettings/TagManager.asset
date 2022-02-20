@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - GuardStop
   - Camera
+  - Feet
   layers:
   - Default
   - TransparentFX
