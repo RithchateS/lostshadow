@@ -51,20 +51,11 @@ TagManager:
   - name: Prop
     uniqueID: 1395715829
     locked: 0
-  - name: Water
-    uniqueID: 2662637713
-    locked: 0
   - name: Platform
     uniqueID: 4120620155
     locked: 0
   - name: Ladder
     uniqueID: 1767313557
-    locked: 0
-  - name: Bounce
-    uniqueID: 1082152791
-    locked: 0
-  - name: Shifter
-    uniqueID: 92564723
     locked: 0
   - name: Enemy
     uniqueID: 2749409753
