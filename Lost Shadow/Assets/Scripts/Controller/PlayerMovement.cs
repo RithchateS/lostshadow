@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -26,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
         myBodyCollider = GetComponent<CapsuleCollider2D>();
         myFeetCollider = GetComponent<BoxCollider2D>();
         gravityScaleAtStart = myRigidbody.gravityScale;
+        
     }
 
     void Update()
@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         Run();
         FlipSprite();
         ClimbLadder();
+        Jump();
     }
 
     void OnMove(InputValue value) {
@@ -56,16 +57,38 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (value.isPressed) {
-            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            if ((currentSceneIndex % 2) == 0){
-                SceneManager.LoadScene(currentSceneIndex + 1);
-            }
-            else {
-                SceneManager.LoadScene(currentSceneIndex - 1);
-            }
+            StartCoroutine(ShadowShift());
+        }
+    }
+    
+    IEnumerator ShadowShift()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        myAnimator.SetTrigger("isShadowShift");
+        Debug.Log("1");
+        yield return new WaitForSeconds(0.8f);
+        Debug.Log("2");
+        if ((currentSceneIndex % 2) == 0){
+            SceneManager.LoadScene(currentSceneIndex + 1);
+        }
+        else {
+            SceneManager.LoadScene(currentSceneIndex - 1);
         }
     }
 
+    void Jump()
+    {
+        if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            myAnimator.SetBool("isJumping", true);
+        }
+        else
+        {
+            myAnimator.SetBool("isJumping", false);
+        }
+    }
+    
+    
     void Run() {
         Vector2 playerVelocity = new Vector2 (moveInput.x * runSpeed, myRigidbody.velocity.y);
         myRigidbody.velocity = playerVelocity;
@@ -96,4 +119,5 @@ public class PlayerMovement : MonoBehaviour
         bool playerHasVerticalSpeed = Mathf.Abs(myRigidbody.velocity.y) > Mathf.Epsilon;
         myAnimator.SetBool("isClimbing", playerHasVerticalSpeed);
     }
+    
 }

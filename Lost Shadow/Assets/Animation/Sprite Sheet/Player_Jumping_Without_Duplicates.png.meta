@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b18b3a2596afb8547a8689d1e1161010
+guid: 563b63055a813974584da02a635686dc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_ShadowPeek_Without_Duplicates_0
+      name: Player_Jumping_Without_Duplicates_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c474c0493ba77d94e843b13e9f24763f
-      internalID: -927777616
+      spriteID: f42f5ad55bda2554d81fe18b0bf85879
+      internalID: -867542105
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_ShadowPeek_Without_Duplicates_1
+      name: Player_Jumping_Without_Duplicates_1
       rect:
         serializedVersion: 2
         x: 32
@@ -139,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 478fd01817c890e429858ce9c2545262
-      internalID: -1428973557
+      spriteID: 332f68c5a8b71a745827258faedd9611
+      internalID: -1531493338
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_ShadowPeek_Without_Duplicates_2
+      name: Player_Jumping_Without_Duplicates_2
       rect:
         serializedVersion: 2
         x: 64
@@ -160,14 +160,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae6d2f454ce25994287325909fe4e384
-      internalID: -1941195643
+      spriteID: aaa41796146ff5e4eb61c774c6d96848
+      internalID: -2084814199
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_ShadowPeek_Without_Duplicates_3
+      name: Player_Jumping_Without_Duplicates_3
       rect:
         serializedVersion: 2
         x: 96
@@ -181,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f89168005cd83445813e3b80c47b3ae
-      internalID: 400380038
+      spriteID: 1d358f72a32712d469d0ae034b8fbe7d
+      internalID: -698809539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_ShadowPeek_Without_Duplicates_4
+      name: Player_Jumping_Without_Duplicates_4
       rect:
         serializedVersion: 2
         x: 128
@@ -202,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcd8b43114658f34885e8f8e70bc1f0d
-      internalID: -437217785
+      spriteID: 8b5d3ba491a54744b88be95783705723
+      internalID: 1866161078
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_ShadowPeek_Without_Duplicates_5
+      name: Player_Jumping_Without_Duplicates_5
       rect:
         serializedVersion: 2
         x: 160
@@ -223,50 +223,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59c98ff74a966194e8a4b383c07e9ad8
-      internalID: -180238657
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_ShadowPeek_Without_Duplicates_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 73c382aaf2bed954fb45d5fbcdd5600a
-      internalID: -1454775309
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_ShadowPeek_Without_Duplicates_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3eca038cb776ab34f833ca7341569bee
-      internalID: -195203213
+      spriteID: cf44526599270244ea7f0495aedefa92
+      internalID: 1956863257
       vertices: []
       indices: 
       edges: []
@@ -282,14 +240,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Player_ShadowPeek_Without_Duplicates_6: -1454775309
-      Player_ShadowPeek_Without_Duplicates_1: -1428973557
-      Player_ShadowPeek_Without_Duplicates_0: -927777616
-      Player_ShadowPeek_Without_Duplicates_3: 400380038
-      Player_ShadowPeek_Without_Duplicates_4: -437217785
-      Player_ShadowPeek_Without_Duplicates_7: -195203213
-      Player_ShadowPeek_Without_Duplicates_5: -180238657
-      Player_ShadowPeek_Without_Duplicates_2: -1941195643
+      Player_Jumping_Without_Duplicates_2: -2084814199
+      Player_Jumping_Without_Duplicates_3: -698809539
+      Player_Jumping_Without_Duplicates_0: -867542105
+      Player_Jumping_Without_Duplicates_5: 1956863257
+      Player_Jumping_Without_Duplicates_1: -1531493338
+      Player_Jumping_Without_Duplicates_4: 1866161078
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
