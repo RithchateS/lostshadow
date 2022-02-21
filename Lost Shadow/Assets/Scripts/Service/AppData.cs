@@ -35,15 +35,15 @@ public class Appdata : Singleton<Appdata>
     {
         if (!isUsed1)
         {
-            SceneInSave1 = SceneCollection.Prolouge1;
+            SceneInSave1 = SceneCollection.Prolouge1_Shadow;
         }
         if (!isUsed2)
         {
-            SceneInSave2 = SceneCollection.Prolouge1;
+            SceneInSave2 = SceneCollection.Prolouge1_Shadow;
         }
         if (!isUsed3)
         {
-            SceneInSave3 = SceneCollection.Prolouge1;
+            SceneInSave3 = SceneCollection.Prolouge1_Shadow;
         }
         
         // Already Play

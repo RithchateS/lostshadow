@@ -11,10 +11,8 @@ public enum SceneCollection
     MainMenu , // 1
     LoadScene ,
     Prolouge1_Shadow ,
-    Prolouge1 ,
     LightForest,
     ShadowForest,
-    LoadScene
 }
 public class LoadSceneManager : Singleton<LoadSceneManager>
 {

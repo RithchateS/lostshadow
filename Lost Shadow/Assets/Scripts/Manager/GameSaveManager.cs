@@ -141,6 +141,11 @@ public class GameSaveManager : MonoBehaviour
         paused = false;
     }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     private void Start()
     {
         resumeButton.GetComponent<Button>().onClick.AddListener(delegate

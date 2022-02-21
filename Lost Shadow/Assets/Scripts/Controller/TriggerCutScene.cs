@@ -35,7 +35,8 @@ namespace Controller
         {
             transition.SetTrigger("Start");
             yield return new WaitForSeconds(1f);
-            SceneManager.LoadScene(sceneName.ToString());
+            //SceneManager.LoadScene(sceneName.ToString());
+            GameSaveManager.Instance.GoNextScene(4,4);
             player.gameObject.transform.position = GameObject.Find("StartPos").transform.position;
             Debug.Log(GameObject.Find("StartPos").transform.position);
             Debug.Log(player.gameObject.transform.position);
