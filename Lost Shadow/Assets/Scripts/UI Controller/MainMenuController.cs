@@ -10,7 +10,6 @@ public class MainMenuController : MonoBehaviour
     [SerializeField] private bool lightTheme = true;
     // Button Control
     [SerializeField] private GameObject newGame_button;
-    [SerializeField] private GameObject loadGame_button;
     [SerializeField] private GameObject setting_button;
     [SerializeField] private GameObject theme_button;
     [SerializeField] private GameObject exit_button;
@@ -28,10 +27,6 @@ public class MainMenuController : MonoBehaviour
         newGame_button.GetComponent<Button>().onClick.AddListener(delegate
         {
             controller.ChangePage(1);
-        });
-        loadGame_button.GetComponent<Button>().onClick.AddListener(delegate
-        {
-            controller.ChangePage(2);
         });
         setting_button.GetComponent<Button>().onClick.AddListener(delegate
         {
@@ -61,7 +56,7 @@ public class MainMenuController : MonoBehaviour
         }
         else if (!lightTheme)
         {
-            foreach (var button in button_Renderer)
+            foreach (var button in button_Image)
             {
                 button.sprite = darkButton_Sprite;
             }

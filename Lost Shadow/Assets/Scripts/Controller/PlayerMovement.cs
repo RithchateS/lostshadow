@@ -17,7 +17,7 @@ namespace Controller
         [SerializeField] float runSpeed = 10f;
         [SerializeField] float jumpSpeed = 5f;
         [SerializeField] float climbSpeed = 5f;
-    
+
         private void Awake() {
             DontDestroyOnLoad(transform.gameObject);
         }
@@ -29,7 +29,7 @@ namespace Controller
             myBodyCollider = GetComponent<CapsuleCollider2D>();
             myFeetCollider = feet.GetComponent<BoxCollider2D>();
             gravityScaleAtStart = myRigidbody.gravityScale;
-        
+
         }
 
         void Update()
@@ -68,7 +68,7 @@ namespace Controller
                 }
             }
         }
-    
+
         IEnumerator ShadowShift()
         {
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -93,8 +93,8 @@ namespace Controller
                 myAnimator.SetBool("isJumping", false);
             }
         }
-    
-    
+
+
         void Run() {
             Vector2 playerVelocity = new Vector2 (moveInput.x * runSpeed, myRigidbody.velocity.y);
             myRigidbody.velocity = playerVelocity;
@@ -117,19 +117,19 @@ namespace Controller
                 myAnimator.SetBool("isClimbing", false);
                 return;
             }
-            
 
-            
+
+
             Vector2 climbVelocity = new Vector2 (myRigidbody.velocity.x, moveInput.y * climbSpeed);
             myRigidbody.velocity = climbVelocity;
             myRigidbody.gravityScale = 0f;
-                
+
             bool playerHasVerticalSpeed = Mathf.Abs(myRigidbody.velocity.y) > Mathf.Epsilon;
             myAnimator.SetBool("isClimbing", playerHasVerticalSpeed);
-            
 
-            
+
+
         }
-    
+
     }
 }

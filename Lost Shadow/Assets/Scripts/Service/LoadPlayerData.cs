@@ -1,0 +1,32 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LoadPlayerData : MonoBehaviour
+{
+    public static LoadPlayerData Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        DontDestroyOnLoad(this);
+    }
+
+    private void Start()
+    {
+        if (PlayerPrefs.GetInt("HaveSave") == 0)
+        {
+            GameSaveManager.Instance.InitialSave();
+        }
+        else if (PlayerPrefs.GetInt("HaveSave") == 1)
+        {
+            GameSaveManager.Instance.LoadGame();
+        }
+        Appdata.Instance.CheckPlayerData();
+    }
+    
+}

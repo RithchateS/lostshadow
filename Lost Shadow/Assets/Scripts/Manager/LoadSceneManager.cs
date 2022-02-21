@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum SceneCollection  
-{ 
-    Persistant,
-    MainMenu ,
-    Prolouge1_Shadow , 
+// เพิ่ม Scene ที่จะใช้ในหน้านี้
+public enum SceneCollection
+{
+    Persistant, // 0
+    MainMenu , // 1
+    LoadScene ,
+    Prolouge1_Shadow ,
     Prolouge1 ,
     LightForest,
     ShadowForest,
@@ -17,8 +19,8 @@ public enum SceneCollection
 public class LoadSceneManager : Singleton<LoadSceneManager>
 {
     private GameObject LoadingCanvas ;
-    public SceneCollection currentScene ; 
-    
+    public SceneCollection currentScene ;
+
     public void StartLoadingScene(SceneCollection scene){
         StartCoroutine(LoadScene(scene));
     }
@@ -29,7 +31,7 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
 
     private IEnumerator LoadScene(SceneCollection Scene){
 
-        GameObject LoadScreenObject = Instantiate(LoadingCanvas); 
+        GameObject LoadScreenObject = Instantiate(LoadingCanvas);
         TMPro.TMP_Text LoadingPercentText = LoadScreenObject.transform.GetChild(1).GetComponent<TMPro.TMP_Text>() ;
         var currentProgress = 0f;
         yield return null;
@@ -51,11 +53,11 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
         while (currentProgress < 100)
         {
             if (currentProgress + Time.deltaTime * 100 <= 100)
-            { 
+            {
                 currentProgress += Time.deltaTime * 150;
             }
             else
-            { 
+            {
                 currentProgress = 100.00f;
             }
             LoadingPercentText.text = Mathf.Clamp(Mathf.RoundToInt(currentProgress), 0, 100) + "%";
@@ -66,7 +68,7 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
         currentScene = Scene ;
         LoadingPercentText.text = "0%";
         Destroy(LoadScreenObject);
-    }  
+    }
 
 
 }
