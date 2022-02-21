@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// เพิ่ม Scene ที่จะใช้ในหน้านี้
 public enum SceneCollection  
 { 
-    Persistant,
-    MainMenu ,
+    Persistant, // 0
+    MainMenu , // 1
+    LoadScene ,
     Prolouge1_Shadow , 
-    Prolouge1 ,
-    LoadScene
+    Prolouge1 
 }
 public class LoadSceneManager : Singleton<LoadSceneManager>
 {
