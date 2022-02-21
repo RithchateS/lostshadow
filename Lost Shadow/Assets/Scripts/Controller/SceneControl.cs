@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class SceneControl : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class SceneControl : MonoBehaviour
     [SerializeField] GameObject playerPrefab;
     [SerializeField] private GameObject cameraPrefab;
     GameObject _player;
+    public GameObject startpos;
     public Animator transition;
     private GameObject _camera;
 
@@ -19,14 +22,16 @@ public class SceneControl : MonoBehaviour
 
     private void Start() {
         _player = GameObject.FindWithTag("Player");
+        startpos = GameObject.Find("StartPos");
+        
         if (_player == null) {
-            Instantiate(playerPrefab, transform.position, transform.rotation);
+            Instantiate(playerPrefab, startpos.transform.position, startpos.transform.rotation);
         }
 
         _camera = GameObject.FindWithTag("MainCamera");
         if (_camera == null)
         {
-            Instantiate(cameraPrefab, transform.position, transform.rotation);
+            Instantiate(cameraPrefab, startpos.transform.position, startpos.transform.rotation);
         }
     }
 

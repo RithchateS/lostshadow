@@ -19577,7 +19577,8 @@ GameObject:
   - component: {fileID: 1149192961}
   - component: {fileID: 1149192963}
   - component: {fileID: 1149192962}
-  m_Layer: 0
+  - component: {fileID: 1149192964}
+  m_Layer: 12
   m_Name: base bg (-1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19666,6 +19667,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1149192964
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149192960}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.2, y: 1.8}
+    newSize: {x: 3.2, y: 1.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.2, y: 1.8}
+  m_EdgeRadius: 0
 --- !u!60 &1158953029 stripped
 PolygonCollider2D:
   m_CorrespondingSourceObject: {fileID: 917391383, guid: cd68c5f9f8ff6cb47840982fb66b729f, type: 3}
@@ -20172,11 +20199,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2523783357040668650, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.020667039
+      value: 0.02069697
       objectReference: {fileID: 0}
     - target: {fileID: 2523783357040668650, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.07048
+      value: 3.07047
       objectReference: {fileID: 0}
     - target: {fileID: 2523783357179951770, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
       propertyPath: m_BoundingShape2D
@@ -20357,8 +20384,8 @@ MonoBehaviour:
   - {x: -8.999992, y: -19.96876, z: 0}
   - {x: -8.9687395, y: -20, z: 0}
   m_ShapePathHash: 0
-  m_Mesh: {fileID: 1903732735}
-  m_InstanceId: 49850
+  m_Mesh: {fileID: 2080943729}
+  m_InstanceId: 67252
 --- !u!1 &1623851379
 GameObject:
   m_ObjectHideFlags: 0
@@ -20716,7 +20743,7 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
---- !u!43 &1903732735
+--- !u!43 &2080943729
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
