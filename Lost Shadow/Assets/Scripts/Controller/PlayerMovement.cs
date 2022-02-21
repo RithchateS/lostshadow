@@ -60,11 +60,13 @@ namespace Controller
                 return;
             }
 
-            if (value.isPressed && moveInput == new Vector2(0,0)) {
+            if (value.isPressed && moveInput == new Vector2(0, 0))
+            {
                 if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Shifter")))
                 {
                     StartCoroutine(ShadowShift());
                 }
+            }
         }
     
         IEnumerator ShadowShift()
