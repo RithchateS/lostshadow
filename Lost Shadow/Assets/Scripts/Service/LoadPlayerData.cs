@@ -27,7 +27,6 @@ public class LoadPlayerData : MonoBehaviour
         {
             Debug.Log("No");
             //GameSaveManager.Instance.LoadGame();
-            GameSaveManager.Instance.InitialSave();
         }
         Appdata.Instance.CheckPlayerData();
     }
