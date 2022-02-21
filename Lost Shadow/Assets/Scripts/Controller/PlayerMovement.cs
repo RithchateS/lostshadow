@@ -108,7 +108,7 @@ namespace Controller
         }
 
         void ClimbLadder() {
-            if (!myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) || myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")) && !myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
+            if (!myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ladder"))) {
                 myRigidbody.gravityScale = gravityScaleAtStart;
                 myAnimator.SetBool("isClimbing", false);
                 return;

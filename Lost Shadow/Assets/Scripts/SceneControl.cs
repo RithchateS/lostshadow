@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneControl : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class SceneControl : MonoBehaviour
     [SerializeField] GameObject playerPrefab;
     [SerializeField] private GameObject cameraPrefab;
     GameObject _player;
+    public Animator transition;
     private GameObject _camera;
 
     public string GetLinkedScene() {
@@ -25,5 +28,26 @@ public class SceneControl : MonoBehaviour
         {
             Instantiate(cameraPrefab, transform.position, transform.rotation);
         }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.RightShift))
+        {
+            ExitLevel();
+        }
+    }
+
+    public void ExitLevel()
+    {
+        StartCoroutine(LoadLevel(1));
+    }
+
+    IEnumerator LoadLevel(int sceneIndex)
+    {
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(1f);
+        Destroy(GameObject.FindWithTag("DontDestroy"));
+        SceneManager.LoadScene(1);
     }
 }
