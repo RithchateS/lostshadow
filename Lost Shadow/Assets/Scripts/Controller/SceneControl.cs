@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class SceneControl : MonoBehaviour
 {
     [SerializeField] string linkedScene;
     [SerializeField] GameObject playerPrefab;
     [SerializeField] private GameObject cameraPrefab;
+    [SerializeField] Transform startPos;
     GameObject _player;
     public Animator transition;
     private GameObject _camera;
@@ -19,14 +21,15 @@ public class SceneControl : MonoBehaviour
 
     private void Start() {
         _player = GameObject.FindWithTag("Player");
+        startPos = GameObject.Find("StartPos").transform;
         if (_player == null) {
-            Instantiate(playerPrefab, transform.position, transform.rotation);
+            Instantiate(playerPrefab, startPos.position, startPos.rotation);
         }
 
         _camera = GameObject.FindWithTag("MainCamera");
         if (_camera == null)
         {
-            Instantiate(cameraPrefab, transform.position, transform.rotation);
+            Instantiate(cameraPrefab, startPos.position, startPos.rotation);
         }
     }
 
