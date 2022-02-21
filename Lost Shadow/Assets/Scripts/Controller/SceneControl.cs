@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Controller;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -50,7 +51,7 @@ public class SceneControl : MonoBehaviour
     {
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(1f);
-        Destroy(GameObject.FindWithTag("DontDestroy"));
-        SceneManager.LoadScene(1);
+        LoadSceneManager.Instance.DestroyOnLoad();
+        GameSaveManager.Instance.GoNextScene(1,1);
     }
 }

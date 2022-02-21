@@ -7498,9 +7498,9 @@ MonoBehaviour:
   - {fileID: 529038291}
   button_Renderer: []
   bg_Renderer: {fileID: 188676634}
-  darkButton_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  darkButton_Sprite: {fileID: 21300000, guid: 6f636ece6a431db47a87802fcb4093a0, type: 3}
   darkBg_Sprite: {fileID: 21300000, guid: 56fc6a536e6b9264299155b9bde8f37c, type: 3}
-  lightButton_Sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  lightButton_Sprite: {fileID: 21300000, guid: 6f636ece6a431db47a87802fcb4093a0, type: 3}
   lightBg_Sprite: {fileID: 21300000, guid: 32d5bd5f38d84df4698eed5825539271, type: 3}
 --- !u!1 &1274908779
 GameObject:

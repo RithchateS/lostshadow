@@ -20,11 +20,14 @@ public class LoadPlayerData : MonoBehaviour
     {
         if (PlayerPrefs.GetInt("HaveSave") == 0)
         {
+            Debug.Log("YEs");
             GameSaveManager.Instance.InitialSave();
         }
         else if (PlayerPrefs.GetInt("HaveSave") == 1)
         {
-            GameSaveManager.Instance.LoadGame();
+            Debug.Log("No");
+            //GameSaveManager.Instance.LoadGame();
+            GameSaveManager.Instance.InitialSave();
         }
         Appdata.Instance.CheckPlayerData();
     }

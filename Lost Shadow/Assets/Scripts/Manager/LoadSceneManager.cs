@@ -67,6 +67,12 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
         LoadingPercentText.text = "0%";
         Destroy(LoadScreenObject);
     }
+    
+    public void DestroyOnLoad()
+    {
+        Destroy(GameObject.FindWithTag("Player"));
+        Destroy(GameObject.FindWithTag("Camera"));
+    }
 
 
 }
