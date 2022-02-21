@@ -35,6 +35,11 @@ public class PlayerMovement : MonoBehaviour
         ClimbLadder();
     }
 
+    void GetPlayerData()
+    {
+        Appdata.Instance.PlayerPosition1 = transform.position;
+        Appdata.Instance.SceneInSave1 = Appdata.Instance.CurrentScene; 
+    }
     void OnMove(InputValue value) {
         moveInput = value.Get<Vector2>();
         Debug.Log(moveInput);
