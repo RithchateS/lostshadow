@@ -10,7 +10,7 @@ namespace Controller
         Vector2 moveInput;
         Rigidbody2D myRigidbody;
         Animator myAnimator;
-        CapsuleCollider2D myBodyCollider;
+        BoxCollider2D myBodyCollider;
         BoxCollider2D myFeetCollider;
         private GameObject feet;
         float gravityScaleAtStart;
@@ -26,7 +26,7 @@ namespace Controller
             feet = GameObject.FindWithTag("Feet");
             myRigidbody = GetComponent<Rigidbody2D>();
             myAnimator = GetComponent<Animator>();
-            myBodyCollider = GetComponent<CapsuleCollider2D>();
+            myBodyCollider = GetComponent<BoxCollider2D>();
             myFeetCollider = feet.GetComponent<BoxCollider2D>();
             gravityScaleAtStart = myRigidbody.gravityScale;
 

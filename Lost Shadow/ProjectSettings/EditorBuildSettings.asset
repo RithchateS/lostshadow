@@ -22,7 +22,7 @@ EditorBuildSettings:
     guid: 0a53c685cf26e8044a9c851b9f7a5041
   - enabled: 1
     path: Assets/Scenes/Prolouge1_Shadow.unity
-    guid: 7767dfa21edf9334ba4ac5634e8ff923
+    guid: 65aa6dbb1b519f64186bd51b8ae83dc3
   - enabled: 1
     path: Assets/Scenes/LightForest.unity
     guid: 201c82b50da8e4b459747313f0b58648
