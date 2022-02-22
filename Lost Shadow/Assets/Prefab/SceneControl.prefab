@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7af5a0dd6130e4b871d115c39cf73a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkedScene: Prolouge1
+  linkedScene: LightForest
   playerPrefab: {fileID: 3837368660905546741, guid: 82b5772b5acda674c99cab6c27ac1872, type: 3}
   cameraPrefab: {fileID: 2523783355566195189, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
   startPos: {fileID: 0}
@@ -57,6 +57,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6124061577475474657}
     m_Modifications:
+    - target: {fileID: 7435165824390614758, guid: 54cd05434db0e3143abf3bc936db6807, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7435165825282894794, guid: 54cd05434db0e3143abf3bc936db6807, type: 3}
       propertyPath: m_Name
       value: Crossfade
