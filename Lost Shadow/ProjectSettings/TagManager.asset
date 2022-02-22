@@ -9,6 +9,7 @@ TagManager:
   - GuardStop
   - Camera
   - Feet
+  - StartPos
   layers:
   - Default
   - TransparentFX

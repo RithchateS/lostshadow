@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cefa76c336f47274badf4195806423f8
+guid: 7c3cf007c2c793c41bfdc77f28e47f08
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Guard1_Idle_Without_Duplicates_0
+      name: Guard1_Walking_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 598a3e2fc6efca84b98af346e56872a2
-      internalID: 1583194628
+      spriteID: 4763654001571cd48b6e0e959af4ee82
+      internalID: -2097630587
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guard1_Idle_Without_Duplicates_1
+      name: Guard1_Walking_1
       rect:
         serializedVersion: 2
         x: 32
@@ -139,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0dde8839cca6c2e41ba8adc7a4de84e5
-      internalID: 571360435
+      spriteID: 1b2bc995e6e1f114cbc722ec6bbaa565
+      internalID: -1795284359
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guard1_Idle_Without_Duplicates_2
+      name: Guard1_Walking_2
       rect:
         serializedVersion: 2
         x: 64
@@ -160,14 +160,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92b39a596e99bcf46afb96e8bcaf357f
-      internalID: 2145854838
+      spriteID: e7003c4968a1ec2409e5e1eb3682c840
+      internalID: 885797459
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guard1_Idle_Without_Duplicates_3
+      name: Guard1_Walking_3
       rect:
         serializedVersion: 2
         x: 96
@@ -181,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b8972f193f557c41bb16a5f00c4744e
-      internalID: -1783078814
+      spriteID: c149f4bb99b3742438f47be6446806fc
+      internalID: -2011748722
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guard1_Idle_Without_Duplicates_4
+      name: Guard1_Walking_4
       rect:
         serializedVersion: 2
         x: 128
@@ -202,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ad1ad4123e1e5641a2aa6b83af4c30f
-      internalID: 211540874
+      spriteID: 0c940844f4d735e4e9d726826199ba33
+      internalID: -218952657
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guard1_Idle_Without_Duplicates_5
+      name: Guard1_Walking_5
       rect:
         serializedVersion: 2
         x: 160
@@ -223,14 +223,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cfdb5c6cff813684586212c9f0b6950c
-      internalID: 1446286693
+      spriteID: f046a2b82f5c7fd43a3ec1a40e55bd8c
+      internalID: -224431450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guard1_Idle_Without_Duplicates_6
+      name: Guard1_Walking_6
       rect:
         serializedVersion: 2
         x: 192
@@ -244,14 +244,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af52b990d27554f46a8a78c611e097b6
-      internalID: -557597408
+      spriteID: 4af47c61750aa1b4995c2980c22e6976
+      internalID: -1943722486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guard1_Idle_Without_Duplicates_7
+      name: Guard1_Walking_7
       rect:
         serializedVersion: 2
         x: 224
@@ -265,14 +265,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1310006fe85daff439d45551a99a5350
-      internalID: 805463150
+      spriteID: d0b64b0bbc6172345a66181ac3a9df46
+      internalID: -109488913
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Guard1_Idle_Without_Duplicates_8
+      name: Guard1_Walking_8
       rect:
         serializedVersion: 2
         x: 256
@@ -286,71 +286,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13345c1e13134854ab792b8d913b249b
-      internalID: 1292106679
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Guard1_Idle_Without_Duplicates_9
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e171ffd95881f684c93d34b7dba61775
-      internalID: -1523474494
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Guard1_Idle_Without_Duplicates_10
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c6ed5c085d490d8479354a1030f46f27
-      internalID: 501493401
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Guard1_Idle_Without_Duplicates_11
-      rect:
-        serializedVersion: 2
-        x: 352
-        y: 0
-        width: 32
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6f46be01e17562c4881d637650020fa7
-      internalID: -1224419251
+      spriteID: 297153e47856efe4e85672d0515f8361
+      internalID: -276119090
       vertices: []
       indices: 
       edges: []
@@ -366,18 +303,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Guard1_Idle_Without_Duplicates_8: 1292106679
-      Guard1_Idle_Without_Duplicates_1: 571360435
-      Guard1_Idle_Without_Duplicates_7: 805463150
-      Guard1_Idle_Without_Duplicates_11: -1224419251
-      Guard1_Idle_Without_Duplicates_0: 1583194628
-      Guard1_Idle_Without_Duplicates_4: 211540874
-      Guard1_Idle_Without_Duplicates_10: 501493401
-      Guard1_Idle_Without_Duplicates_5: 1446286693
-      Guard1_Idle_Without_Duplicates_3: -1783078814
-      Guard1_Idle_Without_Duplicates_9: -1523474494
-      Guard1_Idle_Without_Duplicates_2: 2145854838
-      Guard1_Idle_Without_Duplicates_6: -557597408
+      Guard1_Walking_2: 885797459
+      Guard1_Walking_6: -1943722486
+      Guard1_Walking_3: -2011748722
+      Guard1_Walking_4: -218952657
+      Guard1_Walking_1: -1795284359
+      Guard1_Walking_0: -2097630587
+      Guard1_Walking_7: -109488913
+      Guard1_Walking_8: -276119090
+      Guard1_Walking_5: -224431450
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Guard1AI : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class Guard1AI : MonoBehaviour
         _distYtoPlayer = _player.transform.position.y - transform.position.y;
 
         if (_guardState == "Patrol") {
-            _guardRb2D.velocity = new Vector2 (_viewDir * patrolSpeed, 0f);
+            _guardRb2D.velocity = new Vector2 (_viewDir * patrolSpeed, _guardRb2D.velocity.y);
             _guardAnimator.SetBool("isPatrolling", true);
             
             if (_viewDir == 1) {
@@ -43,7 +44,7 @@ public class Guard1AI : MonoBehaviour
             
         }
         else if (_guardState == "Chase") {
-            _guardRb2D.velocity = new Vector2 (_viewDir * chaseSpeed, 0f);
+            _guardRb2D.velocity = new Vector2 (_viewDir * chaseSpeed, _guardRb2D.velocity.y);
             _guardAnimator.SetBool("isPatrolling", true);
             
             if (_viewDir == 1) {
@@ -84,8 +85,10 @@ public class Guard1AI : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.tag == "Player") {
-            Destroy(other.gameObject);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.transform.position = GameObject.FindWithTag("StartPos").transform.position;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

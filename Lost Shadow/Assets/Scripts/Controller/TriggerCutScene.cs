@@ -46,7 +46,7 @@ namespace Controller
             }
         }
 
-        public void StartCrossFade()
+        private void StartCrossFade()
         {
             transition.SetTrigger("Start");
         }
