@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneControl : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class SceneControl : MonoBehaviour
     }
 
     private void Start() {
+        if (SceneManager.GetActiveScene().name == SceneCollection.Prolouge1_Shadow.ToString())
+        {
+            StartCoroutine(LoadCutSccene());
+        }
         _player = GameObject.FindWithTag("Player");
         startPos = GameObject.Find("StartPos").transform;
         if (_player == null) {
@@ -29,25 +34,12 @@ public class SceneControl : MonoBehaviour
             Instantiate(cameraPrefab, startPos.position, startPos.rotation);
         }
     }
+    
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.RightShift))
-        {
-            ExitLevel();
-        }
-    }
-
-    public void ExitLevel()
-    {
-        StartCoroutine(LoadLevel(1));
-    }
-
-    IEnumerator LoadLevel(int sceneIndex)
+    IEnumerator LoadCutSccene()
     {
         transition.SetTrigger("Start");
-        yield return new WaitForSeconds(1f);
-        LoadSceneManager.Instance.DestroyOnLoad();
-        GameSaveManager.Instance.GoNextScene(1,1);
+        yield return new WaitForSeconds(13f);
+        transition.SetTrigger("End");
     }
 }
