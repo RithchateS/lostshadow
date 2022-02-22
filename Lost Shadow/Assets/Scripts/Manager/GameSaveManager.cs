@@ -87,13 +87,19 @@ public class GameSaveManager : MonoBehaviour
         var json = JsonUtility.ToJson(playerData);
         bf.Serialize(file, json);
         file.Close();
-        PlayerPrefs.SetInt("HaveSave",1);
+        PlayerPrefs.SetFloat("HaveSave",1);
     }
 
     public void InitialSave()
     {
-        Directory.CreateDirectory(Application.persistentDataPath + "/Game_Save");
-        Directory.CreateDirectory(Application.persistentDataPath + "/Game_Save/Player_Data");
+        if (!IsSaveFile())
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/Game_Save");
+        }
+        if (!Directory.Exists(Application.persistentDataPath + "/Game_Save/Player_Data"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/Game_Save/Player_Data");
+        }
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/Game_Save/Player_Data/Player_save.txt");
         var json = JsonUtility.ToJson(playerData);
@@ -104,7 +110,7 @@ public class GameSaveManager : MonoBehaviour
     public void LoadGame()
     {
         BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Open(Application.persistentDataPath + "Game_Save/Player_Data/Player_save.txt",FileMode.Open);
+        FileStream file = File.Open(Application.persistentDataPath + "/Game_Save/Player_Data/Player_save.txt",FileMode.Open);
         JsonUtility.FromJsonOverwrite((string)bf.Deserialize(file),playerData); 
         file.Close();
     }
