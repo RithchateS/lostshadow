@@ -9,10 +9,12 @@ public enum SceneCollection
 {
     Persistant, // 0
     MainMenu , // 1
-    LoadScene ,
-    Prolouge1_Shadow ,
-    LightForest,
-    ShadowForest,
+    LoadScene , //2
+    Prolouge1_Shadow ,// 3
+    LightForest,// 4
+    ShadowForest,// 5
+    LightVillage,// 6
+    ShadowVillage// 7
 }
 public class LoadSceneManager : Singleton<LoadSceneManager>
 {

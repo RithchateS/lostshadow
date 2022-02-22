@@ -29,5 +29,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ShadowForest.unity
     guid: 36cb1300cb95a6a4892028d9df13bced
+  - enabled: 1
+    path: Assets/Scenes/LightVillage.unity
+    guid: b44269fd4efb56d44811f0f2b7377f33
+  - enabled: 1
+    path: Assets/Scenes/ShadowVillage.unity
+    guid: 842f118f0524f404286df4e782efabbb
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: b7a7ec417ec5aa54784164ccae971640, type: 2}

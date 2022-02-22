@@ -19,7 +19,22 @@ namespace Controller
                 {
                     case SceneCollection.LightForest:
                     {
-                        StartCoroutine(ToLightForest(other.gameObject));
+                        StartCoroutine(ToNextLevel(4));
+                        break;
+                    }
+                    case SceneCollection.ShadowForest:
+                    {
+                        StartCoroutine(ToNextLevel(5));
+                        break;
+                    }
+                    case SceneCollection.LightVillage:
+                    {
+                        StartCoroutine(ToNextLevel(6));
+                        break;
+                    }
+                    case SceneCollection.ShadowVillage:
+                    {
+                        StartCoroutine(ToNextLevel(7));
                         break;
                     }
                     case SceneCollection.MainMenu:
@@ -36,12 +51,12 @@ namespace Controller
             transition.SetTrigger("Start");
         }
 
-        IEnumerator ToLightForest(GameObject player)
+        IEnumerator ToNextLevel(int sceneId)
         {
             StartCrossFade();
             yield return new WaitForSeconds(1f);
             LoadSceneManager.Instance.DestroyOnLoad();
-            GameSaveManager.Instance.GoNextScene(4,4);
+            GameSaveManager.Instance.GoNextScene(sceneId,4);
         }
         
     }
