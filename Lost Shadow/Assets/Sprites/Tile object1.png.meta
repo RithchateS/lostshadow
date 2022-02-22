@@ -1,0 +1,297 @@
+fileFormatVersion: 2
+guid: 196af96c86c0a284cb2cb90892a5708c
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 391, w: 399}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tile object1_146
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 20
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66fd9e1b4db224041a8c4759069adf2b
+      internalID: -844267753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Tile object1_23: -521040077
+      Tile object1_68: 259479499
+      Tile object1_114: -1561224631
+      Tile object1_3: -397344509
+      Tile object1_63: -971955598
+      Tile object1_70: 1798138713
+      Tile object1_9: -15950018
+      Tile object1_124: -911593087
+      Tile object1_28: -569691679
+      Tile object1_90: 1945619816
+      Tile object1_147: -1065270253
+      Tile object1_17: 982476590
+      Tile object1_128: -186149442
+      Tile object1_105: -390185189
+      Tile object1_55: -1620591633
+      Tile object1_57: 481198464
+      Tile object1_73: 709231131
+      Tile object1_87: 1597113827
+      Tile object1_132: -53563642
+      Tile object1_42: 1354435716
+      Tile object1_108: 1858618966
+      Tile object1_48: -2115001075
+      Tile object1_69: -1473814666
+      Tile object1_142: 702464307
+      Tile object1_25: 1956887915
+      Tile object1_140: -1148431096
+      Tile object1_71: 973400955
+      Tile object1_54: 442743503
+      Tile object1_35: -1170733972
+      Tile object1_1: -516491541
+      Tile object1_5: -1423904199
+      Tile object1_27: 1424621887
+      Tile object1_10: -877719323
+      Tile object1_151: -1079603646
+      Tile object1_133: -1923173093
+      Tile object1_58: -1321182301
+      Tile object1_104: -1621538753
+      Tile object1_148: -884056958
+      Tile object1_120: -1977906391
+      Tile object1_139: -522241460
+      Tile object1_59: -1745429602
+      Tile object1_12: 754970694
+      Tile object1_111: 164049923
+      Tile object1_153: 1420981282
+      Tile object1_46: -426162217
+      Tile object1_127: 1062231715
+      Tile object1_13: -2033187707
+      Tile object1_79: -1721764050
+      Tile object1_86: -158569006
+      Tile object1_94: 1369223591
+      Tile object1_41: -1751159734
+      Tile object1_43: -1768207008
+      Tile object1_119: 1652148403
+      Tile object1_131: -1460221741
+      Tile object1_134: -518765554
+      Tile object1_102: -1945390872
+      Tile object1_97: -1486134611
+      Tile object1_49: 40931858
+      Tile object1_88: -206906630
+      Tile object1_75: -1252901870
+      Tile object1_76: -906660856
+      Tile object1_84: 885844961
+      Tile object1_66: -590829682
+      Tile object1_26: 1922244669
+      Tile object1_74: 1970795602
+      Tile object1_31: -1505528182
+      Tile object1_32: 225077318
+      Tile object1_65: -1118038511
+      Tile object1_44: 751553657
+      Tile object1_141: 565243697
+      Tile object1_130: -708912957
+      Tile object1_145: 1819078065
+      Tile object1_15: -1012910099
+      Tile object1_93: -1644671
+      Tile object1_39: -1218005663
+      Tile object1_20: 359878354
+      Tile object1_62: -133672123
+      Tile object1_126: -1767211330
+      Tile object1_135: 1080976094
+      Tile object1_36: 754167154
+      Tile object1_53: 1114735064
+      Tile object1_21: 225558139
+      Tile object1_91: -399691218
+      Tile object1_81: 1435539255
+      Tile object1_7: -2037448312
+      Tile object1_34: -1336008139
+      Tile object1_137: 1853030786
+      Tile object1_61: 1240602059
+      Tile object1_103: 867390811
+      Tile object1_118: 1214269426
+      Tile object1_24: 1130741867
+      Tile object1_152: -1408740293
+      Tile object1_19: 671074474
+      Tile object1_106: 592593520
+      Tile object1_8: -200433845
+      Tile object1_144: -661767355
+      Tile object1_4: -197509102
+      Tile object1_72: -1467508874
+      Tile object1_6: 54411682
+      Tile object1_29: -287605968
+      Tile object1_115: 32245851
+      Tile object1_92: 1145143576
+      Tile object1_123: 1520065826
+      Tile object1_149: -1905235125
+      Tile object1_78: -1817424733
+      Tile object1_11: 1839552708
+      Tile object1_113: 917612408
+      Tile object1_109: 148726936
+      Tile object1_38: 300330644
+      Tile object1_150: -1469753850
+      Tile object1_116: 1227214487
+      Tile object1_14: 1160159809
+      Tile object1_22: 968680507
+      Tile object1_121: -2136977433
+      Tile object1_122: -285940722
+      Tile object1_138: 1358944926
+      Tile object1_82: 19155460
+      Tile object1_30: -298436096
+      Tile object1_18: -483284661
+      Tile object1_33: 1103000568
+      Tile object1_99: 894063545
+      Tile object1_40: -486178404
+      Tile object1_47: 1596452895
+      Tile object1_77: -707704465
+      Tile object1_50: -120250347
+      Tile object1_45: 1633935117
+      Tile object1_52: -1211134623
+      Tile object1_67: -229541415
+      Tile object1_98: -1942951374
+      Tile object1_83: -658994369
+      Tile object1_89: 1082309260
+      Tile object1_80: -828055620
+      Tile object1_143: 962251391
+      Tile object1_0: 950625625
+      Tile object1_96: -1933468971
+      Tile object1_136: 1001718302
+      Tile object1_110: -1936529528
+      Tile object1_60: -1827837599
+      Tile object1_101: 585307191
+      Tile object1_117: -238848187
+      Tile object1_16: 2011844620
+      Tile object1_100: -449020169
+      Tile object1_125: -1890678121
+      Tile object1_2: 1895139297
+      Tile object1_107: 1059432569
+      Tile object1_129: -392237496
+      Tile object1_85: 1995722542
+      Tile object1_56: 1646389692
+      Tile object1_51: -1520441729
+      Tile object1_95: 2107128795
+      Tile object1_146: -844267753
+      Tile object1_64: -1719075492
+      Tile object1_112: 329897228
+      Tile object1_37: -1164701991
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
