@@ -46,17 +46,28 @@ namespace Controller
             }
         }
 
-        private void StartCrossFade()
+        private void StartTransition()
         {
             transition.SetTrigger("Start");
         }
 
         IEnumerator ToNextLevel(int sceneId)
         {
-            StartCrossFade();
-            yield return new WaitForSeconds(1f);
-            LoadSceneManager.Instance.DestroyOnLoad();
-            GameSaveManager.Instance.GoNextScene(sceneId,4);
+            if (sceneId == 7)
+            {
+                StartTransition();
+                yield return new WaitForSeconds(13f);
+                LoadSceneManager.Instance.DestroyOnLoad();
+                GameSaveManager.Instance.GoNextScene(sceneId, 4);
+                transition.SetTrigger("End");
+            }
+            else
+            {
+                StartTransition();
+                yield return new WaitForSeconds(1f);
+                LoadSceneManager.Instance.DestroyOnLoad();
+                GameSaveManager.Instance.GoNextScene(sceneId, 4);
+            }
         }
         
     }

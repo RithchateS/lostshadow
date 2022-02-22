@@ -126,11 +126,11 @@ public class GameSaveManager : MonoBehaviour
     }
 
     // Use For Select Next Scene In game component
-    public void GoNextScene(int NextLevel,int Chapter)
+    public void GoNextScene(int nextLevel,int chapter)
     {
         SceneManager.LoadScene("LoadScene");
-        Appdata.Instance.currentChapter = Chapter;
-        Appdata.Instance.SceneToLoad = (SceneCollection)NextLevel;
+        Appdata.Instance.currentChapter = chapter;
+        Appdata.Instance.SceneToLoad = (SceneCollection)nextLevel;
         Appdata.Instance.CurrentScene = Appdata.Instance.SceneToLoad;
     }
     

@@ -64,7 +64,7 @@ namespace Controller
             {
                 if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Shifter")) && !myBodyCollider.IsTouchingLayers(LayerMask.GetMask("DeadZone")))
                 {
-                    StartCoroutine(ShadowShift());
+                    StartCoroutine(ShadowShift()); 
                 }
             }
         }
