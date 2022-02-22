@@ -28,6 +28,10 @@ public class GameSaveManager : MonoBehaviour
         {
             Instance = this;
         }
+        else if (Instance != this)
+        {
+            Destroy(this);
+        }
         playerData = Appdata.Instance.GetComponent<Appdata>();
         DontDestroyOnLoad(this);
     }
@@ -127,12 +131,7 @@ public class GameSaveManager : MonoBehaviour
         Appdata.Instance.SceneToLoad = (SceneCollection)NextLevel;
         Appdata.Instance.CurrentScene = Appdata.Instance.SceneToLoad;
     }
-    public void GoMenuScene(int NextLevel)
-    {
-        SceneManager.LoadScene("LoadScene");
-        Appdata.Instance.SceneToLoad = (SceneCollection)NextLevel;
-        Appdata.Instance.CurrentScene = Appdata.Instance.SceneToLoad;
-    }
+    
     public void PauseGame()
     {
         pauseOverlay.SetActive(true);
@@ -155,12 +154,32 @@ public class GameSaveManager : MonoBehaviour
         });
         menuButton.GetComponent<Button>().onClick.AddListener(delegate
         {
-            GoMenuScene(1);
+            ResumeGame();
+            SceneManager.LoadScene("MainMenu");
             LoadGame();
         });
         exitButton.GetComponent<Button>().onClick.AddListener(delegate
         {
             Application.Quit();
         });
+    }
+    public int GetSlot()
+    {
+        if (saveSlot == CurrectSlot.Slot1)
+        {
+            return 1;
+        }
+        else if (saveSlot == CurrectSlot.Slot2)
+        {
+            return 2;
+        }
+        else if (saveSlot == CurrectSlot.Slot3)
+        {
+            return 3;
+        }
+        else
+        {
+            return 1;
+        }
     }
 }

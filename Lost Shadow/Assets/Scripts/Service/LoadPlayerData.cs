@@ -5,17 +5,7 @@ using UnityEngine;
 
 public class LoadPlayerData : MonoBehaviour
 {
-    public static LoadPlayerData Instance { get; private set; }
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        DontDestroyOnLoad(this);
-    }
-
+    
     private void Start()
     {
         if (PlayerPrefs.GetInt("HaveSave") == 0)
@@ -28,5 +18,6 @@ public class LoadPlayerData : MonoBehaviour
         }
         Appdata.Instance.CheckPlayerData();
     }
+    
     
 }
