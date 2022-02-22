@@ -1,10 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Controller;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class SceneControl : MonoBehaviour
 {
@@ -25,6 +20,7 @@ public class SceneControl : MonoBehaviour
         startPos = GameObject.Find("StartPos").transform;
         if (_player == null) {
             Instantiate(playerPrefab, startPos.position, startPos.rotation);
+            GameSaveManager.Instance.SaveGame();
         }
 
         _camera = GameObject.FindWithTag("MainCamera");

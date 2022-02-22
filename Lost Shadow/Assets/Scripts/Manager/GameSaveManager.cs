@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Controller;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -17,6 +18,7 @@ public class GameSaveManager : MonoBehaviour
     [SerializeField] private GameObject menuButton;
     [SerializeField] private GameObject exitButton;
     [SerializeField] private GameObject pauseOverlay;
+    [SerializeField] private Animator transition;
     public bool IsSaveFile()
     {
         return Directory.Exists(Application.persistentDataPath + "/Game_Save");
@@ -160,12 +162,14 @@ public class GameSaveManager : MonoBehaviour
         menuButton.GetComponent<Button>().onClick.AddListener(delegate
         {
             ResumeGame();
+            transition.SetTrigger("Start");
+            LoadSceneManager.Instance.DestroyOnLoad();
             SceneManager.LoadScene("MainMenu");
             LoadGame();
         });
         exitButton.GetComponent<Button>().onClick.AddListener(delegate
         {
-            Application.Quit();
+            Quit();
         });
     }
     public int GetSlot()

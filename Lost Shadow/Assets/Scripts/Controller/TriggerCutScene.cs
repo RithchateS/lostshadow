@@ -31,9 +31,14 @@ namespace Controller
             }
         }
 
-        IEnumerator ToLightForest(GameObject player)
+        public void StartCrossFade()
         {
             transition.SetTrigger("Start");
+        }
+
+        IEnumerator ToLightForest(GameObject player)
+        {
+            StartCrossFade();
             yield return new WaitForSeconds(1f);
             LoadSceneManager.Instance.DestroyOnLoad();
             GameSaveManager.Instance.GoNextScene(4,4);

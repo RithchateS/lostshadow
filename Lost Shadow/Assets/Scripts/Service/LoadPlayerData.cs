@@ -16,7 +16,7 @@ public class LoadPlayerData : MonoBehaviour
         else if (PlayerPrefs.GetInt("HaveSave") == 1)
         {
             Debug.Log("No");
-            //GameSaveManager.Instance.LoadGame();
+            GameSaveManager.Instance.LoadGame();
         }
         Appdata.Instance.CheckPlayerData();
     }

@@ -1409,6 +1409,7 @@ MonoBehaviour:
   menuButton: {fileID: 1659490393}
   exitButton: {fileID: 1261581627}
   pauseOverlay: {fileID: 780005639}
+  transition: {fileID: 7435165825282894804, guid: 54cd05434db0e3143abf3bc936db6807, type: 3}
 --- !u!1 &2050391426
 GameObject:
   m_ObjectHideFlags: 0
