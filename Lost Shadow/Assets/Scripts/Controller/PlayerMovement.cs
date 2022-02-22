@@ -62,13 +62,15 @@ namespace Controller
 
             if (value.isPressed && moveInput == new Vector2(0, 0))
             {
-                if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Shifter")))
+                if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Shifter")) && !myBodyCollider.IsTouchingLayers(LayerMask.GetMask("DeadZone")))
                 {
                     StartCoroutine(ShadowShift());
                 }
             }
         }
 
+        
+        
         IEnumerator ShadowShift()
         {
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;

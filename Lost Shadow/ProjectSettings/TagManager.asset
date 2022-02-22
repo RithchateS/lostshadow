@@ -10,6 +10,7 @@ TagManager:
   - Camera
   - Feet
   - StartPos
+  - DeadZone
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Bounce
   - Enemy
   - Shifter
-  - 
+  - DeadZone
   - 
   - 
   - 
