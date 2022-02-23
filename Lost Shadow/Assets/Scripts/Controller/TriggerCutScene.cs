@@ -53,7 +53,7 @@ namespace Controller
 
         IEnumerator ToNextLevel(int sceneId)
         {
-            if (sceneId == 7)
+            if (sceneId == 7 || sceneId == 5)
             {
                 StartTransition();
                 yield return new WaitForSeconds(13f);
