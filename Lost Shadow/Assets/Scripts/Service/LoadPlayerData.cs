@@ -8,11 +8,11 @@ public class LoadPlayerData : MonoBehaviour
     
     private void Start()
     {
-        if (PlayerPrefs.GetInt("HaveSave") == 0)
+        if (!GameSaveManager.Instance.IsSaveFile())
         {
             GameSaveManager.Instance.InitialSave();
         }
-        else if (PlayerPrefs.GetInt("HaveSave") == 1)
+        else
         {
             GameSaveManager.Instance.LoadGame();
         }
