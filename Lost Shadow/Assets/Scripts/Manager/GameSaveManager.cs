@@ -191,4 +191,37 @@ public class GameSaveManager : MonoBehaviour
             return 1;
         }
     }
+    //slot ใส่ตำแหน่งของ save ที่จะลบเรียงจาก 1ไป3
+    public void DelectSave(int slot)
+    {
+        if (slot == 1)
+        {
+            Appdata.Instance.SceneInSave1 = SceneCollection.Prolouge1;
+            Appdata.Instance.PlayerPosition1 = new Vector3(0f,0f,0f);
+        }
+        else if (slot == 2)
+        {
+            Appdata.Instance.SceneInSave2 = SceneCollection.Prolouge1;
+            Appdata.Instance.PlayerPosition2 = new Vector3(0f,0f,0f);
+        }
+        else if (slot == 3)
+        {
+            Appdata.Instance.SceneInSave3 = SceneCollection.Prolouge1;
+            Appdata.Instance.PlayerPosition3 = new Vector3(0f,0f,0f);
+        }
+        if (!IsSaveFile())
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/Game_Save");
+        }
+        if (!Directory.Exists(Application.persistentDataPath + "/Game_Save/Player_Data"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/Game_Save/Player_Data");
+        }
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/Game_Save/Player_Data/Player_save.txt");
+        var json = JsonUtility.ToJson(playerData);
+        bf.Serialize(file, json);
+        file.Close();
+        Debug.Log("Create Save File Done");
+    }
 }
