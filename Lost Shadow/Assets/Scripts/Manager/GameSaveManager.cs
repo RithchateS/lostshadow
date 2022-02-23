@@ -192,21 +192,21 @@ public class GameSaveManager : MonoBehaviour
         }
     }
     //slot ใส่ตำแหน่งของ save ที่จะลบเรียงจาก 1ไป3
-    public void DelectSave(int slot)
+    public void DeleteSave(int slot)
     {
         if (slot == 1)
         {
-            Appdata.Instance.SceneInSave1 = SceneCollection.Prolouge1;
+            Appdata.Instance.SceneInSave1 = SceneCollection.Prolouge1_Shadow;
             Appdata.Instance.PlayerPosition1 = new Vector3(0f,0f,0f);
         }
         else if (slot == 2)
         {
-            Appdata.Instance.SceneInSave2 = SceneCollection.Prolouge1;
+            Appdata.Instance.SceneInSave2 = SceneCollection.Prolouge1_Shadow;
             Appdata.Instance.PlayerPosition2 = new Vector3(0f,0f,0f);
         }
         else if (slot == 3)
         {
-            Appdata.Instance.SceneInSave3 = SceneCollection.Prolouge1;
+            Appdata.Instance.SceneInSave3 = SceneCollection.Prolouge1_Shadow;
             Appdata.Instance.PlayerPosition3 = new Vector3(0f,0f,0f);
         }
         if (!IsSaveFile())
@@ -224,4 +224,6 @@ public class GameSaveManager : MonoBehaviour
         file.Close();
         Debug.Log("Create Save File Done");
     }
+    
+    
 }
