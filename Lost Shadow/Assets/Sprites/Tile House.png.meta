@@ -20,7 +20,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -93,6 +93,30 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -1691,7 +1715,7 @@ TextureImporter:
     nameFileIdTable:
       Tile House_38: -1228093783
       Tile House_47: -1679819579
-      Tile House_50: 404064072
+      Tile House_63: 1274082577
       Tile House_58: -1125288277
       Tile House_9: -1532260017
       Tile House_10: -455368001
@@ -1699,9 +1723,8 @@ TextureImporter:
       Tile House_51: 1304470732
       Tile House_52: 1029259285
       Tile House_62: -1962189377
-      Tile House_63: 1274082577
-      Tile House_8: 874067641
       Tile House_65: -830337571
+      Tile House_8: 874067641
       Tile House_40: 1585020247
       Tile House_22: -376290158
       Tile House_33: -823550157
@@ -1728,9 +1751,9 @@ TextureImporter:
       Tile House_1: -2123150370
       Tile House_19: -11338661
       Tile House_16: -1590912971
-      Tile House_49: -611083128
-      Tile House_26: 2135902201
       Tile House_70: -1593551382
+      Tile House_26: 2135902201
+      Tile House_49: -611083128
       Tile House_2: 1032136741
       Tile House_23: -431236450
       Tile House_39: -123217166
@@ -1762,6 +1785,7 @@ TextureImporter:
       Tile House_74: -26424476
       Tile House_35: 319912838
       Tile House_61: 1324945388
+      Tile House_50: 404064072
       Tile House_4: -1945947551
       Tile House_46: 999748896
   spritePackingTag: 

@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38b5af236895cb4999df778bb8bfba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 4
+  runSpeed: 8
   jumpSpeed: 10
   climbSpeed: 2
 --- !u!114 &8821287684476088875
@@ -276,7 +276,7 @@ MonoBehaviour:
   - {x: -0.11335659, y: -0.41471338, z: 0}
   m_ShapePathHash: -577431569
   m_Mesh: {fileID: 0}
-  m_InstanceId: 41848
+  m_InstanceId: 42842
 --- !u!61 &-6633810920153174991
 BoxCollider2D:
   m_ObjectHideFlags: 0

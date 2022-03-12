@@ -20,7 +20,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -100,6 +100,30 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -137,7 +161,6 @@ TextureImporter:
     nameFileIdTable:
       Tile object1_23: -521040077
       Tile object1_68: 259479499
-      Tile object1_114: -1561224631
       Tile object1_3: -397344509
       Tile object1_63: -971955598
       Tile object1_70: 1798138713
@@ -147,7 +170,6 @@ TextureImporter:
       Tile object1_90: 1945619816
       Tile object1_147: -1065270253
       Tile object1_17: 982476590
-      Tile object1_128: -186149442
       Tile object1_105: -390185189
       Tile object1_55: -1620591633
       Tile object1_57: 481198464
@@ -162,14 +184,14 @@ TextureImporter:
       Tile object1_25: 1956887915
       Tile object1_140: -1148431096
       Tile object1_71: 973400955
-      Tile object1_54: 442743503
+      Tile object1_133: -1923173093
       Tile object1_35: -1170733972
+      Tile object1_54: 442743503
       Tile object1_1: -516491541
-      Tile object1_5: -1423904199
       Tile object1_27: 1424621887
+      Tile object1_5: -1423904199
       Tile object1_10: -877719323
       Tile object1_151: -1079603646
-      Tile object1_133: -1923173093
       Tile object1_58: -1321182301
       Tile object1_104: -1621538753
       Tile object1_148: -884056958
@@ -195,25 +217,25 @@ TextureImporter:
       Tile object1_49: 40931858
       Tile object1_88: -206906630
       Tile object1_75: -1252901870
+      Tile object1_135: 1080976094
       Tile object1_76: -906660856
       Tile object1_84: 885844961
       Tile object1_66: -590829682
-      Tile object1_26: 1922244669
       Tile object1_74: 1970795602
-      Tile object1_31: -1505528182
-      Tile object1_32: 225077318
+      Tile object1_26: 1922244669
       Tile object1_65: -1118038511
-      Tile object1_44: 751553657
-      Tile object1_141: 565243697
       Tile object1_130: -708912957
+      Tile object1_32: 225077318
+      Tile object1_141: 565243697
       Tile object1_145: 1819078065
+      Tile object1_31: -1505528182
       Tile object1_15: -1012910099
       Tile object1_93: -1644671
       Tile object1_39: -1218005663
+      Tile object1_44: 751553657
       Tile object1_20: 359878354
       Tile object1_62: -133672123
       Tile object1_126: -1767211330
-      Tile object1_135: 1080976094
       Tile object1_36: 754167154
       Tile object1_53: 1114735064
       Tile object1_21: 225558139
@@ -275,19 +297,21 @@ TextureImporter:
       Tile object1_60: -1827837599
       Tile object1_101: 585307191
       Tile object1_117: -238848187
+      Tile object1_128: -186149442
       Tile object1_16: 2011844620
       Tile object1_100: -449020169
       Tile object1_125: -1890678121
+      Tile object1_112: 329897228
       Tile object1_2: 1895139297
-      Tile object1_107: 1059432569
       Tile object1_129: -392237496
+      Tile object1_107: 1059432569
       Tile object1_85: 1995722542
       Tile object1_56: 1646389692
       Tile object1_51: -1520441729
       Tile object1_95: 2107128795
       Tile object1_146: -844267753
       Tile object1_64: -1719075492
-      Tile object1_112: 329897228
+      Tile object1_114: -1561224631
       Tile object1_37: -1164701991
   spritePackingTag: 
   pSDRemoveMatte: 0
