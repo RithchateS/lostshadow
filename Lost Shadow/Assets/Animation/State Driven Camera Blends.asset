@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: State Driven Camera Blends
   m_EditorClassIdentifier: 
   m_CustomBlends:
-  - m_From: '**ANY CAMERA**'
+  - m_From: Run Camera
     m_To: Idle Camera
     m_Blend:
       m_Style: 1
