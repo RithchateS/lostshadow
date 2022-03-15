@@ -44,7 +44,6 @@ namespace Old.Controller
             CheckGround();
             CheckLadder();
             ClimbLadder();
-            Jump();
         }
 
         #region InputSystem
@@ -104,17 +103,6 @@ namespace Old.Controller
                     yield return new WaitForSeconds(lateJumpTime);
                     isJumpAble = true;
                 }
-        void Jump()
-        {
-            if (!isGrounded && !isClimbing)
-            {
-                _myAnimator.SetBool("isJumping", true);
-            }
-            else
-            {
-                _myAnimator.SetBool("isJumping", false);
-            }
-        }
         #endregion
         #region ShadowShift
 
@@ -199,6 +187,15 @@ namespace Old.Controller
             if (_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
             {
                 isGrounded = true;
+            }
+            if (_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || isClimbing)
+            {
+                _myAnimator.SetBool("isJumping", false);
+            }
+            
+            else if (!_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !isClimbing)
+            {
+                _myAnimator.SetBool("isJumping", true);
             }
             else
             {
