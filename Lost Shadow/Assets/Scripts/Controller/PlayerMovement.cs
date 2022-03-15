@@ -2,136 +2,251 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
-namespace Controller
+namespace Old.Controller
 {
     public class PlayerMovement : MonoBehaviour
     {
-        Vector2 moveInput;
-        Rigidbody2D myRigidbody;
-        Animator myAnimator;
-        BoxCollider2D myBodyCollider;
-        BoxCollider2D myFeetCollider;
-        private GameObject feet;
-        float gravityScaleAtStart;
-        [SerializeField] float runSpeed = 10f;
-        [SerializeField] float jumpSpeed = 5f;
+        #region Variables
+        Vector2 _moveInput;
+        Rigidbody2D _myRigidbody;
+        Animator _myAnimator;
+        BoxCollider2D _myBodyCollider;
+        BoxCollider2D _myFeetCollider;
+        private GameObject _feet;
+        float _gravityScaleAtStart;
+        
         [SerializeField] float climbSpeed = 5f;
-
-        private void Awake() {
-            DontDestroyOnLoad(transform.gameObject);
-        }
+        [SerializeField] bool isGrounded;
+        [SerializeField] private bool isClimbable;
+        [SerializeField] private bool isClimbing;
+        #endregion
+        
+        
         void Start()
         {
-            feet = GameObject.FindWithTag("Feet");
-            myRigidbody = GetComponent<Rigidbody2D>();
-            myAnimator = GetComponent<Animator>();
-            myBodyCollider = GetComponent<BoxCollider2D>();
-            myFeetCollider = feet.GetComponent<BoxCollider2D>();
-            gravityScaleAtStart = myRigidbody.gravityScale;
+            _feet = GameObject.FindWithTag("Feet");
+            _myRigidbody = GetComponent<Rigidbody2D>();
+            _myAnimator = GetComponent<Animator>();
+            _myBodyCollider = GetComponent<BoxCollider2D>();
+            _myFeetCollider = _feet.GetComponent<BoxCollider2D>();
+            _gravityScaleAtStart = _myRigidbody.gravityScale;
+            isJumpAble = true;
 
         }
 
         void Update()
         {
             Run();
+            CalculateRun();
             FlipSprite();
-            ClimbLadder();
+            CheckGround();
+            CheckLadder();
+            ClimbLadder2();
             Jump();
         }
 
+        #region InputSystem
+        
+        #region Run
+        [Header("RUN")] 
+        [SerializeField] private float runSpeed = 7f;
+        [SerializeField] private float acceleration = 50f;
+        private float _currentHorizontalSpeed;
+        [SerializeField] private float deAcceleration = 30f;
+        
         void OnMove(InputValue value) {
-            moveInput = value.Get<Vector2>();
-            Debug.Log(moveInput);
+            _moveInput = value.Get<Vector2>();
         }
-
-        void OnJump(InputValue value) {
-            if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
-                return;
-            }
-
-            if (value.isPressed) {
-                myRigidbody.velocity += new Vector2(0f, jumpSpeed);
-            }
-        }
-
-        void OnShadowShift(InputValue value) {
-            if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
-                return;
-            }
-
-            if (value.isPressed && moveInput == new Vector2(0, 0))
-            {
-                if (myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Shifter")) && !myBodyCollider.IsTouchingLayers(LayerMask.GetMask("DeadZone")))
-                {
-                    StartCoroutine(ShadowShift()); 
-                }
-            }
-        }
-
-        
-        
-        IEnumerator ShadowShift()
+        void Run() 
         {
-            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            myAnimator.SetTrigger("isShadowShift");
-            yield return new WaitForSeconds(0.8f);
-            if ((currentSceneIndex % 2) == 0){
-                SceneManager.LoadScene(currentSceneIndex + 1);
+            Vector2 playerVelocity = new Vector2 (_currentHorizontalSpeed, _myRigidbody.velocity.y);
+            _myRigidbody.velocity = playerVelocity;
+        
+            bool playerHasHorizontalSpeed = Mathf.Abs(_currentHorizontalSpeed) > Mathf.Epsilon;
+            _myAnimator.SetBool("isRunning", playerHasHorizontalSpeed);
+        }
+        private void CalculateRun() {
+            if (_moveInput.x != 0) {
+                _currentHorizontalSpeed += _moveInput.x * acceleration * Time.deltaTime;
+                        
+                _currentHorizontalSpeed = Mathf.Clamp(_currentHorizontalSpeed, -runSpeed, runSpeed);
+                        
             }
             else {
-                SceneManager.LoadScene(currentSceneIndex - 1);
+                _currentHorizontalSpeed = Mathf.MoveTowards(_currentHorizontalSpeed, 0, deAcceleration * Time.deltaTime);
             }
+                    
         }
+        #endregion
 
+        #region Jump
+        [Header("JUMP")]
+        [SerializeField] float jumpSpeed = 5f;
+        [Range(0f,0.5f)] [SerializeField] float lateJumpTime;
+        [SerializeField] bool isJumpAble;
+        
+        void OnJump(InputValue value)
+                {
+                    if (value.isPressed)
+                    {
+                        isClimbing = false;
+                    }
+                    if (value.isPressed && isGrounded && isJumpAble)
+                    {
+                        StartCoroutine(IsJumpAble());
+                        _myRigidbody.velocity = new Vector2(_myRigidbody.velocity.x, 0f);
+                        _myRigidbody.velocity += new Vector2(0f, jumpSpeed);
+                    }
+                }
+        IEnumerator IsJumpAble()
+                {
+                    isJumpAble = false;
+                    yield return new WaitForSeconds(lateJumpTime);
+                    isJumpAble = true;
+                }
         void Jump()
         {
-            if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")))
+            if (!isGrounded && !isClimbing)
             {
-                myAnimator.SetBool("isJumping", true);
+                _myAnimator.SetBool("isJumping", true);
             }
             else
             {
-                myAnimator.SetBool("isJumping", false);
+                _myAnimator.SetBool("isJumping", false);
             }
         }
+        #endregion
 
+        #region ShadowShift
 
-        void Run() {
-            Vector2 playerVelocity = new Vector2 (moveInput.x * runSpeed, myRigidbody.velocity.y);
-            myRigidbody.velocity = playerVelocity;
-
-            bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
-            myAnimator.SetBool("isRunning", playerHasHorizontalSpeed);
+        void OnShadowShift(InputValue value) {
+                    if (!_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
+                        return;
+                    }
+                
+                    if (value.isPressed && _moveInput == new Vector2(0, 0))
+                    {
+                        if (_myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Shifter")) && !_myBodyCollider.IsTouchingLayers(LayerMask.GetMask("DeadZone")))
+                        {
+                            StartCoroutine(ShadowShift()); 
+                        }
+                    }
         }
-
-        void FlipSprite() {
-            bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
-
-            if (playerHasHorizontalSpeed) {
-                transform.localScale = new Vector2 (Mathf.Sign(myRigidbody.velocity.x), 1f);
-            }
-        }
-
+        IEnumerator ShadowShift()
+                 {
+                     int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+                     _myAnimator.SetTrigger("isShadowShift");
+                     yield return new WaitForSeconds(0.8f);
+                     if ((currentSceneIndex % 2) == 0){
+                         SceneManager.LoadScene(currentSceneIndex + 1);
+                     }
+                     else {
+                         SceneManager.LoadScene(currentSceneIndex - 1);
+                     }
+                 }
+        
+        #endregion
+                
+        
+        #endregion
+        
+        
+        
+        
         void ClimbLadder() {
-            if (!myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ladder"))) {
-                myRigidbody.gravityScale = gravityScaleAtStart;
-                myAnimator.SetBool("isClimbing", false);
+            if (!_myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ladder"))) {
+                _myRigidbody.gravityScale = _gravityScaleAtStart;
+                _myAnimator.SetBool("isClimbing", false);
                 return;
             }
 
 
 
-            Vector2 climbVelocity = new Vector2 (myRigidbody.velocity.x, moveInput.y * climbSpeed);
-            myRigidbody.velocity = climbVelocity;
-            myRigidbody.gravityScale = 0f;
+            Vector2 climbVelocity = new Vector2 (_myRigidbody.velocity.x, _moveInput.y * climbSpeed);
+            _myRigidbody.velocity = climbVelocity;
+            _myRigidbody.gravityScale = 0f;
 
-            bool playerHasVerticalSpeed = Mathf.Abs(myRigidbody.velocity.y) > Mathf.Epsilon;
-            myAnimator.SetBool("isClimbing", playerHasVerticalSpeed);
-
-
-
+            bool playerHasVerticalSpeed = Mathf.Abs(_myRigidbody.velocity.y) > Mathf.Epsilon;
+            _myAnimator.SetBool("isClimbing", playerHasVerticalSpeed);
         }
 
+        void ClimbLadder2()
+        {
+            if (isClimbable)
+            {
+                if (_moveInput.y != 0)
+                {
+                    isClimbing = true;
+                }
+
+                if (_moveInput.x != 0)
+                {
+                    isClimbing = false;
+                }
+
+                if (isClimbing)
+                {
+                    Vector2 climbVelocity = new Vector2 (0, _moveInput.y * climbSpeed);
+                    _myRigidbody.velocity = climbVelocity;
+                    _myRigidbody.gravityScale = 0f;
+                    bool playerHasVerticalSpeed = Mathf.Abs(_myRigidbody.velocity.y) > Mathf.Epsilon;
+                    _myAnimator.SetBool("isClimbing", playerHasVerticalSpeed);
+                }
+                else
+                {
+                    _myRigidbody.gravityScale = _gravityScaleAtStart;
+                    _myAnimator.SetBool("isClimbing", false);
+                }
+            }
+            else
+            {
+                _myRigidbody.gravityScale = _gravityScaleAtStart;
+                _myAnimator.SetBool("isClimbing", false);
+            }
+            
+        }
+
+        #region Passive
+        void FlipSprite() {
+            bool playerHasHorizontalSpeed = Mathf.Abs(_myRigidbody.velocity.x) > Mathf.Epsilon;
+        
+            if (playerHasHorizontalSpeed) {
+                transform.localScale = new Vector2 (Mathf.Sign(_myRigidbody.velocity.x), 1f);
+            }
+        }
+
+        private float _time;
+        void CheckGround()
+        {
+            if (_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+            {
+                isGrounded = true;
+            }
+            else
+            {
+                _time += Time.deltaTime;
+                if (_time >= lateJumpTime)
+                {
+                    isGrounded = false;
+                    _time = 0;
+                }
+
+            }
+        }
+
+        void CheckLadder()
+        {
+            if (_myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")))
+            {
+                isClimbable = true;
+            }
+            else
+            {
+                isClimbable = false;
+            }
+        }
+        #endregion
     }
 }
