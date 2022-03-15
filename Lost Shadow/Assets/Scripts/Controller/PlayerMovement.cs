@@ -43,12 +43,11 @@ namespace Old.Controller
             FlipSprite();
             CheckGround();
             CheckLadder();
-            ClimbLadder2();
+            ClimbLadder();
             Jump();
         }
 
         #region InputSystem
-        
         #region Run
         [Header("RUN")] 
         [SerializeField] private float runSpeed = 7f;
@@ -80,7 +79,6 @@ namespace Old.Controller
                     
         }
         #endregion
-
         #region Jump
         [Header("JUMP")]
         [SerializeField] float jumpSpeed = 5f;
@@ -118,7 +116,6 @@ namespace Old.Controller
             }
         }
         #endregion
-
         #region ShadowShift
 
         void OnShadowShift(InputValue value) {
@@ -148,66 +145,45 @@ namespace Old.Controller
                  }
         
         #endregion
-                
+        #region Climb
+                void ClimbLadder()
+                {
+                    if (isClimbable)
+                    {
+                        if (_moveInput.y != 0)
+                        {
+                            isClimbing = true;
+                        }
         
+                        if (_moveInput.x != 0)
+                        {
+                            isClimbing = false;
+                        }
+        
+                        if (isClimbing)
+                        {
+                            Vector2 climbVelocity = new Vector2 (0, _moveInput.y * climbSpeed);
+                            _myRigidbody.velocity = climbVelocity;
+                            _myRigidbody.gravityScale = 0f;
+                            bool playerHasVerticalSpeed = Mathf.Abs(_myRigidbody.velocity.y) > Mathf.Epsilon;
+                            _myAnimator.SetBool("isClimbing", playerHasVerticalSpeed);
+                        }
+                        else
+                        {
+                            _myRigidbody.gravityScale = _gravityScaleAtStart;
+                            _myAnimator.SetBool("isClimbing", false);
+                        }
+                    }
+                    else
+                    {
+                        _myRigidbody.gravityScale = _gravityScaleAtStart;
+                        _myAnimator.SetBool("isClimbing", false);
+                    }
+                    
+                }
+                #endregion
         #endregion
         
-        
-        
-        
-        void ClimbLadder() {
-            if (!_myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ladder"))) {
-                _myRigidbody.gravityScale = _gravityScaleAtStart;
-                _myAnimator.SetBool("isClimbing", false);
-                return;
-            }
-
-
-
-            Vector2 climbVelocity = new Vector2 (_myRigidbody.velocity.x, _moveInput.y * climbSpeed);
-            _myRigidbody.velocity = climbVelocity;
-            _myRigidbody.gravityScale = 0f;
-
-            bool playerHasVerticalSpeed = Mathf.Abs(_myRigidbody.velocity.y) > Mathf.Epsilon;
-            _myAnimator.SetBool("isClimbing", playerHasVerticalSpeed);
-        }
-
-        void ClimbLadder2()
-        {
-            if (isClimbable)
-            {
-                if (_moveInput.y != 0)
-                {
-                    isClimbing = true;
-                }
-
-                if (_moveInput.x != 0)
-                {
-                    isClimbing = false;
-                }
-
-                if (isClimbing)
-                {
-                    Vector2 climbVelocity = new Vector2 (0, _moveInput.y * climbSpeed);
-                    _myRigidbody.velocity = climbVelocity;
-                    _myRigidbody.gravityScale = 0f;
-                    bool playerHasVerticalSpeed = Mathf.Abs(_myRigidbody.velocity.y) > Mathf.Epsilon;
-                    _myAnimator.SetBool("isClimbing", playerHasVerticalSpeed);
-                }
-                else
-                {
-                    _myRigidbody.gravityScale = _gravityScaleAtStart;
-                    _myAnimator.SetBool("isClimbing", false);
-                }
-            }
-            else
-            {
-                _myRigidbody.gravityScale = _gravityScaleAtStart;
-                _myAnimator.SetBool("isClimbing", false);
-            }
-            
-        }
-
         #region Passive
         void FlipSprite() {
             bool playerHasHorizontalSpeed = Mathf.Abs(_myRigidbody.velocity.x) > Mathf.Epsilon;
