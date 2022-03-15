@@ -20,12 +20,13 @@ public class PlayerAim : MonoBehaviour
             if (playerPrefab != null)
             {
                 foundPlayer = true;
+                _cam.m_Follow = playerPrefab.transform;
             }
         }
         else {
             if (!followPlayer) {
                 _cam.m_Follow = playerPrefab.transform;
-                _cam.m_AnimatedTarget = playerPrefab.GetComponent<Animator>();
+                //_cam.m_AnimatedTarget = playerPrefab.GetComponent<Animator>();
             }
         }
     }
