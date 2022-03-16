@@ -21933,7 +21933,7 @@ PrefabInstance:
     - target: {fileID: 569054390, guid: 2e11483be3c128845bdeab15d688b82b, type: 3}
       propertyPath: cameraPrefab
       value: 
-      objectReference: {fileID: 2523783355566195189, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
+      objectReference: {fileID: 1482101281952278406, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
     - target: {fileID: 1534091955244292839, guid: 2e11483be3c128845bdeab15d688b82b, type: 3}
       propertyPath: m_Name
       value: LevelManager
