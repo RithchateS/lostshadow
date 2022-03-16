@@ -195,17 +195,17 @@ public class GameSaveManager : MonoBehaviour
     {
         if (slot == 1)
         {
-            Appdata.Instance.SceneInSave1 = SceneCollection.Lost01;
+            Appdata.Instance.SceneInSave1 = SceneCollection.Tutorial01;
             Appdata.Instance.PlayerPosition1 = new Vector3(0f,0f,0f);
         }
         else if (slot == 2)
         {
-            Appdata.Instance.SceneInSave2 = SceneCollection.Lost01;
+            Appdata.Instance.SceneInSave2 = SceneCollection.Tutorial01;
             Appdata.Instance.PlayerPosition2 = new Vector3(0f,0f,0f);
         }
         else if (slot == 3)
         {
-            Appdata.Instance.SceneInSave3 = SceneCollection.Lost01;
+            Appdata.Instance.SceneInSave3 = SceneCollection.Tutorial01;
             Appdata.Instance.PlayerPosition3 = new Vector3(0f,0f,0f);
         }
         if (!IsSaveFile())
