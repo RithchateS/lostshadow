@@ -10,34 +10,34 @@ public enum SceneCollection
     Persistant, // 0
     MainMenu , // 1
     LoadScene , //2
-    Prolouge1_Shadow ,// 3
-    LightForest,// 4
-    ShadowForest,// 5
-    LightVillage,// 6
-    ShadowVillage// 7
+    Lost01,// 3
+    //Lost2,// 4
+    //Lost3,// 5
+    //Lost4,// 6
+    //Lost5// 7
 }
 public class LoadSceneManager : Singleton<LoadSceneManager>
 {
-    private GameObject LoadingCanvas ;
+    private GameObject _loadingCanvas ;
     public SceneCollection currentScene ;
 
     public void StartLoadingScene(SceneCollection scene){
         StartCoroutine(LoadScene(scene));
     }
 
-    public void SetLoadingCanvas(GameObject LC){
-        LoadingCanvas = LC ;
+    public void SetLoadingCanvas(GameObject lc){
+        _loadingCanvas = lc ;
     }
 
-    private IEnumerator LoadScene(SceneCollection Scene){
+    private IEnumerator LoadScene(SceneCollection scene){
 
-        GameObject LoadScreenObject = Instantiate(LoadingCanvas);
+        GameObject LoadScreenObject = Instantiate(_loadingCanvas);
         TMPro.TMP_Text LoadingPercentText = LoadScreenObject.transform.GetChild(1).GetComponent<TMPro.TMP_Text>() ;
         var currentProgress = 0f;
         yield return null;
         AsyncOperation async = SceneManager.UnloadSceneAsync(Enum.GetName(typeof(SceneCollection), currentScene));
         yield return new WaitForSeconds(1);
-        async = SceneManager.LoadSceneAsync(Enum.GetName(typeof(SceneCollection), Scene), LoadSceneMode.Single);
+        async = SceneManager.LoadSceneAsync(Enum.GetName(typeof(SceneCollection), scene), LoadSceneMode.Single);
         async.allowSceneActivation = false;
         while (!async.isDone)
         {
@@ -64,8 +64,8 @@ public class LoadSceneManager : Singleton<LoadSceneManager>
             yield return null;
         }
         yield return null;
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(Enum.GetName(typeof(SceneCollection), Scene)));
-        currentScene = Scene ;
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(Enum.GetName(typeof(SceneCollection), scene)));
+        currentScene = scene ;
         LoadingPercentText.text = "0%";
         Destroy(LoadScreenObject);
     }

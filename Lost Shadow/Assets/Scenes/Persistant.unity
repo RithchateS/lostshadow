@@ -755,7 +755,7 @@ GameObject:
   - component: {fileID: 990010893}
   - component: {fileID: 990010892}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Pause Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -891,7 +891,7 @@ GameObject:
   - component: {fileID: 1261581630}
   - component: {fileID: 1261581629}
   m_Layer: 0
-  m_Name: Exit
+  m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -911,11 +911,11 @@ RectTransform:
   m_Children:
   - {fileID: 1357272603}
   m_Father: {fileID: 1505135095}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: -86}
+  m_AnchoredPosition: {x: 2, y: -23}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1261581629
@@ -1058,7 +1058,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Exit
+  m_text: REstart
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -1167,8 +1167,8 @@ RectTransform:
   m_Children:
   - {fileID: 990010891}
   - {fileID: 259853516}
-  - {fileID: 1659490394}
   - {fileID: 1261581628}
+  - {fileID: 1659490394}
   m_Father: {fileID: 780005643}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1248,11 +1248,11 @@ RectTransform:
   m_Children:
   - {fileID: 975973389}
   m_Father: {fileID: 1505135095}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: -23}
+  m_AnchoredPosition: {x: 2, y: -86}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1659490395
@@ -1406,8 +1406,8 @@ MonoBehaviour:
   playerData: {fileID: 0}
   saveSlot: 0
   resumeButton: {fileID: 259853515}
+  restartButton: {fileID: 1261581627}
   menuButton: {fileID: 1659490393}
-  exitButton: {fileID: 1261581627}
   pauseOverlay: {fileID: 780005639}
   transition: {fileID: 7435165825282894804, guid: 54cd05434db0e3143abf3bc936db6807, type: 3}
 --- !u!1 &2050391426

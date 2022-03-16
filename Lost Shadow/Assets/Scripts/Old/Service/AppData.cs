@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+
 [SerializeField]
 enum CurrectSlot
 {
@@ -12,8 +14,8 @@ enum CurrectSlot
 public class Appdata : Singleton<Appdata>
 {
     
-    public SceneCollection CurrentScene;
-    public SceneCollection SceneToLoad;
+    public SceneCollection currentScene;
+    public SceneCollection sceneToLoad;
     public int currentChapter;
     // Save 1
     public Vector3 PlayerPosition1;
@@ -35,15 +37,15 @@ public class Appdata : Singleton<Appdata>
     {
         if (!isUsed1)
         {
-            SceneInSave1 = SceneCollection.Prolouge1_Shadow;
+            SceneInSave1 = SceneCollection.Lost01;
         }
         if (!isUsed2)
         {
-            SceneInSave2 = SceneCollection.Prolouge1_Shadow;
+            SceneInSave2 = SceneCollection.Lost01;
         }
         if (!isUsed3)
         {
-            SceneInSave3 = SceneCollection.Prolouge1_Shadow;
+            SceneInSave3 = SceneCollection.Lost01;
         }
         
         // Already Play
@@ -52,19 +54,19 @@ public class Appdata : Singleton<Appdata>
         {
             PlayerPosition1 = GameSaveManager.Instance.playerData.PlayerPosition1;
             SceneInSave1 = GameSaveManager.Instance.playerData.SceneInSave1;
-            SceneToLoad = SceneInSave1;
+            sceneToLoad = SceneInSave1;
         }
         if (isUsed2)
         {
             PlayerPosition2 = GameSaveManager.Instance.playerData.PlayerPosition2;
             SceneInSave2 = GameSaveManager.Instance.playerData.SceneInSave2;
-            SceneToLoad = SceneInSave2;
+            sceneToLoad = SceneInSave2;
         }
         if (isUsed3)
         {
             PlayerPosition3 = GameSaveManager.Instance.playerData.PlayerPosition3;
             SceneInSave3 = GameSaveManager.Instance.playerData.SceneInSave3;
-            SceneToLoad = SceneInSave3;
+            sceneToLoad = SceneInSave3;
         }
     }
     

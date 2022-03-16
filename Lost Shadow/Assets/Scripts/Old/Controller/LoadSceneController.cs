@@ -10,6 +10,6 @@ public class LoadSceneController : MonoBehaviour
     {
         LoadSceneManager.Instance.SetLoadingCanvas(LoadingCanvas);
         LoadSceneManager.Instance.currentScene = SceneCollection.LoadScene;
-        LoadSceneManager.Instance.StartLoadingScene(Appdata.Instance.SceneToLoad);
+        LoadSceneManager.Instance.StartLoadingScene(Appdata.Instance.sceneToLoad);
     }
 }

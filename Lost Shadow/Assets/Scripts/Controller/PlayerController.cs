@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 
 namespace Old.Controller
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
         #region Variables
         Vector2 _moveInput;
@@ -150,6 +150,7 @@ namespace Old.Controller
         
                         if (isClimbing)
                         {
+                            isGrounded = true;
                             Vector2 climbVelocity = new Vector2 (0, _moveInput.y * climbSpeed);
                             _myRigidbody.velocity = climbVelocity;
                             _myRigidbody.gravityScale = 0f;
@@ -188,15 +189,6 @@ namespace Old.Controller
             {
                 isGrounded = true;
             }
-            if (_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || isClimbing)
-            {
-                _myAnimator.SetBool("isJumping", false);
-            }
-            
-            else if (!_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !isClimbing)
-            {
-                _myAnimator.SetBool("isJumping", true);
-            }
             else
             {
                 _time += Time.deltaTime;
@@ -205,7 +197,16 @@ namespace Old.Controller
                     isGrounded = false;
                     _time = 0;
                 }
-
+            }
+            
+            if (_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || isClimbing)
+            {
+                _myAnimator.SetBool("isJumping", false);
+            }
+            
+            else if (!_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !isClimbing)
+            {
+                _myAnimator.SetBool("isJumping", true);
             }
         }
 

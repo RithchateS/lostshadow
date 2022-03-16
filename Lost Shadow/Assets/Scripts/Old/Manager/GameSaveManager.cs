@@ -1,11 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using Controller;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GameSaveManager : MonoBehaviour
@@ -15,8 +13,8 @@ public class GameSaveManager : MonoBehaviour
     private bool paused = false;
     [SerializeField] private CurrectSlot saveSlot;
     [SerializeField] private GameObject resumeButton;
+    [SerializeField] private GameObject restartButton;
     [SerializeField] private GameObject menuButton;
-    [SerializeField] private GameObject exitButton;
     [SerializeField] private GameObject pauseOverlay;
     [SerializeField] private Animator transition;
     public bool IsSaveFile()
@@ -42,7 +40,7 @@ public class GameSaveManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Appdata.Instance.CurrentScene == SceneCollection.MainMenu || Appdata.Instance.CurrentScene == SceneCollection.LoadScene) { return; }
+            if (Appdata.Instance.currentScene == SceneCollection.MainMenu || Appdata.Instance.currentScene == SceneCollection.LoadScene) { return; }
             else
             {
                 if (paused)
@@ -63,21 +61,21 @@ public class GameSaveManager : MonoBehaviour
         {
             Appdata.Instance.isUsed1 = true;
             Appdata.Instance.PlayerPosition1 = GameObject.FindGameObjectWithTag("Player").transform.position;
-            Appdata.Instance.SceneInSave1 = Appdata.Instance.CurrentScene;
+            Appdata.Instance.SceneInSave1 = Appdata.Instance.currentScene;
             Appdata.Instance.chapterNum1 = Appdata.Instance.currentChapter;
         }
         else if (saveSlot == CurrectSlot.Slot2)
         {
             Appdata.Instance.isUsed2 = true;
             Appdata.Instance.PlayerPosition2 = GameObject.FindGameObjectWithTag("Player").transform.position;
-            Appdata.Instance.SceneInSave2 = Appdata.Instance.CurrentScene;
+            Appdata.Instance.SceneInSave2 = Appdata.Instance.currentScene;
             Appdata.Instance.chapterNum2 = Appdata.Instance.currentChapter;
         }
         else if (saveSlot == CurrectSlot.Slot3)
         {
             Appdata.Instance.isUsed3 = true;
             Appdata.Instance.PlayerPosition3 = GameObject.FindGameObjectWithTag("Player").transform.position;
-            Appdata.Instance.SceneInSave3 = Appdata.Instance.CurrentScene;
+            Appdata.Instance.SceneInSave3 = Appdata.Instance.currentScene;
             Appdata.Instance.chapterNum3 = Appdata.Instance.currentChapter;
         }
         if (!IsSaveFile())
@@ -130,8 +128,8 @@ public class GameSaveManager : MonoBehaviour
     {
         SceneManager.LoadScene("LoadScene");
         Appdata.Instance.currentChapter = chapter;
-        Appdata.Instance.SceneToLoad = (SceneCollection)nextLevel;
-        Appdata.Instance.CurrentScene = Appdata.Instance.SceneToLoad;
+        Appdata.Instance.sceneToLoad = (SceneCollection)nextLevel;
+        Appdata.Instance.currentScene = Appdata.Instance.sceneToLoad;
     }
     
     public void PauseGame()
@@ -159,17 +157,18 @@ public class GameSaveManager : MonoBehaviour
         {
             ResumeGame();
         });
+        restartButton.GetComponent<Button>().onClick.AddListener(delegate
+        {
+            SceneManager.LoadScene(Enum.GetName(typeof (SceneCollection), Appdata.Instance.currentScene), LoadSceneMode.Single);
+            ResumeGame();
+        });
         menuButton.GetComponent<Button>().onClick.AddListener(delegate
         {
-            ResumeGame();
-            transition.SetTrigger("Start");
-            LoadSceneManager.Instance.DestroyOnLoad();
-            SceneManager.LoadScene("MainMenu");
-            LoadGame();
-        });
-        exitButton.GetComponent<Button>().onClick.AddListener(delegate
-        {
-            Quit();
+                       ResumeGame();
+                       transition.SetTrigger("Start");
+                       LoadSceneManager.Instance.DestroyOnLoad();
+                       SceneManager.LoadScene("MainMenu");
+                       LoadGame();
         });
     }
     public int GetSlot()
@@ -196,17 +195,17 @@ public class GameSaveManager : MonoBehaviour
     {
         if (slot == 1)
         {
-            Appdata.Instance.SceneInSave1 = SceneCollection.Prolouge1_Shadow;
+            Appdata.Instance.SceneInSave1 = SceneCollection.Lost01;
             Appdata.Instance.PlayerPosition1 = new Vector3(0f,0f,0f);
         }
         else if (slot == 2)
         {
-            Appdata.Instance.SceneInSave2 = SceneCollection.Prolouge1_Shadow;
+            Appdata.Instance.SceneInSave2 = SceneCollection.Lost01;
             Appdata.Instance.PlayerPosition2 = new Vector3(0f,0f,0f);
         }
         else if (slot == 3)
         {
-            Appdata.Instance.SceneInSave3 = SceneCollection.Prolouge1_Shadow;
+            Appdata.Instance.SceneInSave3 = SceneCollection.Lost01;
             Appdata.Instance.PlayerPosition3 = new Vector3(0f,0f,0f);
         }
         if (!IsSaveFile())

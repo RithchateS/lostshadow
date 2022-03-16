@@ -24,22 +24,22 @@ public class PlayMenuController : MonoBehaviour
         saveSlot1.GetComponent<Button>().onClick.AddListener(delegate
         {
             GameSaveManager.Instance.SelectSaveSlot(0);
-            Appdata.Instance.SceneToLoad = Appdata.Instance.SceneInSave1;
-            Appdata.Instance.CurrentScene = Appdata.Instance.SceneToLoad;
+            Appdata.Instance.sceneToLoad = Appdata.Instance.SceneInSave1;
+            Appdata.Instance.currentScene = Appdata.Instance.sceneToLoad;
             PlayGame();
         });
         saveSlot2.GetComponent<Button>().onClick.AddListener(delegate
         {
             GameSaveManager.Instance.SelectSaveSlot(1);
-            Appdata.Instance.SceneToLoad = Appdata.Instance.SceneInSave2;
-            Appdata.Instance.CurrentScene = Appdata.Instance.SceneToLoad;
+            Appdata.Instance.sceneToLoad = Appdata.Instance.SceneInSave2;
+            Appdata.Instance.currentScene = Appdata.Instance.sceneToLoad;
             PlayGame();
         });
         saveSlot3.GetComponent<Button>().onClick.AddListener(delegate
         {
             GameSaveManager.Instance.SelectSaveSlot(2);
-            Appdata.Instance.SceneToLoad = Appdata.Instance.SceneInSave3;
-            Appdata.Instance.CurrentScene = Appdata.Instance.SceneToLoad;
+            Appdata.Instance.sceneToLoad = Appdata.Instance.SceneInSave3;
+            Appdata.Instance.currentScene = Appdata.Instance.sceneToLoad;
             PlayGame();
         });
     }

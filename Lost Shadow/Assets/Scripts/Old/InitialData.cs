@@ -22,7 +22,7 @@ public class InitialData : MonoBehaviour
         LoadSceneManager.Instance.SetLoadingCanvas(LoadingCanvas);
         LoadSceneManager.Instance.currentScene = SceneCollection.Persistant;
         LoadSceneManager.Instance.StartLoadingScene(startScene);
-        Appdata.Instance.CurrentScene = startScene;
+        Appdata.Instance.currentScene = startScene;
     }
 
 }
