@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Controller;
 using UnityEngine;
 
 public class StartCutscene : MonoBehaviour
