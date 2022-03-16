@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Controller;
 using UnityEngine;
 
 public class StartCutscene : MonoBehaviour
@@ -12,7 +13,10 @@ public class StartCutscene : MonoBehaviour
         if (col.tag == "Player")
         {
             camAnim.SetBool("Cutscene",true);
-            //player must can't move
+            //player must can't move during cutscene
+            
+            
+            //after play StartAnimation must StopCutscene
             
         }
     }
@@ -20,5 +24,7 @@ public class StartCutscene : MonoBehaviour
     void StopCutscene()
     {
         camAnim.SetBool("Cutscene",false);
+        
+        Destroy(this.gameObject);
     }
 }

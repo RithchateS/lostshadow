@@ -14,7 +14,7 @@ namespace Controller
         BoxCollider2D myFeetCollider;
         private GameObject feet;
         float gravityScaleAtStart;
-        [SerializeField] float runSpeed = 10f;
+        [SerializeField] float runSpeed = 5f;
         [SerializeField] float jumpSpeed = 5f;
         [SerializeField] float climbSpeed = 5f;
 
