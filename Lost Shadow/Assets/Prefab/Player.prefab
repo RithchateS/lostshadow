@@ -231,14 +231,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38b5af236895cb4999df778bb8bfba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 7
-  jumpSpeed: 10
   climbSpeed: 2
   isGrounded: 0
-  lateJumpTime: 0.3
-  isJumpAble: 0
+  isClimbable: 0
+  isClimbing: 0
+  runSpeed: 7
   acceleration: 50
   deAcceleration: 30
+  jumpSpeed: 10
+  lateJumpTime: 0.3
+  isJumpAble: 0
 --- !u!61 &-6633810920153174991
 BoxCollider2D:
   m_ObjectHideFlags: 0
