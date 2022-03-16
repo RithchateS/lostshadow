@@ -11,6 +11,9 @@ TagManager:
   - Feet
   - StartPos
   - DeadZone
+  - GuardLadder
+  - GuardLadderBot
+  - GuardLadderTop
   layers:
   - Default
   - TransparentFX
