@@ -33,11 +33,13 @@ namespace Old.Controller
             _myFeetCollider = _feet.GetComponent<BoxCollider2D>();
             _gravityScaleAtStart = _myRigidbody.gravityScale;
             isJumpAble = true;
+            
 
         }
 
         void Update()
         {
+            Wakeup(isWakeup);
             Run();
             CalculateRun();
             FlipSprite();
@@ -171,6 +173,28 @@ namespace Old.Controller
                     
                 }
                 #endregion
+        #region Animation
+
+        bool isWakeup;
+
+        public void Wakeup(bool run)
+        {
+            if (run == true)
+            {
+                _myAnimator.SetBool("IsRunning", false);
+                _myAnimator.SetBool("IsClimbing", false);
+                _myAnimator.SetBool("IsJumping", false);
+                _myAnimator.SetBool("isWakeup", true);
+                isWakeup = false;
+                //if(_myAnimator.GetBool()
+            }
+
+
+        }
+                
+
+        #endregion
+                
         #endregion
         
         #region Passive
