@@ -16,6 +16,7 @@ namespace Old.Controller
         BoxCollider2D _myFeetCollider;
         private GameObject _feet;
         float _gravityScaleAtStart;
+        bool isControllable;
         
         [SerializeField] float climbSpeed = 5f;
         [SerializeField] bool isGrounded;
@@ -33,19 +34,22 @@ namespace Old.Controller
             _myFeetCollider = _feet.GetComponent<BoxCollider2D>();
             _gravityScaleAtStart = _myRigidbody.gravityScale;
             isJumpAble = true;
-            
+            Wakeup();
 
         }
 
         void Update()
         {
-            Wakeup(isWakeup);
-            Run();
-            CalculateRun();
-            FlipSprite();
-            CheckGround();
-            CheckLadder();
-            ClimbLadder();
+            if (isControllable != false)
+            {
+                Run();
+                CalculateRun();
+                FlipSprite();
+                CheckGround();
+                CheckLadder();
+                ClimbLadder();
+            }
+
         }
 
         #region InputSystem
@@ -174,22 +178,23 @@ namespace Old.Controller
                 }
                 #endregion
         #region Animation
-
-        bool isWakeup;
-
-        public void Wakeup(bool run)
+        
+        public void Wakeup()
         {
-            if (run == true)
-            {
-                _myAnimator.SetBool("IsRunning", false);
-                _myAnimator.SetBool("IsClimbing", false);
-                _myAnimator.SetBool("IsJumping", false);
-                _myAnimator.SetBool("isWakeup", true);
-                isWakeup = false;
-                //if(_myAnimator.GetBool()
-            }
+            StartCoroutine(PauseMovement());
+            _myAnimator.Play("Wakeup");
+        }
+        
+        IEnumerator PauseMovement()
+        {
 
+            isControllable = false;
 
+            //Setting Time Freezeeee Here
+            yield return new WaitForSeconds(3);
+            
+            isControllable = true;
+            
         }
                 
 
