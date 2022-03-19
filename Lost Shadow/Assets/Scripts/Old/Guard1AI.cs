@@ -22,6 +22,8 @@ public class Guard1AI : MonoBehaviour
     private float timeSinceLastClimb = 0f;
     [SerializeField] float climbCooldown = 20f;
     private float timeSinceExitLadder = 0f;
+    [SerializeField] GameObject guardVision;
+    private Vector3 _location;
 
 
     void FlipGuardFacing() {
@@ -31,9 +33,11 @@ public class Guard1AI : MonoBehaviour
     private void Start() {
         _guardAnimator = GetComponent<Animator>();
         _guardRb2D = GetComponent<Rigidbody2D>();
+        showRange();
     }
 
     void Update() {
+        Debug.Log(_distXtoPlayer);
         timeSinceLastClimb += Time.deltaTime;
         timeSinceExitLadder += Time.deltaTime;
         _player = GameObject.FindWithTag("Player");
@@ -48,12 +52,12 @@ public class Guard1AI : MonoBehaviour
             _guardAnimator.SetBool("isPatrolling", true);
             
             if (_viewDir == 1) {
-                if (_distXtoPlayer < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
+                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
                     _guardState = "Chase";
                 }
             }
             else if (_viewDir == -1) {
-                if (_distXtoPlayer < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
+                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
                     _guardState = "Chase";
                 }
             }
@@ -62,9 +66,10 @@ public class Guard1AI : MonoBehaviour
         else if (_guardState == "Chase") {
             _guardRb2D.velocity = new Vector2 (_viewDir * chaseSpeed, _guardRb2D.velocity.y);
             _guardAnimator.SetBool("isPatrolling", true);
+            _guardRb2D.gravityScale = gravityScaleAtStart;
             
             if (_viewDir == 1) {
-                if (_distXtoPlayer < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
+                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
                     _guardState = "Chase";
                 }
                 else {
@@ -72,7 +77,7 @@ public class Guard1AI : MonoBehaviour
                 }
             }
             else if (_viewDir == -1) {
-                if (_distXtoPlayer < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
+                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
                     _guardState = "Chase";
                 }
                 else {
@@ -85,12 +90,12 @@ public class Guard1AI : MonoBehaviour
             _curHoldTime += Time.deltaTime;
             
             if (_viewDir == 1) {
-                if (_distXtoPlayer < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
+                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
                     _guardState = "Chase";
                 }
             }
             else if (_viewDir == -1) {
-                if (_distXtoPlayer < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
+                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
                     _guardState = "Chase";
                 }
             }
@@ -106,12 +111,12 @@ public class Guard1AI : MonoBehaviour
             _curHoldTime += Time.deltaTime;
 
             if (_viewDir == 1) {
-                if (_distXtoPlayer < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
+                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
                     _guardState = "Chase";
                 }
             }
             else if (_viewDir == -1) {
-                if (_distXtoPlayer < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
+                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
                     _guardState = "Chase";
                 }
             }
@@ -128,12 +133,12 @@ public class Guard1AI : MonoBehaviour
             _curHoldTime += Time.deltaTime;
 
             if (_viewDir == 1) {
-                if (_distXtoPlayer < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
+                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
                     _guardState = "Chase";
                 }
             }
             else if (_viewDir == -1) {
-                if (_distXtoPlayer < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
+                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
                     _guardState = "Chase";
                 }
             }
@@ -162,12 +167,12 @@ public class Guard1AI : MonoBehaviour
             _curHoldTime += Time.deltaTime;
 
             if (_viewDir == 1) {
-                if (_distXtoPlayer < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
+                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
                     _guardState = "Chase";
                 }
             }
             else if (_viewDir == -1) {
-                if (_distXtoPlayer < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
+                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
                     _guardState = "Chase";
                 }
             }
@@ -184,12 +189,12 @@ public class Guard1AI : MonoBehaviour
             _curHoldTime += Time.deltaTime;
 
             if (_viewDir == 1) {
-                if (_distXtoPlayer < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
+                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
                     _guardState = "Chase";
                 }
             }
             else if (_viewDir == -1) {
-                if (_distXtoPlayer < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
+                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
                     _guardState = "Chase";
                 }
             }
@@ -250,5 +255,11 @@ public class Guard1AI : MonoBehaviour
             other.gameObject.transform.position = GameObject.FindWithTag("StartPos").transform.position;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+    }
+
+    private void showRange() {
+        _location = new Vector3(this.transform.position.x + (viewRange / 2),this.transform.position.y, this.transform.position.z);
+        GameObject _guardVision = Instantiate(guardVision, _location, Quaternion.identity, this.GetComponent<Transform>());
+        _guardVision.transform.localScale = new Vector3(viewRange, 2, 1);
     }
 }

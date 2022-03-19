@@ -2054,11 +2054,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1936513920042933495, guid: 122a1ac149ac3164b994f7aa3c6fc9a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.12
+      value: -12.36
       objectReference: {fileID: 0}
     - target: {fileID: 1936513920042933495, guid: 122a1ac149ac3164b994f7aa3c6fc9a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.33
+      value: -8.96
       objectReference: {fileID: 0}
     - target: {fileID: 1936513920042933495, guid: 122a1ac149ac3164b994f7aa3c6fc9a9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22130,7 +22130,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547707017}
   m_LocalRotation: {x: -0, y: -0, z: 0.9879913, w: -0.15450981}
-  m_LocalPosition: {x: -4.116449, y: 1.6327744, z: -0.018830653}
+  m_LocalPosition: {x: -12.25, y: 1.6327744, z: -0.018830653}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -28288,6 +28288,14 @@ PrefabInstance:
     - target: {fileID: 2523783355591726656, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
       propertyPath: m_ChildCameras.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6478720432099530728, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
+      propertyPath: m_ChildCameras.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7589075721587279368, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
+      propertyPath: player
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5436984674282150595, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
