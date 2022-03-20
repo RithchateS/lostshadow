@@ -191,7 +191,7 @@ namespace Old.Controller
             isControllable = false;
 
             //Setting Time Freezeeee Here
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(6);
             
             isControllable = true;
             
