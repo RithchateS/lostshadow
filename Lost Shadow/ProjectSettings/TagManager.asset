@@ -14,11 +14,6 @@ TagManager:
   - GuardLadder
   - GuardLadderBot
   - GuardLadderTop
-  - PlayerClone
-  - Obstacle
-  - OverlayCamera
-  - Peek
-  - PeekMask
   layers:
   - Default
   - TransparentFX
@@ -32,8 +27,8 @@ TagManager:
   - Background
   - Bounce
   - Enemy
-  - 
-  - 
+  - Shifter
+  - DeadZone
   - 
   - 
   - 
