@@ -1,8 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 namespace Old.Controller
 {
@@ -16,12 +14,16 @@ namespace Old.Controller
         BoxCollider2D _myFeetCollider;
         private GameObject _feet;
         float _gravityScaleAtStart;
-        bool isControllable;
+        bool _isControllable;
+
+
         
         [SerializeField] float climbSpeed = 5f;
-        [SerializeField] bool isGrounded;
+        [SerializeField] private bool isGrounded;
         [SerializeField] private bool isClimbable;
         [SerializeField] private bool isClimbing;
+        [SerializeField] public bool isShadow;
+        
         #endregion
         
         
@@ -33,22 +35,32 @@ namespace Old.Controller
             _myBodyCollider = GetComponent<BoxCollider2D>();
             _myFeetCollider = _feet.GetComponent<BoxCollider2D>();
             _gravityScaleAtStart = _myRigidbody.gravityScale;
+            peek = GameObject.FindWithTag("Peek").GetComponent<RectTransform>();
+            peekMask = GameObject.FindWithTag("PeekMask").GetComponent<RectTransform>();
             isJumpAble = true;
+            isShadow = true;
+            isShiftAble = true;
+            isPeekAble = true;
+            isPeeking = false;
+            isMoving = false;
+            peekSize = 2000;
             Wakeup();
 
         }
 
         void Update()
         {
-            if (isControllable != false)
+            if (_isControllable)
             {
                 Run();
                 CalculateRun();
-                FlipSprite();
-                CheckGround();
-                CheckLadder();
                 ClimbLadder();
             }
+            
+            FlipSprite();
+            CheckGround();
+            CheckLadder();
+            PeekCheck();
 
         }
 
@@ -59,6 +71,7 @@ namespace Old.Controller
         [SerializeField] private float acceleration = 50f;
         private float _currentHorizontalSpeed;
         [SerializeField] private float deAcceleration = 30f;
+        [SerializeField] private bool isMoving;
         
         void OnMove(InputValue value) {
             _moveInput = value.Get<Vector2>();
@@ -70,6 +83,7 @@ namespace Old.Controller
         
             bool playerHasHorizontalSpeed = Mathf.Abs(_currentHorizontalSpeed) > Mathf.Epsilon;
             _myAnimator.SetBool("isRunning", playerHasHorizontalSpeed);
+            isMoving = playerHasHorizontalSpeed;
         }
         private void CalculateRun() {
             if (_moveInput.x != 0) {
@@ -112,32 +126,83 @@ namespace Old.Controller
         #endregion
         #region ShadowShift
 
-        void OnShadowShift(InputValue value) {
-                    if (!_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
-                        return;
-                    }
-                
-                    if (value.isPressed && _moveInput == new Vector2(0, 0))
-                    {
-                        if (_myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Shifter")) && !_myBodyCollider.IsTouchingLayers(LayerMask.GetMask("DeadZone")))
-                        {
-                            StartCoroutine(ShadowShift()); 
-                        }
-                    }
+        [Header("ShadowShift")]
+        [SerializeField] private bool isShiftAble;
+        [SerializeField] private bool isPeekAble;
+        [SerializeField] private bool isPeeking;
+        public RectTransform peek;
+        [SerializeField] private RectTransform peekMask;
+        [SerializeField] private float peekSize;
+
+            void OnShadowShift(InputValue value)
+        {
+            if (value.isPressed && isShadow && isShiftAble && isPeeking && !isMoving)
+            {
+                var position = transform.position;
+                position = new Vector3(position.x, position.y - 100);
+                transform.position = position;
+                isShadow = false;
+            }
+            else if (value.isPressed && !isShadow && isShiftAble && isPeeking && !isMoving)
+            {
+                var position = transform.position;
+                position = new Vector3(position.x, position.y + 100);
+                transform.position = position;
+                isShadow = true;
+            }
+            if (value.isPressed && isPeekAble && !isMoving)
+            {
+                TogglePeek();
+            }
         }
-        IEnumerator ShadowShift()
-                 {
-                     int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-                     _myAnimator.SetTrigger("isShadowShift");
-                     yield return new WaitForSeconds(0.8f);
-                     if ((currentSceneIndex % 2) == 0){
-                         SceneManager.LoadScene(currentSceneIndex + 1);
-                     }
-                     else {
-                         SceneManager.LoadScene(currentSceneIndex - 1);
-                     }
-                 }
+            
+        public void TogglePeek()
+        {
+            if (isPeeking)
+            {
+                StartCoroutine(PeekAnimation());
+            }
+            else
+            {
+                StartCoroutine(PeekAnimation());
+            }
+        }
+
+        IEnumerator PeekAnimation()
+        {
+
+            if (isPeeking)
+            {
+                isPeekAble = false;
+                isPeeking = false;
+                while (peek.sizeDelta.x > 0)
+                {
+                    peek.sizeDelta += new Vector2(-30, -30);
+                    peekMask.sizeDelta += new Vector2(-30, -30);
+                    yield return new WaitForSeconds(0.01f);
+                }
+                gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
+                isPeekAble = true;
+            }
+            else
+            {
+                isJumpAble = false;
+                _isControllable = false;
+                isPeekAble = false;
+                gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Front";
+                while (peek.sizeDelta.x < peekSize)
+                {
+                    peek.sizeDelta += new Vector2(30, 30);
+                    peekMask.sizeDelta += new Vector2(30, 30);
+                    yield return new WaitForSeconds(0.01f);
+                }
+                isJumpAble = true;
+                _isControllable = true;
+                isPeeking = true;
+                isPeekAble = true;
+            }
         
+        }
         #endregion
         #region Climb
                 void ClimbLadder()
@@ -188,12 +253,12 @@ namespace Old.Controller
         IEnumerator PauseMovement()
         {
 
-            isControllable = false;
+            _isControllable = false;
 
             //Setting Time Freezeeee Here
             yield return new WaitForSeconds(6);
             
-            isControllable = true;
+            _isControllable = true;
             
         }
                 
@@ -248,6 +313,27 @@ namespace Old.Controller
             else
             {
                 isClimbable = false;
+            }
+        }
+
+        public void CheckIfInCollider(bool inCollider)
+        {
+            if (inCollider)
+            {
+                isShiftAble = false;
+            }
+            else
+            {
+                isShiftAble = true;
+            }
+        
+        }
+
+        void PeekCheck()
+        {
+            if (isPeeking && (isMoving || !isGrounded))
+            {
+                TogglePeek();
             }
         }
         #endregion
