@@ -156,7 +156,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 416556075
   m_SortingLayer: 8
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 759305168, guid: 9cfae8047975ba44583f4ee49d01ff5f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -235,12 +235,19 @@ MonoBehaviour:
   isGrounded: 0
   isClimbable: 0
   isClimbing: 0
+  isShadow: 0
   runSpeed: 7
   acceleration: 50
   deAcceleration: 30
+  isMoving: 0
   jumpSpeed: 10
   lateJumpTime: 0.3
   isJumpAble: 0
+  isShiftAble: 0
+  isPeekAble: 0
+  isPeeking: 0
+  peek: {fileID: 0}
+  peekMask: {fileID: 0}
 --- !u!61 &-6633810920153174991
 BoxCollider2D:
   m_ObjectHideFlags: 0
