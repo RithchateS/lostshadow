@@ -131,9 +131,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_0
       rect:
         serializedVersion: 2
-        x: 33
+        x: 0
         y: 0
-        width: 50
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -152,9 +152,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_1
       rect:
         serializedVersion: 2
-        x: 129
+        x: 96
         y: 0
-        width: 49
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -173,9 +173,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_2
       rect:
         serializedVersion: 2
-        x: 227
+        x: 192
         y: 0
-        width: 45
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -194,9 +194,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_3
       rect:
         serializedVersion: 2
-        x: 325
+        x: 288
         y: 0
-        width: 40
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -215,9 +215,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_4
       rect:
         serializedVersion: 2
-        x: 423
+        x: 384
         y: 0
-        width: 35
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -236,9 +236,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_5
       rect:
         serializedVersion: 2
-        x: 521
+        x: 480
         y: 0
-        width: 30
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -257,9 +257,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_6
       rect:
         serializedVersion: 2
-        x: 615
+        x: 576
         y: 0
-        width: 30
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -278,9 +278,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_7
       rect:
         serializedVersion: 2
-        x: 710
+        x: 672
         y: 0
-        width: 30
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -299,9 +299,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_8
       rect:
         serializedVersion: 2
-        x: 806
+        x: 768
         y: 0
-        width: 30
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -320,9 +320,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_9
       rect:
         serializedVersion: 2
-        x: 902
+        x: 864
         y: 0
-        width: 30
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -341,9 +341,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_10
       rect:
         serializedVersion: 2
-        x: 997
+        x: 960
         y: 0
-        width: 31
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -362,9 +362,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_11
       rect:
         serializedVersion: 2
-        x: 1093
+        x: 1056
         y: 0
-        width: 32
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -383,9 +383,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_12
       rect:
         serializedVersion: 2
-        x: 1189
+        x: 1152
         y: 0
-        width: 32
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -404,9 +404,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_13
       rect:
         serializedVersion: 2
-        x: 1285
+        x: 1248
         y: 0
-        width: 32
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -425,9 +425,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_14
       rect:
         serializedVersion: 2
-        x: 1381
+        x: 1344
         y: 0
-        width: 31
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -446,9 +446,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_15
       rect:
         serializedVersion: 2
-        x: 1477
+        x: 1440
         y: 0
-        width: 31
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -467,9 +467,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_16
       rect:
         serializedVersion: 2
-        x: 1574
+        x: 1536
         y: 0
-        width: 30
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -488,9 +488,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_17
       rect:
         serializedVersion: 2
-        x: 1670
+        x: 1632
         y: 0
-        width: 30
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -509,9 +509,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_18
       rect:
         serializedVersion: 2
-        x: 1766
+        x: 1728
         y: 0
-        width: 30
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -530,9 +530,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_19
       rect:
         serializedVersion: 2
-        x: 1861
+        x: 1824
         y: 0
-        width: 31
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -551,9 +551,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_20
       rect:
         serializedVersion: 2
-        x: 1957
+        x: 1920
         y: 0
-        width: 30
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -572,9 +572,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_21
       rect:
         serializedVersion: 2
-        x: 2053
+        x: 2016
         y: 0
-        width: 30
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -593,9 +593,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_22
       rect:
         serializedVersion: 2
-        x: 2149
+        x: 2112
         y: 0
-        width: 30
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -614,9 +614,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_23
       rect:
         serializedVersion: 2
-        x: 2245
+        x: 2208
         y: 0
-        width: 31
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -635,9 +635,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_24
       rect:
         serializedVersion: 2
-        x: 2343
+        x: 2304
         y: 0
-        width: 30
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -656,9 +656,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_25
       rect:
         serializedVersion: 2
-        x: 2441
+        x: 2400
         y: 0
-        width: 27
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -677,9 +677,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_26
       rect:
         serializedVersion: 2
-        x: 2537
+        x: 2496
         y: 0
-        width: 27
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -698,9 +698,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_27
       rect:
         serializedVersion: 2
-        x: 2635
+        x: 2592
         y: 0
-        width: 25
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -719,9 +719,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_28
       rect:
         serializedVersion: 2
-        x: 2730
+        x: 2688
         y: 0
-        width: 26
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -740,9 +740,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_29
       rect:
         serializedVersion: 2
-        x: 2826
+        x: 2784
         y: 0
-        width: 27
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -761,9 +761,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_30
       rect:
         serializedVersion: 2
-        x: 2917
+        x: 2880
         y: 0
-        width: 40
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -782,9 +782,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_31
       rect:
         serializedVersion: 2
-        x: 3013
+        x: 2976
         y: 0
-        width: 27
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -803,9 +803,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_32
       rect:
         serializedVersion: 2
-        x: 3108
+        x: 3072
         y: 0
-        width: 25
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -824,9 +824,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_33
       rect:
         serializedVersion: 2
-        x: 3200
+        x: 3168
         y: 0
-        width: 27
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -845,9 +845,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_34
       rect:
         serializedVersion: 2
-        x: 3297
+        x: 3264
         y: 0
-        width: 27
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -866,9 +866,9 @@ TextureImporter:
       name: Cutscene_FirstScene-Sheet_35
       rect:
         serializedVersion: 2
-        x: 3394
+        x: 3360
         y: 0
-        width: 26
+        width: 96
         height: 48
       alignment: 0
       pivot: {x: 0, y: 0}

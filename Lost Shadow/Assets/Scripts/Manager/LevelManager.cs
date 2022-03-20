@@ -23,7 +23,7 @@ namespace Manager
             if (_player == null) {
                 Instantiate(playerPrefab, startPos.position, startPos.rotation);
                 GameSaveManager.Instance.SaveGame();
-                //StartCutscene();
+
             }
             
             if (_camera == null)
@@ -31,11 +31,7 @@ namespace Manager
                 Instantiate(cameraPrefab, startPos.position, startPos.rotation);
             }
         }
-
-        /*Void StartCutscene()
-        {
-            
-        }*/
+        
         
     }
 }
