@@ -16,6 +16,7 @@ namespace Old.Controller
         BoxCollider2D _myFeetCollider;
         private GameObject _feet;
         float _gravityScaleAtStart;
+        bool isControllable;
         
         [SerializeField] float climbSpeed = 5f;
         [SerializeField] bool isGrounded;
@@ -33,17 +34,22 @@ namespace Old.Controller
             _myFeetCollider = _feet.GetComponent<BoxCollider2D>();
             _gravityScaleAtStart = _myRigidbody.gravityScale;
             isJumpAble = true;
+            Wakeup();
 
         }
 
         void Update()
         {
-            Run();
-            CalculateRun();
-            FlipSprite();
-            CheckGround();
-            CheckLadder();
-            ClimbLadder();
+            if (isControllable != false)
+            {
+                Run();
+                CalculateRun();
+                FlipSprite();
+                CheckGround();
+                CheckLadder();
+                ClimbLadder();
+            }
+
         }
 
         #region InputSystem
@@ -171,6 +177,29 @@ namespace Old.Controller
                     
                 }
                 #endregion
+        #region Animation
+        
+        public void Wakeup()
+        {
+            StartCoroutine(PauseMovement());
+            _myAnimator.Play("Wakeup");
+        }
+        
+        IEnumerator PauseMovement()
+        {
+
+            isControllable = false;
+
+            //Setting Time Freezeeee Here
+            yield return new WaitForSeconds(5);
+            
+            isControllable = true;
+            
+        }
+                
+
+        #endregion
+                
         #endregion
         
         #region Passive
