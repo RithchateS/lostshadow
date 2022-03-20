@@ -12,10 +12,12 @@ public class ChainEyeAI : MonoBehaviour
     [SerializeField] float eyeBackSpeed;
     [SerializeField] float eyeRange;
     private GameObject _player;
+    [SerializeField] GameObject eyeVision;
     
     void Start()
     {
         _startPos = this.transform.position;
+        showRange();
     }
 
     void Update()
@@ -55,5 +57,10 @@ public class ChainEyeAI : MonoBehaviour
             other.gameObject.transform.position = GameObject.FindWithTag("StartPos").transform.position;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+    }
+
+    private void showRange() {
+        GameObject _eyeVision = Instantiate(eyeVision, this.transform.position, Quaternion.identity);
+        _eyeVision.transform.localScale = new Vector3(2*eyeRange, 2*eyeRange, 1);
     }
 }
