@@ -26255,7 +26255,7 @@ MonoBehaviour:
   m_ApplyToSortingLayers: 0000000061137fde51aa8b5cd762f13ff5ee30537bac9bf595105769d9a9e0a32b24d418eb06bfb9
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
-  m_LightOrder: 30
+  m_LightOrder: -1
   m_OverlapOperation: 1
   m_NormalMapDistance: 2.71
   m_NormalMapQuality: 0
