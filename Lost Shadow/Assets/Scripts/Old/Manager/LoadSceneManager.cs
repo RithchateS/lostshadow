@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,7 +10,7 @@ public enum SceneCollection
     Persistant, // 0
     MainMenu , // 1
     LoadScene , //2
-    Tutorial01,// 3
+    Lost01,// 3
     //Lost2,// 4
     //Lost3,// 5
     //Lost4,// 6
