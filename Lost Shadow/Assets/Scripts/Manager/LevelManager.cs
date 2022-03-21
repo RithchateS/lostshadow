@@ -57,10 +57,8 @@ namespace Manager
             _camera = GameObject.FindWithTag("MainCamera");
             _overlayCamera = GameObject.FindWithTag("OverlayCamera");
         }
+        CameraCollider();
         GameSaveManager.Instance.SaveGame();
-        
-        
-        
     }
 
     private void Update()
@@ -68,6 +66,23 @@ namespace Manager
         FollowMain();
     }
 
+
+    void CameraCollider()
+    {
+        if (!_camera.GetComponent<Camera>().orthographic)
+        {
+            Debug.LogError("Camera must be Orthographic.");
+            return;
+        }
+ 
+        var aspect = (float)Screen.width / Screen.height;
+        var orthoSize = _camera.GetComponent<Camera>().orthographicSize;
+ 
+        var width = 2.0f * orthoSize * aspect;
+        var height = 2.0f * _camera.GetComponent<Camera>().orthographicSize;
+ 
+        _camera.GetComponent<BoxCollider2D>().size = new Vector2(width, height);
+    }
 
     void FollowMain()
     {
@@ -81,7 +96,9 @@ namespace Manager
             _overlayCamera.transform.position = _camera.transform.position + new Vector3(0, 100);
             _playerClone.transform.position = _player.transform.position + new Vector3(0, 100);
         }
-        playerController.peek.transform.position = _player.transform.position;
+        //playerController.peek.transform.position = _player.transform.position;
+        playerController.peek.transform.position = _camera.transform.position;
+        //_overlayCamera.transform.position = _playerClone.transform.position;
         _overlayCamera.GetComponent<Camera>().orthographic = _camera.GetComponent<Camera>().orthographic;
     }
     

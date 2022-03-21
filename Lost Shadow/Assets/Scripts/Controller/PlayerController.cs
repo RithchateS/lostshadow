@@ -23,12 +23,14 @@ namespace Old.Controller
         [SerializeField] private bool isClimbable;
         [SerializeField] private bool isClimbing;
         [SerializeField] public bool isShadow;
+        [SerializeField] public Color playerColor;
         
         #endregion
         
         
         void Start()
         {
+            playerColor = gameObject.GetComponent<SpriteRenderer>().color;
             _feet = GameObject.FindWithTag("Feet");
             _myRigidbody = GetComponent<Rigidbody2D>();
             _myAnimator = GetComponent<Animator>();
@@ -183,6 +185,12 @@ namespace Old.Controller
                     peekMask.sizeDelta += new Vector2(-30, -30);
                     yield return new WaitForSeconds(0.01f);
                 }
+                
+                while (playerColor.a < 1)
+                {
+                    playerColor.a += 0.01f;
+                    yield return new WaitForSeconds(0.01f);
+                }
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
                 isPeekAble = true;
             }
@@ -196,6 +204,11 @@ namespace Old.Controller
                 {
                     peek.sizeDelta += new Vector2(30, 30);
                     peekMask.sizeDelta += new Vector2(30, 30);
+                    yield return new WaitForSeconds(0.01f);
+                }
+                while (playerColor.a >= 0.5f)
+                {
+                    playerColor.a -= 0.01f;
                     yield return new WaitForSeconds(0.01f);
                 }
                 isJumpAble = true;
