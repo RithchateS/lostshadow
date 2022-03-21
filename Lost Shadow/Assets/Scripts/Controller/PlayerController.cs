@@ -130,11 +130,12 @@ namespace Old.Controller
         [SerializeField] private bool isShiftAble;
         [SerializeField] private bool isPeekAble;
         [SerializeField] private bool isPeeking;
+        [SerializeField] private bool isShifting;
         public RectTransform peek;
         [SerializeField] private RectTransform peekMask;
         [SerializeField] private float peekSize;
 
-            void OnShadowShift(InputValue value)
+        void OnShadowShift(InputValue value)
         {
             if (value.isPressed && isShadow && isShiftAble && isPeeking && !isMoving)
             {
@@ -155,8 +156,9 @@ namespace Old.Controller
                 TogglePeek();
             }
         }
-            
-        public void TogglePeek()
+        
+
+        private void TogglePeek()
         {
             if (isPeeking)
             {
