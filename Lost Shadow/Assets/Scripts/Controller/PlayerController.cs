@@ -63,7 +63,7 @@ namespace Old.Controller
             CheckGround();
             CheckLadder();
             PeekCheck();
-
+            UpdateColor();
         }
 
         #region InputSystem
@@ -181,14 +181,12 @@ namespace Old.Controller
                 isPeeking = false;
                 while (peek.sizeDelta.x > 0)
                 {
+                    if (playerColor.a < 1)
+                    {
+                        playerColor.a += 0.01f;
+                    }
                     peek.sizeDelta += new Vector2(-30, -30);
                     peekMask.sizeDelta += new Vector2(-30, -30);
-                    yield return new WaitForSeconds(0.01f);
-                }
-                
-                while (playerColor.a < 1)
-                {
-                    playerColor.a += 0.01f;
                     yield return new WaitForSeconds(0.01f);
                 }
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
@@ -202,13 +200,12 @@ namespace Old.Controller
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Front";
                 while (peek.sizeDelta.x < peekSize)
                 {
+                    if (playerColor.a >= 0.5f)
+                    {
+                        playerColor.a -= 0.01f;
+                    }
                     peek.sizeDelta += new Vector2(30, 30);
                     peekMask.sizeDelta += new Vector2(30, 30);
-                    yield return new WaitForSeconds(0.01f);
-                }
-                while (playerColor.a >= 0.5f)
-                {
-                    playerColor.a -= 0.01f;
                     yield return new WaitForSeconds(0.01f);
                 }
                 isJumpAble = true;
@@ -350,6 +347,11 @@ namespace Old.Controller
             {
                 TogglePeek();
             }
+        }
+
+        void UpdateColor()
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = playerColor;
         }
         #endregion
     }
