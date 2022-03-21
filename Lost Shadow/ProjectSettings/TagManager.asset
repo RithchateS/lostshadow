@@ -14,6 +14,9 @@ TagManager:
   - GuardLadder
   - GuardLadderBot
   - GuardLadderTop
+  - Peek
+  - PeekMask
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -51,6 +54,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Platform
+    uniqueID: 4120620155
+    locked: 0
   - name: Backbackground
     uniqueID: 3732869985
     locked: 0
@@ -62,9 +68,6 @@ TagManager:
     locked: 0
   - name: Prop
     uniqueID: 1395715829
-    locked: 0
-  - name: Platform
-    uniqueID: 4120620155
     locked: 0
   - name: Ladder
     uniqueID: 1767313557
