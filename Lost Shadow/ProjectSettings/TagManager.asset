@@ -20,6 +20,7 @@ TagManager:
   - Peek
   - PeekMask
   - Trigger
+  - Object
   - Key
   layers:
   - Default

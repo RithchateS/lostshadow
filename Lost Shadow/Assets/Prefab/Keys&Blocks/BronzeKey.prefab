@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 287557973}
   m_Layer: 0
   m_Name: BronzeKey
-  m_TagString: Key
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,4 +167,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d690f97adba543458e2fda92191b1c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyID: 1
+  objectID: 0
