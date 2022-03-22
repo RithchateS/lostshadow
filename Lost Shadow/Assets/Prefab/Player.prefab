@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 2550827664281089653}
   - component: {fileID: 6852987195009694313}
   - component: {fileID: -6633810920153174991}
+  - component: {fileID: 5667216484512639629}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -236,6 +237,7 @@ MonoBehaviour:
   isClimbable: 0
   isClimbing: 0
   isShadow: 0
+  playerColor: {r: 0, g: 0, b: 0, a: 0}
   runSpeed: 7
   acceleration: 50
   deAcceleration: 30
@@ -246,8 +248,10 @@ MonoBehaviour:
   isShiftAble: 0
   isPeekAble: 0
   isPeeking: 0
+  isShifting: 0
   peek: {fileID: 0}
   peekMask: {fileID: 0}
+  peekSize: 0
 --- !u!61 &-6633810920153174991
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -274,3 +278,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5232253, y: 1.1453131}
   m_EdgeRadius: 0
+--- !u!114 &5667216484512639629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3837368660905546741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24548c5834bd1cf42814522b1b47ca1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger1: {fileID: 0}
+  trigger2: {fileID: 0}
+  trigger3: {fileID: 0}

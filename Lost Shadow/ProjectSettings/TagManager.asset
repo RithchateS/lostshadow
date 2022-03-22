@@ -19,6 +19,7 @@ TagManager:
   - OverlayCamera
   - Peek
   - PeekMask
+  - Trigger
   layers:
   - Default
   - TransparentFX
