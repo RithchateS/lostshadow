@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7878775139662392054}
   - component: {fileID: 7878775139662392053}
   - component: {fileID: 7878775139662392052}
+  - component: {fileID: -1451782427007519831}
   m_Layer: 0
   m_Name: ChainEye
   m_TagString: Untagged
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -1545557543
   m_SortingLayer: 7
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: f53a02bc8bde9c848ab656f13fdc9400, type: 3}
+  m_Sprite: {fileID: 523860881, guid: e4b71a7f7ecf7054db4250efb700ebd9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,12 +120,32 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.27625, y: 0.82625}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 10.21, y: 6.61}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.27625, y: 0.82625}
+  m_Size: {x: 0.63687515, y: 0.6053009}
   m_EdgeRadius: 0
+--- !u!95 &-1451782427007519831
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7878775139662392051}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 38a3a70834d212446b479d7fcedca522, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
