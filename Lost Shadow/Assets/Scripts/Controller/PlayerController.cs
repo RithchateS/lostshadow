@@ -1,8 +1,9 @@
 using System.Collections;
+using Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Old.Controller
+namespace Controller
 {
     public class PlayerController : MonoBehaviour
     {
@@ -15,6 +16,7 @@ namespace Old.Controller
         private GameObject _feet;
         float _gravityScaleAtStart;
         bool _isControllable;
+        private bool _isCancelled;
 
 
         
@@ -24,12 +26,13 @@ namespace Old.Controller
         [SerializeField] private bool isClimbing;
         [SerializeField] public bool isShadow;
         [SerializeField] public Color playerColor;
-        
+
         #endregion
         
         
         void Start()
         {
+            shiftCount = LevelManager.Instance.shiftCountStart;
             playerColor = gameObject.GetComponent<SpriteRenderer>().color;
             _feet = GameObject.FindWithTag("Feet");
             _myRigidbody = GetComponent<Rigidbody2D>();
@@ -38,14 +41,14 @@ namespace Old.Controller
             _myFeetCollider = _feet.GetComponent<BoxCollider2D>();
             _gravityScaleAtStart = _myRigidbody.gravityScale;
             peek = GameObject.FindWithTag("Peek").GetComponent<RectTransform>();
-            peekMask = GameObject.FindWithTag("PeekMask").GetComponent<RectTransform>();
+            _peekMask = GameObject.FindWithTag("PeekMask").GetComponent<RectTransform>();
             isJumpAble = true;
             isShadow = true;
             isShiftAble = true;
             isPeekAble = true;
             isPeeking = false;
             isMoving = false;
-            peekSize = 2000;
+            _peekSize = 2000;
             Wakeup();
 
         }
@@ -77,6 +80,10 @@ namespace Old.Controller
         
         void OnMove(InputValue value) {
             _moveInput = value.Get<Vector2>();
+            if (isPeeking && _moveInput.x != 0)
+            {
+                _isCancelled = true;
+            }
         }
         void Run() 
         {
@@ -84,11 +91,11 @@ namespace Old.Controller
             _myRigidbody.velocity = playerVelocity;
         
             bool playerHasHorizontalSpeed = Mathf.Abs(_currentHorizontalSpeed) > Mathf.Epsilon;
-            _myAnimator.SetBool("isRunning", playerHasHorizontalSpeed);
+            _myAnimator.SetBool(IsRunning, playerHasHorizontalSpeed);
             isMoving = playerHasHorizontalSpeed;
         }
         private void CalculateRun() {
-            if (_moveInput.x != 0) {
+            if (_moveInput.x != 0 && !isPeeking) {
                 _currentHorizontalSpeed += _moveInput.x * acceleration * Time.deltaTime;
                         
                 _currentHorizontalSpeed = Mathf.Clamp(_currentHorizontalSpeed, -runSpeed, runSpeed);
@@ -112,19 +119,26 @@ namespace Old.Controller
                     {
                         isClimbing = false;
                     }
-                    if (value.isPressed && isGrounded && isJumpAble)
+                    if (value.isPressed && isGrounded && isJumpAble && !isPeeking)
                     {
                         StartCoroutine(IsJumpAble());
-                        _myRigidbody.velocity = new Vector2(_myRigidbody.velocity.x, 0f);
-                        _myRigidbody.velocity += new Vector2(0f, jumpSpeed);
+                        var velocity = _myRigidbody.velocity;
+                        velocity = new Vector2(velocity.x, 0f);
+                        velocity += new Vector2(0f, jumpSpeed);
+                        _myRigidbody.velocity = velocity;
+                    }
+                    if (isPeeking && value.isPressed)
+                    {
+                        _isCancelled = true;
                     }
                 }
-        IEnumerator IsJumpAble()
-                {
-                    isJumpAble = false;
-                    yield return new WaitForSeconds(lateJumpTime);
-                    isJumpAble = true;
-                }
+
+        private IEnumerator IsJumpAble()
+        {
+            isJumpAble = false;
+            yield return new WaitForSeconds(lateJumpTime);
+            isJumpAble = true;
+        }
         #endregion
         #region ShadowShift
 
@@ -132,10 +146,10 @@ namespace Old.Controller
         [SerializeField] private bool isShiftAble;
         [SerializeField] private bool isPeekAble;
         [SerializeField] private bool isPeeking;
-        [SerializeField] private bool isShifting;
-        public RectTransform peek;
-        [SerializeField] private RectTransform peekMask;
-        [SerializeField] private float peekSize;
+        [SerializeField] private int shiftCount;
+        public RectTransform peek; 
+        private RectTransform _peekMask;
+        private float _peekSize;
 
         void OnShadowShift(InputValue value)
         {
@@ -145,6 +159,7 @@ namespace Old.Controller
                 position = new Vector3(position.x, position.y - 100);
                 transform.position = position;
                 isShadow = false;
+                ModifyShiftCount(-1);
             }
             else if (value.isPressed && !isShadow && isShiftAble && isPeeking && !isMoving)
             {
@@ -152,6 +167,7 @@ namespace Old.Controller
                 position = new Vector3(position.x, position.y + 100);
                 transform.position = position;
                 isShadow = true;
+                ModifyShiftCount(-1);
             }
             if (value.isPressed && isPeekAble && !isMoving)
             {
@@ -179,39 +195,45 @@ namespace Old.Controller
             {
                 isPeekAble = false;
                 isPeeking = false;
+                _isControllable = false;
+                isJumpAble = false;
                 while (peek.sizeDelta.x > 0)
                 {
                     if (playerColor.a < 1)
                     {
                         playerColor.a += 0.01f;
                     }
-                    peek.sizeDelta += new Vector2(-30, -30);
-                    peekMask.sizeDelta += new Vector2(-30, -30);
+                    peek.sizeDelta += new Vector2(-50, -50);
+                    _peekMask.sizeDelta += new Vector2(-50, -50);
                     yield return new WaitForSeconds(0.01f);
                 }
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
+                _isControllable = true;
+                isJumpAble = true;
                 isPeekAble = true;
+                _isCancelled = false;
             }
             else
             {
-                isJumpAble = false;
                 _isControllable = false;
+                isJumpAble = false;
                 isPeekAble = false;
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Front";
-                while (peek.sizeDelta.x < peekSize)
+                while (peek.sizeDelta.x < _peekSize)
                 {
                     if (playerColor.a >= 0.5f)
                     {
                         playerColor.a -= 0.01f;
                     }
-                    peek.sizeDelta += new Vector2(30, 30);
-                    peekMask.sizeDelta += new Vector2(30, 30);
+                    peek.sizeDelta += new Vector2(25, 25);
+                    _peekMask.sizeDelta += new Vector2(25, 25);
                     yield return new WaitForSeconds(0.01f);
                 }
-                isJumpAble = true;
                 _isControllable = true;
+                isJumpAble = true;
                 isPeeking = true;
                 isPeekAble = true;
+                _isCancelled = false;
             }
         
         }
@@ -289,6 +311,8 @@ namespace Old.Controller
         }
 
         private float _time;
+        private static readonly int IsRunning = Animator.StringToHash("isRunning");
+
         void CheckGround()
         {
             if (_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
@@ -343,7 +367,7 @@ namespace Old.Controller
 
         void PeekCheck()
         {
-            if (isPeeking && (isMoving || !isGrounded))
+            if (isPeeking && _isCancelled)
             {
                 TogglePeek();
             }
@@ -354,5 +378,19 @@ namespace Old.Controller
             gameObject.GetComponent<SpriteRenderer>().color = playerColor;
         }
         #endregion
+
+        #region ModifyRules
+
+        public void ModifyShiftCount(int count)
+        {
+            shiftCount += count;
+            if (shiftCount <= 0)
+            {
+                shiftCount = 0;
+                isShiftAble = false;
+            }
+        }
+
+        #endregion"
     }
 }

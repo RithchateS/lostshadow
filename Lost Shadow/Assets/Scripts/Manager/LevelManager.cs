@@ -1,5 +1,5 @@
 using Cinemachine;
-using Old.Controller;
+using Controller;
 using UnityEngine;
 
 namespace Manager
@@ -14,6 +14,8 @@ namespace Manager
         [SerializeField] private GameObject cameraPrefab;
         [SerializeField] private PlayerController playerController;
 
+        [Header("Settings")] public int shiftCountStart;
+
         [Header("MapBounds")]
         [SerializeField] private CinemachineConfiner2D cameraBounds;
         [SerializeField] private Collider2D mapBoundsShadow;
@@ -27,7 +29,9 @@ namespace Manager
         #endregion
 
         public static LevelManager Instance;
-    private void Awake()
+
+
+        private void Awake()
     {
         if (Instance == null)
         {
@@ -44,6 +48,7 @@ namespace Manager
     
     private void Start()
     {
+        
         _player = GameObject.FindWithTag("Player");
         _camera = GameObject.FindWithTag("Camera");
         _overlayCamera = GameObject.FindWithTag("OverlayCamera");
