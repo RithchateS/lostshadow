@@ -51,6 +51,31 @@ namespace Trigger
                         break;
                 }
             }
+            if (col.CompareTag("Interact"))
+            {
+                _objectID = col.gameObject.GetComponent<ObjectID>().objectID;
+                switch (_objectID)
+                {
+                    case 1000:
+                        _playerController.colliderID = 1000;
+                        Debug.Log("1000");
+                        break;
+                }
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D col)
+        {
+            if (col.CompareTag("Interact"))
+            {
+                _objectID = col.gameObject.GetComponent<ObjectID>().objectID;
+                switch (_objectID)
+                {
+                    case 1000:
+                        _playerController.colliderID = 0;
+                        break;
+                }
+            }
         }
     }
 }

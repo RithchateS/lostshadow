@@ -48,6 +48,7 @@ namespace Controller
             isPeekAble = true;
             isPeeking = false;
             isMoving = false;
+            isHiding = false;
             _peekSize = 2000;
             Wakeup();
 
@@ -203,6 +204,7 @@ namespace Controller
                     {
                         playerColor.a += 0.01f;
                     }
+                    playerColor.a = 1;
                     peek.sizeDelta += new Vector2(-50, -50);
                     _peekMask.sizeDelta += new Vector2(-50, -50);
                     yield return new WaitForSeconds(0.01f);
@@ -225,6 +227,7 @@ namespace Controller
                     {
                         playerColor.a -= 0.01f;
                     }
+                    playerColor.a = 0.5f;
                     peek.sizeDelta += new Vector2(25, 25);
                     _peekMask.sizeDelta += new Vector2(25, 25);
                     yield return new WaitForSeconds(0.01f);
@@ -239,43 +242,86 @@ namespace Controller
         }
         #endregion
         #region Climb
-                void ClimbLadder()
+        void ClimbLadder()
+        {
+            if (isClimbable)
+            {
+                if (_moveInput.y != 0)
                 {
-                    if (isClimbable)
-                    {
-                        if (_moveInput.y != 0)
-                        {
-                            isClimbing = true;
-                        }
-        
-                        if (_moveInput.x != 0)
-                        {
-                            isClimbing = false;
-                        }
-        
-                        if (isClimbing)
-                        {
-                            isGrounded = true;
-                            Vector2 climbVelocity = new Vector2 (0, _moveInput.y * climbSpeed);
-                            _myRigidbody.velocity = climbVelocity;
-                            _myRigidbody.gravityScale = 0f;
-                            bool playerHasVerticalSpeed = Mathf.Abs(_myRigidbody.velocity.y) > Mathf.Epsilon;
-                            _myAnimator.SetBool("isClimbing", playerHasVerticalSpeed);
-                        }
-                        else
-                        {
-                            _myRigidbody.gravityScale = _gravityScaleAtStart;
-                            _myAnimator.SetBool("isClimbing", false);
-                        }
-                    }
-                    else
-                    {
-                        _myRigidbody.gravityScale = _gravityScaleAtStart;
-                        _myAnimator.SetBool("isClimbing", false);
-                    }
-                    
+                    isClimbing = true;
                 }
-                #endregion
+        
+                if (_moveInput.x != 0)
+                {
+                    isClimbing = false;
+                }
+        
+                if (isClimbing)
+                {
+                    isGrounded = true;
+                    Vector2 climbVelocity = new Vector2 (0, _moveInput.y * climbSpeed);
+                    _myRigidbody.velocity = climbVelocity;
+                    _myRigidbody.gravityScale = 0f;
+                    bool playerHasVerticalSpeed = Mathf.Abs(_myRigidbody.velocity.y) > Mathf.Epsilon;
+                    _myAnimator.SetBool("isClimbing", playerHasVerticalSpeed);
+                }
+                else
+                {
+                    _myRigidbody.gravityScale = _gravityScaleAtStart;
+                    _myAnimator.SetBool("isClimbing", false);
+                }
+            }
+            else
+            {
+                _myRigidbody.gravityScale = _gravityScaleAtStart;
+                _myAnimator.SetBool("isClimbing", false);
+            }
+                    
+        }
+        #endregion
+
+        #region Interact
+        [Header("Interact")]
+        public int colliderID;
+        void OnInteract(InputValue value)
+        {
+            if (value.isPressed)
+            {
+                if (colliderID == 0)
+                {
+                    Debug.Log("You can't Interact Nothing");
+                }
+                else if (colliderID == 1000)
+                {
+                    if (isHiding)
+                    {
+                        isHiding = false;
+                        _isControllable = true;
+                        isJumpAble = true;
+                        playerColor.a = 1f;
+                        Debug.Log(isHiding);
+                    }
+                    else if(!isHiding)
+                    {
+                        _isControllable = false;
+                        isJumpAble = false;
+                        isHiding = true;
+                        playerColor.a = 0.1f;
+                        Debug.Log(isHiding);
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region InteractFunction
+
+        [Header("InteractFunction")] 
+        [SerializeField] private bool isHiding;
+
+        #endregion
+        
+        
         #region Animation
         
         public void Wakeup()
