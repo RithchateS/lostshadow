@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Identifier
 {
-    public class OrthoSizeTrigger : MonoBehaviour
+    public class TriggerID : MonoBehaviour
     {
         public int orthoSize;
     }

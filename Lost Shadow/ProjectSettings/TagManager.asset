@@ -20,6 +20,7 @@ TagManager:
   - Peek
   - PeekMask
   - Trigger
+  - Key
   layers:
   - Default
   - TransparentFX

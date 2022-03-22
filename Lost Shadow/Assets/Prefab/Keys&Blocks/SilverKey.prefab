@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 1348764643184489635}
   - component: {fileID: 1348764643184489639}
   - component: {fileID: 1348764643184489636}
-  - component: {fileID: 256043409396540675}
+  - component: {fileID: 1112163624870270374}
   m_Layer: 0
   m_Name: SilverKey
-  m_TagString: Untagged
+  m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +118,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -155,7 +155,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &256043409396540675
+--- !u!114 &1112163624870270374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1348764643184489632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cde7a06fabfc1b84fa886dfb835ada93, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d690f97adba543458e2fda92191b1c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  silverBlock: {fileID: 0}
+  keyID: 2

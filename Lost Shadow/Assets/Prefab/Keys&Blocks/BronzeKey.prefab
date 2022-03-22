@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 1241410559295140358}
   - component: {fileID: 1241410559295140353}
   - component: {fileID: 1241410559295140352}
-  - component: {fileID: 1241410559295140357}
   - component: {fileID: 1241410559295140356}
   - component: {fileID: 1241410559295140359}
+  - component: {fileID: 287557973}
   m_Layer: 0
   m_Name: BronzeKey
-  m_TagString: Untagged
+  m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,19 +108,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1241410559295140357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1241410559295140355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56ae67c38f094e44ca73040d293b3c10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bronzeBlock: {fileID: 0}
 --- !u!61 &1241410559295140356
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -131,7 +118,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -168,3 +155,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &287557973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241410559295140355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d690f97adba543458e2fda92191b1c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyID: 1
