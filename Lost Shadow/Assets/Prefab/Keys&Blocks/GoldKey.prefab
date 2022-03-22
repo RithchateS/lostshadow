@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8830596350389710304}
   - component: {fileID: 8830596350389710308}
   - component: {fileID: 8830596350389710311}
-  - component: {fileID: 7761660163913808960}
+  - component: {fileID: -7376256471001643944}
   m_Layer: 0
   m_Name: GoldKey
   m_TagString: Untagged
@@ -155,7 +155,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7761660163913808960
+--- !u!114 &-7376256471001643944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8830596350389710307}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cde7a06fabfc1b84fa886dfb835ada93, type: 3}
+  m_Script: {fileID: 11500000, guid: 991605074d646c94583e1f58aedf5c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  silverBlock: {fileID: 0}
+  goldBlock: {fileID: 0}
