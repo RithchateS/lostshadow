@@ -1,6 +1,7 @@
 using System;
 using Controller;
 using Identifier;
+using Old.Manager;
 using UnityEngine;
 
 namespace Trigger
@@ -69,12 +70,18 @@ namespace Trigger
                 {
                     case 2001:
                         LoadSceneManager.Instance.StartLoadingScene(SceneCollection.Tutorial02);
+                        GameSaveManager.Instance.SaveGame();
                         break;
                     case 2002:
-                        LoadSceneManager.Instance.StartLoadingScene(SceneCollection.Scene01);
+                        LoadSceneManager.Instance.StartLoadingScene(SceneCollection.Scenes01);
+                        GameSaveManager.Instance.SaveGame();
                         break;
                     case 2003:
-                        LoadSceneManager.Instance.StartLoadingScene(SceneCollection.Scene02);
+                        LoadSceneManager.Instance.StartLoadingScene(SceneCollection.Scenes02);
+                        GameSaveManager.Instance.SaveGame();
+                        break;
+                    case 3001:
+                        _playerController.ModifyAlive(false);
                         break;
                 }
             }

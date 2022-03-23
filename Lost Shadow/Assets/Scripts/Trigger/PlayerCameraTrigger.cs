@@ -13,6 +13,7 @@ namespace Trigger
 
         private void Start()
         {
+            _orthoSize = 3;
             _cameraSizeIsChangable = true;
             _virtualCamera = GameObject.Find("MainCineCamera").GetComponent<CinemachineVirtualCamera>();
         }

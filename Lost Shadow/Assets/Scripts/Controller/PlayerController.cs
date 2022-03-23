@@ -23,8 +23,10 @@ namespace Controller
         [SerializeField] float climbSpeed = 5f;
         [SerializeField] private bool isGrounded;
         [SerializeField] private bool isClimbable;
-        [SerializeField] private bool isClimbing;
-        [SerializeField] public bool isShadow;
+        [SerializeField] private bool isClimbing; 
+        public bool isShadow;
+
+        public bool IsAlive { get; private set; }
         [SerializeField] private bool allowShift;
         [SerializeField] public Color playerColor;
         #endregion
@@ -40,7 +42,6 @@ namespace Controller
             _myBodyCollider = GetComponent<BoxCollider2D>();
             _myFeetCollider = _feet.GetComponent<BoxCollider2D>();
             _gravityScaleAtStart = _myRigidbody.gravityScale;
-            peek = GameObject.FindWithTag("Peek").GetComponent<RectTransform>();
             _peekMask = GameObject.FindWithTag("PeekMask").GetComponent<RectTransform>();
             isJumpAble = true;
             isShadow = true;
@@ -49,8 +50,10 @@ namespace Controller
             isPeeking = false;
             isMoving = false;
             isHiding = false;
+            IsAlive = true;
             allowShift = LevelManager.Instance.allowShift;
             _peekSize = 2000;
+            peek = GameObject.FindWithTag("Peek").GetComponent<RectTransform>();
             LevelManager.Instance.CheckCutScene();
         }
 
@@ -451,6 +454,18 @@ namespace Controller
             }
         }
 
-        #endregion"
+        public void ModifyAlive(bool status)
+        {
+            IsAlive = status;
+            if (!IsAlive)
+            {
+                _isControllable = false;
+                isJumpAble = false;
+                allowShift = false;
+                
+            }
+        }
+
+        #endregion
     }
 }

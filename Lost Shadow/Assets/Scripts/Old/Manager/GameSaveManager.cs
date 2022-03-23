@@ -11,13 +11,12 @@ namespace Old.Manager
     {
         public Appdata playerData;
         public static GameSaveManager Instance { get; private set; }
-        private bool paused = false;
+        private bool _paused;
         [SerializeField] private CurrectSlot saveSlot;
         [SerializeField] private GameObject resumeButton;
         [SerializeField] private GameObject restartButton;
         [SerializeField] private GameObject menuButton;
         [SerializeField] private GameObject pauseOverlay;
-        [SerializeField] private Animator transition;
         public bool IsSaveFile()
         {
             return Directory.Exists(Application.persistentDataPath + "/Game_Save");
@@ -43,7 +42,7 @@ namespace Old.Manager
             {
                 if (Appdata.Instance.currentScene == SceneCollection.MainMenu || Appdata.Instance.currentScene == SceneCollection.LoadScene) { return; }
                 {
-                    if (paused)
+                    if (_paused)
                     {
                         ResumeGame();
                     }
@@ -136,14 +135,14 @@ namespace Old.Manager
         {
             pauseOverlay.SetActive(true);
             Time.timeScale = 0;
-            paused = true;
+            _paused = true;
         }
 
         public void ResumeGame()
         {
             pauseOverlay.SetActive(false);
             Time.timeScale = 1;
-            paused = false;
+            _paused = false;
         }
         
 

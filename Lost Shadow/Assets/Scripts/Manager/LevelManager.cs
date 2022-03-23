@@ -53,6 +53,7 @@ namespace Manager
     
     private void Start()
     {
+        Debug.Log(Appdata.Instance.currentScene);
         _player = GameObject.FindWithTag("Player");
         cameraObj = GameObject.FindWithTag("Camera");
         _mainCamera = GameObject.FindWithTag("MainCamera");
@@ -65,7 +66,6 @@ namespace Manager
             Instantiate(playerClonePrefab, startPos.position, startPos.rotation);
             _playerClone = GameObject.FindWithTag("PlayerClone");
             _player = GameObject.FindWithTag("Player");
-            playerController = _player.GetComponent<PlayerController>();
             //StartCutscene();
         }
             
@@ -80,6 +80,7 @@ namespace Manager
         }
         mapBoundsShadow = GameObject.Find("MapBoundsShadow").GetComponent<Collider2D>();
         cameraBounds.m_BoundingShape2D = mapBoundsShadow;
+        playerController = _player.GetComponent<PlayerController>();
         
         GameSaveManager.Instance.SaveGame();
         

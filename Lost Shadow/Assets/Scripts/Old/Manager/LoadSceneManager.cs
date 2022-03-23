@@ -10,12 +10,10 @@ public enum SceneCollection
     MainMenu , // 1
     LoadScene , //2
     Tutorial01,// 3
-    Tutorial02,
-    Scene01,
-    Scene02// 4
-    //Lost3,// 5
-    //Lost4,// 6
-    //Lost5// 7
+    Tutorial02,//4
+    Scenes01,//5
+    Scenes02// 6
+
 }
 public class LoadSceneManager : Singleton<LoadSceneManager>
 {
