@@ -1,6 +1,8 @@
 using Cinemachine;
 using Controller;
+using Old.Manager;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Manager
 {
@@ -25,7 +27,8 @@ namespace Manager
 
         private GameObject _player;
         private GameObject _playerClone;
-        private GameObject _camera;
+        public GameObject cameraObj;
+        private GameObject _mainCamera;
         private GameObject _overlayCamera;
 
         #endregion
@@ -50,13 +53,13 @@ namespace Manager
     
     private void Start()
     {
-        
         _player = GameObject.FindWithTag("Player");
-        _camera = GameObject.FindWithTag("Camera");
+        cameraObj = GameObject.FindWithTag("Camera");
+        _mainCamera = GameObject.FindWithTag("MainCamera");
         _overlayCamera = GameObject.FindWithTag("OverlayCamera");
-        _camera = GameObject.FindWithTag("MainCamera");
         startPos = GameObject.Find("StartPos").transform;
-        cameraBounds.m_BoundingShape2D = mapBoundsShadow;
+        cameraBounds = GameObject.Find("MainCineCamera").GetComponent<CinemachineConfiner2D>();
+
         if (_player == null) {
             Instantiate(playerPrefab, startPos.position, startPos.rotation);
             Instantiate(playerClonePrefab, startPos.position, startPos.rotation);
@@ -66,18 +69,34 @@ namespace Manager
             //StartCutscene();
         }
             
-        if (_camera == null)
+        if (cameraObj == null)
         {
             Instantiate(cameraPrefab, startPos.position, startPos.rotation);
-            _camera = GameObject.FindWithTag("MainCamera");
             _overlayCamera = GameObject.FindWithTag("OverlayCamera");
         }
+        if (GameObject.Find("MapBoundsLight") != null)
+        {
+            mapBoundsLight = GameObject.Find("MapBoundsLight").GetComponent<Collider2D>();
+        }
+        mapBoundsShadow = GameObject.Find("MapBoundsShadow").GetComponent<Collider2D>();
+        cameraBounds.m_BoundingShape2D = mapBoundsShadow;
+        
         GameSaveManager.Instance.SaveGame();
+        
     }
 
     private void Update()
     {
         FollowMain();
+    }
+
+    public void CheckCutScene()
+    {
+        if (SceneManager.GetActiveScene().name == "Tutorial01")
+        {
+            cameraObj.GetComponent<Animator>().SetBool("Cutscene",true);
+            playerController.Wakeup();
+        }
     }
 
 
@@ -102,20 +121,20 @@ namespace Manager
     {
         if (playerController.isShadow)
         {
-            _overlayCamera.transform.position = _camera.transform.position - new Vector3(0, 100);
+            _overlayCamera.transform.position = _mainCamera.transform.position - new Vector3(0, 100);
             _playerClone.transform.position = _player.transform.position - new Vector3(0, 100);
             cameraBounds.m_BoundingShape2D = mapBoundsShadow;
         }
         else
         {
-            _overlayCamera.transform.position = _camera.transform.position + new Vector3(0, 100);
+            _overlayCamera.transform.position = _mainCamera.transform.position + new Vector3(0, 100);
             _playerClone.transform.position = _player.transform.position + new Vector3(0, 100);
             cameraBounds.m_BoundingShape2D = mapBoundsLight;
         }
         //playerController.peek.transform.position = _player.transform.position;
-        playerController.peek.transform.position = _camera.transform.position;
+        playerController.peek.transform.position = _mainCamera.transform.position;
         //_overlayCamera.transform.position = _playerClone.transform.position;
-        _overlayCamera.GetComponent<Camera>().orthographicSize = _camera.GetComponent<Camera>().orthographicSize;
+        _overlayCamera.GetComponent<Camera>().orthographicSize = _mainCamera.GetComponent<Camera>().orthographicSize;
     }
     
 

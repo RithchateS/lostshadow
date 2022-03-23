@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Old.Manager;
 using UnityEngine;
 
 public class LoadPlayerData : MonoBehaviour

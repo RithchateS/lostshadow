@@ -10,7 +10,9 @@ public enum SceneCollection
     MainMenu , // 1
     LoadScene , //2
     Tutorial01,// 3
-    //Lost2,// 4
+    Tutorial02,
+    Scene01,
+    Scene02// 4
     //Lost3,// 5
     //Lost4,// 6
     //Lost5// 7

@@ -56,9 +56,25 @@ namespace Trigger
                 _objectID = col.gameObject.GetComponent<ObjectID>().objectID;
                 switch (_objectID)
                 {
-                    case 1000:
-                        _playerController.colliderID = 1000;
-                        Debug.Log("1000");
+                    case 1001:
+                        _playerController.colliderID = 1001;
+                        break;
+                }
+            }
+
+            if (col.CompareTag("TriggerObject"))
+            {
+                _objectID = col.gameObject.GetComponent<ObjectID>().objectID;
+                switch (_objectID)
+                {
+                    case 2001:
+                        LoadSceneManager.Instance.StartLoadingScene(SceneCollection.Tutorial02);
+                        break;
+                    case 2002:
+                        LoadSceneManager.Instance.StartLoadingScene(SceneCollection.Scene01);
+                        break;
+                    case 2003:
+                        LoadSceneManager.Instance.StartLoadingScene(SceneCollection.Scene02);
                         break;
                 }
             }

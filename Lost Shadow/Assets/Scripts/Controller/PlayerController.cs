@@ -1,5 +1,4 @@
 using System.Collections;
-using Cinemachine;
 using Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,7 +10,7 @@ namespace Controller
         #region Variables
         Vector2 _moveInput;
         Rigidbody2D _myRigidbody;
-        Animator _myAnimator;
+        [SerializeField] Animator _myAnimator;
         BoxCollider2D _myBodyCollider;
         BoxCollider2D _myFeetCollider;
         private GameObject _feet;
@@ -28,7 +27,6 @@ namespace Controller
         [SerializeField] public bool isShadow;
         [SerializeField] private bool allowShift;
         [SerializeField] public Color playerColor;
-
         #endregion
         
         
@@ -53,8 +51,7 @@ namespace Controller
             isHiding = false;
             allowShift = LevelManager.Instance.allowShift;
             _peekSize = 2000;
-            Wakeup();
-
+            LevelManager.Instance.CheckCutScene();
         }
 
         void Update()
@@ -109,6 +106,16 @@ namespace Controller
                 _currentHorizontalSpeed = Mathf.MoveTowards(_currentHorizontalSpeed, 0, deAcceleration * Time.deltaTime);
             }
                     
+        }
+
+        public void ForceMove(int x)
+        {
+            if (x > 1 || x < -1)
+            {
+                Debug.Log("X can't be greater than 1 or less tha -1");
+                x = 0;
+            }
+            _currentHorizontalSpeed = x * acceleration * Time.deltaTime;
         }
         #endregion
         #region Jump
@@ -294,7 +301,7 @@ namespace Controller
                 {
                     Debug.Log("You can't Interact Nothing");
                 }
-                else if (colliderID == 1000)
+                else if (colliderID == 1001)
                 {
                     if (isHiding)
                     {
@@ -329,18 +336,22 @@ namespace Controller
         
         public void Wakeup()
         {
-            StartCoroutine(PauseMovement());
+            StartCoroutine(PauseMovement(6));
             _myAnimator.Play("Wakeup");
         }
         
-        IEnumerator PauseMovement()
+        IEnumerator PauseMovement(float pauseTime)
         {
 
             _isControllable = false;
+            isJumpAble = false;
+            isShiftAble = false;
 
             //Setting Time Freezeeee Here
-            yield return new WaitForSeconds(6);
+            yield return new WaitForSeconds(pauseTime);
             
+            isJumpAble = true;
+            isShiftAble = true;
             _isControllable = true;
             
         }

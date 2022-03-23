@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class CheckBreak : MonoBehaviour
+namespace Check
 {
-    public void EndBreak(string s)
+    public class CheckBreak : MonoBehaviour
     {
-        if (s == "EndBreak")
+        public void EndBreak(string s)
         {
-            Destroy(gameObject);
+            if (s == "EndBreak")
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
