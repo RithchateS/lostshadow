@@ -4,6 +4,6 @@ namespace Identifier
 {
     public class TriggerID : MonoBehaviour
     {
-        public int orthoSize;
+        public float orthoSize;
     }
 }

@@ -9,7 +9,7 @@ namespace Trigger
     {
         CinemachineVirtualCamera _virtualCamera;
         private bool _cameraSizeIsChangable;
-        private int _orthoSize;
+        private float _orthoSize;
 
         private void Start()
         {

@@ -21,7 +21,6 @@ TagManager:
   - PeekMask
   - Trigger
   - Object
-  - Key
   - Interact
   layers:
   - Default

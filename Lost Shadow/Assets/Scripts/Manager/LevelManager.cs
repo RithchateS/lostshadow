@@ -14,7 +14,9 @@ namespace Manager
         [SerializeField] private GameObject cameraPrefab;
         [SerializeField] private PlayerController playerController;
 
-        [Header("Settings")] public int shiftCountStart;
+        [Header("Settings")] 
+        public int shiftCountStart;
+        public bool allowShift;
 
         [Header("MapBounds")]
         [SerializeField] private CinemachineConfiner2D cameraBounds;
@@ -43,7 +45,7 @@ namespace Manager
             return;
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
     
     private void Start()
@@ -54,6 +56,7 @@ namespace Manager
         _overlayCamera = GameObject.FindWithTag("OverlayCamera");
         _camera = GameObject.FindWithTag("MainCamera");
         startPos = GameObject.Find("StartPos").transform;
+        cameraBounds.m_BoundingShape2D = mapBoundsShadow;
         if (_player == null) {
             Instantiate(playerPrefab, startPos.position, startPos.rotation);
             Instantiate(playerClonePrefab, startPos.position, startPos.rotation);

@@ -1,4 +1,5 @@
 using System.Collections;
+using Cinemachine;
 using Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -25,6 +26,7 @@ namespace Controller
         [SerializeField] private bool isClimbable;
         [SerializeField] private bool isClimbing;
         [SerializeField] public bool isShadow;
+        [SerializeField] private bool allowShift;
         [SerializeField] public Color playerColor;
 
         #endregion
@@ -49,6 +51,7 @@ namespace Controller
             isPeeking = false;
             isMoving = false;
             isHiding = false;
+            allowShift = LevelManager.Instance.allowShift;
             _peekSize = 2000;
             Wakeup();
 
@@ -154,7 +157,7 @@ namespace Controller
 
         void OnShadowShift(InputValue value)
         {
-            if (value.isPressed && isShadow && isShiftAble && isPeeking && !isMoving)
+            if (value.isPressed && isShadow && isShiftAble && isPeeking && !isMoving && allowShift)
             {
                 var position = transform.position;
                 position = new Vector3(position.x, position.y - 100);
@@ -162,7 +165,7 @@ namespace Controller
                 isShadow = false;
                 ModifyShiftCount(-1);
             }
-            else if (value.isPressed && !isShadow && isShiftAble && isPeeking && !isMoving)
+            else if (value.isPressed && !isShadow && isShiftAble && isPeeking && !isMoving && allowShift)
             {
                 var position = transform.position;
                 position = new Vector3(position.x, position.y + 100);
@@ -170,7 +173,7 @@ namespace Controller
                 isShadow = true;
                 ModifyShiftCount(-1);
             }
-            if (value.isPressed && isPeekAble && !isMoving)
+            if (value.isPressed && isPeekAble && !isMoving && allowShift)
             {
                 TogglePeek();
             }
