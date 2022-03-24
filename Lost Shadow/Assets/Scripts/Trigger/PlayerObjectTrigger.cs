@@ -77,6 +77,12 @@ namespace Trigger
                     case 2003: //To Scenes02
                         GameSaveManager.Instance.GoNextScene(6);
                         break;
+                    case 2004: //To Scenes03
+                        GameSaveManager.Instance.GoNextScene(7);
+                        break;
+                    case 2005: //To Scenes04
+                        GameSaveManager.Instance.GoNextScene(8);
+                        break;
                     case 3001: //Death
                         _playerController.ModifyAlive(false);
                         break;

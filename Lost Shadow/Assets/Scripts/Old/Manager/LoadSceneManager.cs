@@ -12,7 +12,9 @@ public enum SceneCollection
     Tutorial01,// 3
     Tutorial02,//4
     Scenes01,//5
-    Scenes02// 6
+    Scenes02,//6
+    Scenes03,//7
+    Scenes04//8
 
 }
 public class LoadSceneManager : Singleton<LoadSceneManager>
