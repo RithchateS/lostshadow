@@ -68,16 +68,16 @@ namespace Trigger
                 _objectID = col.gameObject.GetComponent<ObjectID>().objectID;
                 switch (_objectID)
                 {
-                    case 2001:
+                    case 2001: //To Tutorial02
                         GameSaveManager.Instance.GoNextScene(4);
                         break;
-                    case 2002:
+                    case 2002: //To Scenes01
                         GameSaveManager.Instance.GoNextScene(5);
                         break;
-                    case 2003:
+                    case 2003: //To Scenes02
                         GameSaveManager.Instance.GoNextScene(6);
                         break;
-                    case 3001:
+                    case 3001: //Death
                         _playerController.ModifyAlive(false);
                         break;
                 }

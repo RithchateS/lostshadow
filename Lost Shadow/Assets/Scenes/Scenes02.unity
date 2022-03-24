@@ -6703,7 +6703,7 @@ GameObject:
   - component: {fileID: 388387313}
   m_Layer: 6
   m_Name: Platform Tilemaps
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35168,7 +35168,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -39040,19 +39040,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7075366216882570371, guid: 616530f0bcc2c3c4a80dbd855d61f1b7, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
-      value: 21.916409
+      value: 22.153835
       objectReference: {fileID: 0}
     - target: {fileID: 7075366216882570371, guid: 616530f0bcc2c3c4a80dbd855d61f1b7, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
-      value: 3.1285133
+      value: 1.3082461
       objectReference: {fileID: 0}
     - target: {fileID: 7075366216882570371, guid: 616530f0bcc2c3c4a80dbd855d61f1b7, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
-      value: 23.203133
+      value: 23.282274
       objectReference: {fileID: 0}
     - target: {fileID: 7075366216882570371, guid: 616530f0bcc2c3c4a80dbd855d61f1b7, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
-      value: 3.1001425
+      value: 1.3194461
       objectReference: {fileID: 0}
     - target: {fileID: 7075366216882570371, guid: 616530f0bcc2c3c4a80dbd855d61f1b7, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
@@ -47747,7 +47747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7075366216882570371, guid: 616530f0bcc2c3c4a80dbd855d61f1b7, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].y
-      value: -5.2072196
+      value: -5.7010245
       objectReference: {fileID: 0}
     - target: {fileID: 7075366216882570371, guid: 616530f0bcc2c3c4a80dbd855d61f1b7, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
@@ -47759,27 +47759,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7075366216882570371, guid: 616530f0bcc2c3c4a80dbd855d61f1b7, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].x
-      value: 51.373413
+      value: 51.297443
       objectReference: {fileID: 0}
     - target: {fileID: 7075366216882570371, guid: 616530f0bcc2c3c4a80dbd855d61f1b7, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].y
-      value: 0.32678056
+      value: 0.7446196
       objectReference: {fileID: 0}
     - target: {fileID: 7075366216882570371, guid: 616530f0bcc2c3c4a80dbd855d61f1b7, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].x
-      value: 44.188343
+      value: 44.273827
       objectReference: {fileID: 0}
     - target: {fileID: 7075366216882570371, guid: 616530f0bcc2c3c4a80dbd855d61f1b7, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].y
-      value: 0.25331378
+      value: 0.7471187
       objectReference: {fileID: 0}
     - target: {fileID: 7075366216882570371, guid: 616530f0bcc2c3c4a80dbd855d61f1b7, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].x
-      value: 40.58157
+      value: 40.695526
       objectReference: {fileID: 0}
     - target: {fileID: 7075366216882570371, guid: 616530f0bcc2c3c4a80dbd855d61f1b7, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].y
-      value: 3.3714619
+      value: 4.3590717
       objectReference: {fileID: 0}
     - target: {fileID: 7075366216882570371, guid: 616530f0bcc2c3c4a80dbd855d61f1b7, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[7].x
@@ -52500,7 +52500,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1971101812}
   m_Layer: 0
-  m_Name: Trigger And Bounds
+  m_Name: TriggerAndBounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
