@@ -123,10 +123,10 @@ namespace Old.Manager
         }
 
         // Use For Select Next Scene In game component
-        public void GoNextScene(int nextLevel,int chapter)
+        public void GoNextScene(int nextLevel)
         {
-            SceneManager.LoadScene("LoadScene");
-            Appdata.Instance.currentChapter = chapter;
+            LoadSceneManager.Instance.StartLoadingScene(SceneCollection.LoadScene);
+            Appdata.Instance.currentChapter = 0;
             Appdata.Instance.sceneToLoad = (SceneCollection)nextLevel;
             Appdata.Instance.currentScene = Appdata.Instance.sceneToLoad;
         }
@@ -154,7 +154,7 @@ namespace Old.Manager
             });
             restartButton.GetComponent<Button>().onClick.AddListener(delegate
             {
-                SceneManager.LoadScene(Enum.GetName(typeof (SceneCollection), Appdata.Instance.currentScene), LoadSceneMode.Single);
+                SceneManager.LoadSceneAsync(Enum.GetName(typeof (SceneCollection), SceneManager.GetActiveScene().buildIndex), LoadSceneMode.Single);
                 ResumeGame();
             });
             menuButton.GetComponent<Button>().onClick.AddListener(delegate

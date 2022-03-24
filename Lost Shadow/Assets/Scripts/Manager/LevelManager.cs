@@ -30,6 +30,8 @@ namespace Manager
         public GameObject cameraObj;
         private GameObject _mainCamera;
         private GameObject _overlayCamera;
+        [SerializeField] public RectTransform peek; 
+        [SerializeField] public RectTransform peekMask;
 
         #endregion
 
@@ -53,20 +55,20 @@ namespace Manager
     
     private void Start()
     {
-        Debug.Log(Appdata.Instance.currentScene);
         _player = GameObject.FindWithTag("Player");
         cameraObj = GameObject.FindWithTag("Camera");
         _mainCamera = GameObject.FindWithTag("MainCamera");
         _overlayCamera = GameObject.FindWithTag("OverlayCamera");
         startPos = GameObject.Find("StartPos").transform;
         cameraBounds = GameObject.Find("MainCineCamera").GetComponent<CinemachineConfiner2D>();
+        peek = GameObject.FindWithTag("Peek").GetComponent<RectTransform>();
+        peekMask = GameObject.FindWithTag("PeekMask").GetComponent<RectTransform>();
 
         if (_player == null) {
             Instantiate(playerPrefab, startPos.position, startPos.rotation);
             Instantiate(playerClonePrefab, startPos.position, startPos.rotation);
             _playerClone = GameObject.FindWithTag("PlayerClone");
             _player = GameObject.FindWithTag("Player");
-            //StartCutscene();
         }
             
         if (cameraObj == null)
@@ -83,6 +85,7 @@ namespace Manager
         playerController = _player.GetComponent<PlayerController>();
         
         GameSaveManager.Instance.SaveGame();
+        Debug.Log(Appdata.Instance.currentScene);
         
     }
 
@@ -133,7 +136,7 @@ namespace Manager
             cameraBounds.m_BoundingShape2D = mapBoundsLight;
         }
         //playerController.peek.transform.position = _player.transform.position;
-        playerController.peek.transform.position = _mainCamera.transform.position;
+        peek.transform.position = _mainCamera.transform.position;
         //_overlayCamera.transform.position = _playerClone.transform.position;
         _overlayCamera.GetComponent<Camera>().orthographicSize = _mainCamera.GetComponent<Camera>().orthographicSize;
     }

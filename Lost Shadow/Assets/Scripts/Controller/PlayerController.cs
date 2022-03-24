@@ -42,7 +42,8 @@ namespace Controller
             _myBodyCollider = GetComponent<BoxCollider2D>();
             _myFeetCollider = _feet.GetComponent<BoxCollider2D>();
             _gravityScaleAtStart = _myRigidbody.gravityScale;
-            _peekMask = GameObject.FindWithTag("PeekMask").GetComponent<RectTransform>();
+            _peekMask = LevelManager.Instance.peekMask;
+            _isControllable = true;
             isJumpAble = true;
             isShadow = true;
             isShiftAble = true;
@@ -53,7 +54,7 @@ namespace Controller
             IsAlive = true;
             allowShift = LevelManager.Instance.allowShift;
             _peekSize = 2000;
-            peek = GameObject.FindWithTag("Peek").GetComponent<RectTransform>();
+            _peek = LevelManager.Instance.peek;
             LevelManager.Instance.CheckCutScene();
         }
 
@@ -161,7 +162,7 @@ namespace Controller
         [SerializeField] private bool isPeekAble;
         [SerializeField] private bool isPeeking;
         [SerializeField] private int shiftCount;
-        public RectTransform peek; 
+        private RectTransform _peek; 
         private RectTransform _peekMask;
         private float _peekSize;
 
@@ -211,14 +212,14 @@ namespace Controller
                 isPeeking = false;
                 _isControllable = false;
                 isJumpAble = false;
-                while (peek.sizeDelta.x > 0)
+                while (_peek.sizeDelta.x > 0)
                 {
                     if (playerColor.a < 1)
                     {
                         playerColor.a += 0.01f;
                     }
                     playerColor.a = 1;
-                    peek.sizeDelta += new Vector2(-50, -50);
+                    _peek.sizeDelta += new Vector2(-50, -50);
                     _peekMask.sizeDelta += new Vector2(-50, -50);
                     yield return new WaitForSeconds(0.01f);
                 }
@@ -234,14 +235,14 @@ namespace Controller
                 isJumpAble = false;
                 isPeekAble = false;
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Front";
-                while (peek.sizeDelta.x < _peekSize)
+                while (_peek.sizeDelta.x < _peekSize)
                 {
                     if (playerColor.a >= 0.5f)
                     {
                         playerColor.a -= 0.01f;
                     }
                     playerColor.a = 0.5f;
-                    peek.sizeDelta += new Vector2(25, 25);
+                    _peek.sizeDelta += new Vector2(25, 25);
                     _peekMask.sizeDelta += new Vector2(25, 25);
                     yield return new WaitForSeconds(0.01f);
                 }

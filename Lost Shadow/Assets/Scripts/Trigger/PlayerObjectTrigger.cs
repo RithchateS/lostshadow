@@ -69,16 +69,13 @@ namespace Trigger
                 switch (_objectID)
                 {
                     case 2001:
-                        LoadSceneManager.Instance.StartLoadingScene(SceneCollection.Tutorial02);
-                        GameSaveManager.Instance.SaveGame();
+                        GameSaveManager.Instance.GoNextScene(4);
                         break;
                     case 2002:
-                        LoadSceneManager.Instance.StartLoadingScene(SceneCollection.Scenes01);
-                        GameSaveManager.Instance.SaveGame();
+                        GameSaveManager.Instance.GoNextScene(5);
                         break;
                     case 2003:
-                        LoadSceneManager.Instance.StartLoadingScene(SceneCollection.Scenes02);
-                        GameSaveManager.Instance.SaveGame();
+                        GameSaveManager.Instance.GoNextScene(6);
                         break;
                     case 3001:
                         _playerController.ModifyAlive(false);

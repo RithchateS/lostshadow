@@ -16,6 +16,7 @@ public class PlayMenuController : MonoBehaviour
     [SerializeField] private TMP_Text chaperterName3;
     private void Start()
     {
+        Appdata.Instance.currentScene = SceneCollection.MainMenu;
         deleteSave.GetComponent<Button>().onClick.AddListener(delegate
         {
             GameSaveManager.Instance.DeleteSave(1);
