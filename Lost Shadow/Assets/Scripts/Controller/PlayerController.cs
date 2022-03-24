@@ -110,7 +110,7 @@ namespace Controller
         }
         private void CalculateRun() {
             if (_moveInput.x != 0 && !isPeeking) {
-                _myAnimator.SetFloat("animSpeed", 0.8f);
+                _myAnimator.SetFloat("runAnimSpeed", 0.8f);
                 _currentHorizontalSpeed += _moveInput.x * acceleration * Time.deltaTime;
                         
                 _currentHorizontalSpeed = Mathf.Clamp(_currentHorizontalSpeed, -runSpeed, runSpeed);
@@ -124,7 +124,7 @@ namespace Controller
         
         private void CalculateWalk() {
             if (_moveInput.x != 0 && !isPeeking) {
-                _myAnimator.SetFloat("animSpeed", 0.4f);
+                _myAnimator.SetFloat("runAnimSpeed", 0.4f);
                 _currentHorizontalSpeed += _moveInput.x * acceleration/2 * Time.deltaTime;
                         
                 _currentHorizontalSpeed = Mathf.Clamp(_currentHorizontalSpeed, -runSpeed/2, runSpeed/2);
@@ -189,6 +189,7 @@ namespace Controller
                 position = new Vector3(position.x, position.y - 100);
                 transform.position = position;
                 isShadow = false;
+                _myAnimator.SetBool("isShifting", true);
                 ModifyShiftCount(-1);
             }
             else if (value.isPressed && !isShadow && isShiftAble && isPeeking && !isMoving && allowShift && !isClimbing)
@@ -197,6 +198,7 @@ namespace Controller
                 position = new Vector3(position.x, position.y + 100);
                 transform.position = position;
                 isShadow = true;
+                _myAnimator.SetBool("isShifting", true);
                 ModifyShiftCount(-1);
             }
             if (value.isPressed && isPeekAble && !isMoving && allowShift)
@@ -227,6 +229,7 @@ namespace Controller
                 isPeeking = false;
                 _isControllable = false;
                 isJumpAble = false;
+                _myAnimator.SetBool("isPeeking",false);
                 while (_peek.sizeDelta.x > 0)
                 {
                     if (playerColor.a < 1)
@@ -249,6 +252,7 @@ namespace Controller
                 _isControllable = false;
                 isJumpAble = false;
                 isPeekAble = false;
+                _myAnimator.SetBool("isPeeking",true);
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Front";
                 while (_peek.sizeDelta.x < _peekSize)
                 {
@@ -279,12 +283,12 @@ namespace Controller
                 {
                     isClimbing = true;
                 }
-        
+
                 if (_currentHorizontalSpeed != 0 && isClimbable)
                 {
                     isClimbing = true;
                 }
-        
+
                 if (isClimbing)
                 {
                     isGrounded = true;
@@ -310,6 +314,7 @@ namespace Controller
             }
             else
             {
+                isClimbing = false;
                 _myRigidbody.gravityScale = _gravityScaleAtStart;
                 _myAnimator.SetBool("isClimbing", false);
             }
@@ -488,7 +493,7 @@ namespace Controller
                 isJumpAble = false;
                 allowShift = false;
                 _myAnimator.SetBool("isDead", true);
-                _myRigidbody.velocity = new Vector2(0,0);
+                _myRigidbody.velocity = new Vector2(0,_myRigidbody.velocity.y);
             }
         }
 
