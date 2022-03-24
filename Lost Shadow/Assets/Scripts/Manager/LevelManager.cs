@@ -1,6 +1,7 @@
 using Cinemachine;
 using Controller;
 using Old.Manager;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,6 +26,8 @@ namespace Manager
         [SerializeField] private Collider2D mapBoundsShadow;
         [SerializeField] private Collider2D mapBoundsLight;
 
+        [Header("Others")] 
+        public TMP_Text shiftCountText;
         private GameObject _player;
         private GameObject _playerClone;
         public GameObject cameraObj;
@@ -47,7 +50,6 @@ namespace Manager
         else
         {
             Destroy(this);
-            return;
         }
 
         //DontDestroyOnLoad(gameObject);
@@ -63,6 +65,7 @@ namespace Manager
         cameraBounds = GameObject.Find("MainCineCamera").GetComponent<CinemachineConfiner2D>();
         peek = GameObject.FindWithTag("Peek").GetComponent<RectTransform>();
         peekMask = GameObject.FindWithTag("PeekMask").GetComponent<RectTransform>();
+        shiftCountText = GameObject.Find("ShiftCount").GetComponent<TMP_Text>();
 
         if (_player == null) {
             Instantiate(playerPrefab, startPos.position, startPos.rotation);

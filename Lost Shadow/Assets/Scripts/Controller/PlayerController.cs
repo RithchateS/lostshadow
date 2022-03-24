@@ -56,6 +56,7 @@ namespace Controller
             allowShift = LevelManager.Instance.allowShift;
             _peekSize = 2000;
             _peek = LevelManager.Instance.peek;
+            LevelManager.Instance.shiftCountText.text = $"ShiftCount: {shiftCount}";
             LevelManager.Instance.CheckCutScene();
         }
 
@@ -182,7 +183,7 @@ namespace Controller
 
         void OnShadowShift(InputValue value)
         {
-            if (value.isPressed && isShadow && isShiftAble && isPeeking && !isMoving && allowShift)
+            if (value.isPressed && isShadow && isShiftAble && isPeeking && !isMoving && allowShift && !isClimbing)
             {
                 var position = transform.position;
                 position = new Vector3(position.x, position.y - 100);
@@ -190,7 +191,7 @@ namespace Controller
                 isShadow = false;
                 ModifyShiftCount(-1);
             }
-            else if (value.isPressed && !isShadow && isShiftAble && isPeeking && !isMoving && allowShift)
+            else if (value.isPressed && !isShadow && isShiftAble && isPeeking && !isMoving && allowShift && !isClimbing)
             {
                 var position = transform.position;
                 position = new Vector3(position.x, position.y + 100);
@@ -279,10 +280,10 @@ namespace Controller
                     isClimbing = true;
                 }
         
-                // if (_moveInput.x != 0 && isClimbing)
-                // {
-                //     isClimbing = true;
-                // }
+                if (_currentHorizontalSpeed != 0 && isClimbable)
+                {
+                    isClimbing = true;
+                }
         
                 if (isClimbing)
                 {
@@ -291,7 +292,15 @@ namespace Controller
                     _myRigidbody.velocity = climbVelocity;
                     _myRigidbody.gravityScale = 0f;
                     bool playerHasVerticalSpeed = Mathf.Abs(_myRigidbody.velocity.y) > Mathf.Epsilon;
-                    _myAnimator.SetBool("isClimbing", playerHasVerticalSpeed);
+                    _myAnimator.SetBool("isClimbing", true);
+                    if (playerHasVerticalSpeed)
+                    {
+                        _myAnimator.SetFloat("climbAnimSpeed",1);
+                    }
+                    else
+                    {
+                        _myAnimator.SetFloat("climbAnimSpeed",0);
+                    }
                 }
                 else
                 {
@@ -467,6 +476,7 @@ namespace Controller
                 shiftCount = 0;
                 isShiftAble = false;
             }
+            ModifyShiftCountText();
         }
 
         public void ModifyAlive(bool status)
@@ -480,6 +490,11 @@ namespace Controller
                 _myAnimator.SetBool("isDead", true);
                 _myRigidbody.velocity = new Vector2(0,0);
             }
+        }
+
+        private void ModifyShiftCountText()
+        {
+            LevelManager.Instance.shiftCountText.text = $"ShiftCount: {shiftCount}";
         }
 
         #endregion
