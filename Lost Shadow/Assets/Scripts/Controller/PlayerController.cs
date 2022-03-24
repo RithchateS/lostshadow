@@ -13,7 +13,7 @@ namespace Controller
         Rigidbody2D _myRigidbody;
         [SerializeField] Animator _myAnimator;
         BoxCollider2D _myBodyCollider;
-        BoxCollider2D _myFeetCollider;
+        PolygonCollider2D _myFeetCollider;
         private GameObject _feet;
         float _gravityScaleAtStart;
         bool _isControllable;
@@ -41,7 +41,7 @@ namespace Controller
             _myRigidbody = GetComponent<Rigidbody2D>();
             _myAnimator = GetComponent<Animator>();
             _myBodyCollider = GetComponent<BoxCollider2D>();
-            _myFeetCollider = _feet.GetComponent<BoxCollider2D>();
+            _myFeetCollider = _feet.GetComponent<PolygonCollider2D>();
             _gravityScaleAtStart = _myRigidbody.gravityScale;
             _peekMask = LevelManager.Instance.peekMask;
             _isControllable = true;
@@ -477,7 +477,8 @@ namespace Controller
                 _isControllable = false;
                 isJumpAble = false;
                 allowShift = false;
-                
+                _myAnimator.SetBool("isDead", true);
+                _myRigidbody.velocity = new Vector2(0,0);
             }
         }
 
