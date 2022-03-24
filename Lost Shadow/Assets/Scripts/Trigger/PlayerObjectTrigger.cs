@@ -86,6 +86,9 @@ namespace Trigger
                     case 3001: //Death
                         _playerController.ModifyAlive(false);
                         break;
+                    case 9999: //Quit Game MTFKKKKKK
+                        Application.Quit();
+                        break;
                 }
             }
         }
