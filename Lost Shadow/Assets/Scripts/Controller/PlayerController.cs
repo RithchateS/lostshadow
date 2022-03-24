@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -63,8 +64,15 @@ namespace Controller
             if (_isControllable)
             {
                 Run();
-                CalculateRun();
                 ClimbLadder();
+                if (Input.GetKey(KeyCode.LeftControl))
+                {
+                    CalculateRun();
+                }
+                else
+                {
+                    CalculateWalk();
+                }
             }
             
             FlipSprite();
@@ -75,8 +83,8 @@ namespace Controller
         }
 
         #region InputSystem
-        #region Run
-        [Header("RUN")] 
+        #region Move
+        [Header("Move")] 
         [SerializeField] private float runSpeed = 7f;
         [SerializeField] private float acceleration = 50f;
         private float _currentHorizontalSpeed;
@@ -101,6 +109,7 @@ namespace Controller
         }
         private void CalculateRun() {
             if (_moveInput.x != 0 && !isPeeking) {
+                _myAnimator.SetFloat("animSpeed", 0.8f);
                 _currentHorizontalSpeed += _moveInput.x * acceleration * Time.deltaTime;
                         
                 _currentHorizontalSpeed = Mathf.Clamp(_currentHorizontalSpeed, -runSpeed, runSpeed);
@@ -111,16 +120,21 @@ namespace Controller
             }
                     
         }
-
-        public void ForceMove(int x)
-        {
-            if (x > 1 || x < -1)
-            {
-                Debug.Log("X can't be greater than 1 or less tha -1");
-                x = 0;
+        
+        private void CalculateWalk() {
+            if (_moveInput.x != 0 && !isPeeking) {
+                _myAnimator.SetFloat("animSpeed", 0.4f);
+                _currentHorizontalSpeed += _moveInput.x * acceleration/2 * Time.deltaTime;
+                        
+                _currentHorizontalSpeed = Mathf.Clamp(_currentHorizontalSpeed, -runSpeed/2, runSpeed/2);
+                        
             }
-            _currentHorizontalSpeed = x * acceleration * Time.deltaTime;
+            else {
+                _currentHorizontalSpeed = Mathf.MoveTowards(_currentHorizontalSpeed, 0, deAcceleration/2 * Time.deltaTime);
+            }
+                    
         }
+        
         #endregion
         #region Jump
         [Header("JUMP")]
@@ -265,15 +279,15 @@ namespace Controller
                     isClimbing = true;
                 }
         
-                if (_moveInput.x != 0)
-                {
-                    isClimbing = false;
-                }
+                // if (_moveInput.x != 0 && isClimbing)
+                // {
+                //     isClimbing = true;
+                // }
         
                 if (isClimbing)
                 {
                     isGrounded = true;
-                    Vector2 climbVelocity = new Vector2 (0, _moveInput.y * climbSpeed);
+                    Vector2 climbVelocity = new Vector2 (_currentHorizontalSpeed, _moveInput.y * climbSpeed);
                     _myRigidbody.velocity = climbVelocity;
                     _myRigidbody.gravityScale = 0f;
                     bool playerHasVerticalSpeed = Mathf.Abs(_myRigidbody.velocity.y) > Mathf.Epsilon;
