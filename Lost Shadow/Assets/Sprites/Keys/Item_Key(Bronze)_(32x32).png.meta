@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -68,7 +68,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -821,7 +821,7 @@ TextureImporter:
     nameFileIdTable:
       Item_Key(Bronze)_(32x32)_8: 1234474448
       Item_Key(Bronze)_(32x32)_11: -447883051
-      Item_Key(Bronze)_(32x32)_30: -563695033
+      Item_Key(Bronze)_(32x32)_7: -1221051541
       Item_Key(Bronze)_(32x32)_5: -1299165255
       Item_Key(Bronze)_(32x32)_16: 1663904285
       Item_Key(Bronze)_(32x32)_9: 592587778
@@ -851,7 +851,7 @@ TextureImporter:
       Item_Key(Bronze)_(32x32)_2: 347719821
       Item_Key(Bronze)_(32x32)_28: 856633092
       Item_Key(Bronze)_(32x32)_29: -1145793901
-      Item_Key(Bronze)_(32x32)_7: -1221051541
+      Item_Key(Bronze)_(32x32)_30: -563695033
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
