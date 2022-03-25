@@ -201,7 +201,7 @@ namespace Controller
                 _myAnimator.SetBool("isShifting", true);
                 ModifyShiftCount(-1);
             }
-            if (value.isPressed && isPeekAble && !isMoving && allowShift)
+            if (value.isPressed && isPeekAble && !isMoving && allowShift && !isClimbing)
             {
                 TogglePeek();
             }
