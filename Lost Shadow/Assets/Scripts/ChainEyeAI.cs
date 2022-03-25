@@ -16,7 +16,7 @@ public class ChainEyeAI : MonoBehaviour
     
     void Start()
     {
-        _startPos = this.transform.position;
+        _startPos = transform.position;
         showRange();
     }
 
@@ -30,11 +30,11 @@ public class ChainEyeAI : MonoBehaviour
             transform.rotation = new Quaternion(0, 0, _rotation.z, _rotation.w);
             if (checkPlayerInRange()) {
                 NormalizeDirection();
-                transform.position = transform.position + _normalize * eyeChaseSpeed * Time.deltaTime;
+                transform.position += _normalize * eyeChaseSpeed * Time.deltaTime;
             }
             else {
                 NormalizeReturn();
-                transform.position = transform.position + _normalize * eyeBackSpeed * Time.deltaTime;
+                transform.position += _normalize * eyeBackSpeed * Time.deltaTime;
             }
         }
         
