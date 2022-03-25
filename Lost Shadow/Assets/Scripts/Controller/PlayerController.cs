@@ -97,6 +97,7 @@ namespace Controller
             if (isPeeking && _moveInput.x != 0)
             {
                 _isCancelled = true;
+                _myAnimator.SetBool("isPeeking",false);
             }
         }
         void Run() 
@@ -160,6 +161,7 @@ namespace Controller
                     if (isPeeking && value.isPressed)
                     {
                         _isCancelled = true;
+                        _myAnimator.SetBool("isPeeking",false);
                     }
                 }
 
@@ -410,6 +412,7 @@ namespace Controller
             if (_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
             {
                 isGrounded = true;
+                isClimbing = false;
             }
             else
             {
