@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Controller;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,7 @@ public class ChainEyeAI : MonoBehaviour
     [SerializeField] float eyeBackSpeed;
     [SerializeField] float eyeRange;
     private GameObject _player;
+    private PlayerController _playerController;
     [SerializeField] GameObject eyeVision;
     
     void Start()
@@ -24,6 +26,7 @@ public class ChainEyeAI : MonoBehaviour
     {
         if (_player == null) {
             _player = GameObject.FindWithTag("Player");
+            _playerController = _player.GetComponent<PlayerController>();
         }
         else {
             _rotation = Quaternion.LookRotation(_player.transform.position - transform.position, transform.TransformDirection(Vector3.up));
@@ -54,8 +57,7 @@ public class ChainEyeAI : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.transform.position = GameObject.FindWithTag("StartPos").transform.position;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            _playerController.ModifyAlive(false);
         }
     }
 

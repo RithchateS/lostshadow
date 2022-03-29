@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Controller;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,6 +24,7 @@ public class Guard1AI : MonoBehaviour
     private float _gravityScaleAtStart;
     private float _timeSinceLastClimb;
     private float _timeSinceExitLadder;
+    private PlayerController _playerController;
     [SerializeField] GameObject guardVision;
     private Vector3 _location;
     private static readonly int IsPatrolling = Animator.StringToHash("isPatrolling");
@@ -60,6 +62,7 @@ public class Guard1AI : MonoBehaviour
         _timeSinceLastClimb += Time.deltaTime;
         _timeSinceExitLadder += Time.deltaTime;
         _player = GameObject.FindWithTag("Player");
+        _playerController = _player.GetComponent<PlayerController>();
         var position = _player.transform.position;
         var position1 = transform.position;
         _distXtoPlayer = position.x - position1.x;
@@ -218,12 +221,11 @@ public class Guard1AI : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.transform.position = GameObject.FindWithTag("StartPos").transform.position;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            _playerController.ModifyAlive(false);
         }
     }
     #endregion
-    
+
     #region Utils
     private void ShowRange() {
         var transform1 = transform;
