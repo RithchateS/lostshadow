@@ -63,18 +63,18 @@ namespace Controller
         {
             if (_isControllable)
             {
-                Run();
                 ClimbLadder();
-                if (Input.GetKey(KeyCode.LeftShift))
-                {
-                    CalculateRun();
-                }
-                else
-                {
-                    CalculateWalk();
-                }
+                
             }
-            
+            Run();
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                CalculateRun();
+            }
+            else
+            {
+                CalculateWalk();
+            }
             FlipSprite();
             CheckGround();
             CheckLadder();
@@ -90,9 +90,24 @@ namespace Controller
         private float _currentHorizontalSpeed;
         [SerializeField] private float deAcceleration = 30f;
         [SerializeField] private bool isMoving;
+        [SerializeField] private bool isPressingMove;
         
         void OnMove(InputValue value) {
-            _moveInput = value.Get<Vector2>();
+
+            if (_isControllable)
+            { 
+                _moveInput = value.Get<Vector2>();
+            }
+            else
+            {
+                _moveInput = new Vector2(0, 0);
+            }
+
+
+            if (_moveInput == new Vector2(0, 0))
+            {
+                isPressingMove = false;
+            }
             if (isPeeking && _moveInput.x != 0)
             {
                 _isCancelled = true;
@@ -202,7 +217,7 @@ namespace Controller
                 myAnimator.SetBool("isShifting", true);
                 ModifyShiftCount(-1);
             }
-            if (value.isPressed && isPeekAble && !isMoving && allowShift && !isClimbing)
+            if (value.isPressed && isPeekAble && !isPressingMove && allowShift && !isClimbing)
             {
                 TogglePeek();
             }
