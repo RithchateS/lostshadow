@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Controller;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Guard1AI : MonoBehaviour
 {
+    #region Variables
     [SerializeField] float patrolSpeed = 5f;
     [SerializeField] float chaseSpeed = 10f;
     [SerializeField] float holdTime = 2f;
     [SerializeField] float viewRange = 5f;
+    [SerializeField] float guardClimbSpeed = 5f;
+    [SerializeField] float climbCooldown = 20f;
     private string _guardState = "Patrol";
     private int _viewDir = 1; //Use 1 for right, -1 for left
     private Animator _guardAnimator;
@@ -17,56 +21,65 @@ public class Guard1AI : MonoBehaviour
     private float _distXtoPlayer;
     private float _distYtoPlayer;
     private float _curHoldTime;
-    private float guardClimbSpeed = 5f;
-    private float gravityScaleAtStart = 4f;
-    private float timeSinceLastClimb = 0f;
-    [SerializeField] float climbCooldown = 20f;
-    private float timeSinceExitLadder = 0f;
+    private float _gravityScaleAtStart;
+    private float _timeSinceLastClimb;
+    private float _timeSinceExitLadder;
+    private PlayerController _playerController;
     [SerializeField] GameObject guardVision;
     private Vector3 _location;
+    private static readonly int IsPatrolling = Animator.StringToHash("isPatrolling");
 
-
+    #endregion
+    
+    #region Utilities
     void FlipGuardFacing() {
         transform.localScale = new Vector2 (-transform.localScale.x, 1f);
     }
 
+    void CheckForPlayer()
+    {
+        if (_viewDir == 1) {
+            if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
+                _guardState = "Chase";
+            }
+        }
+        else if (_viewDir == -1) {
+            if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
+                _guardState = "Chase";
+            }
+        }
+    }
+    #endregion
     private void Start() {
         _guardAnimator = GetComponent<Animator>();
         _guardRb2D = GetComponent<Rigidbody2D>();
-        showRange();
+        _gravityScaleAtStart = 4f;
+        ShowRange();
     }
 
     void Update() {
         Debug.Log(_distXtoPlayer);
-        timeSinceLastClimb += Time.deltaTime;
-        timeSinceExitLadder += Time.deltaTime;
+        _timeSinceLastClimb += Time.deltaTime;
+        _timeSinceExitLadder += Time.deltaTime;
         _player = GameObject.FindWithTag("Player");
-        _distXtoPlayer = _player.transform.position.x - transform.position.x;
-        _distYtoPlayer = _player.transform.position.y - transform.position.y;
+        _playerController = _player.GetComponent<PlayerController>();
+        var position = _player.transform.position;
+        var position1 = transform.position;
+        _distXtoPlayer = position.x - position1.x;
+        _distYtoPlayer = position.y - position1.y;
 
         if (_guardState == "Patrol") {
-            if (timeSinceExitLadder > 1f) {
+            if (_timeSinceExitLadder > 1f) {
                 _guardRb2D.gravityScale = 0f;
             }
             _guardRb2D.velocity = new Vector2 (_viewDir * patrolSpeed, _guardRb2D.velocity.y);
-            _guardAnimator.SetBool("isPatrolling", true);
-            
-            if (_viewDir == 1) {
-                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
-                    _guardState = "Chase";
-                }
-            }
-            else if (_viewDir == -1) {
-                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
-                    _guardState = "Chase";
-                }
-            }
-            
+            _guardAnimator.SetBool(IsPatrolling, true);
+            CheckForPlayer();
         }
         else if (_guardState == "Chase") {
             _guardRb2D.velocity = new Vector2 (_viewDir * chaseSpeed, _guardRb2D.velocity.y);
-            _guardAnimator.SetBool("isPatrolling", true);
-            _guardRb2D.gravityScale = gravityScaleAtStart;
+            _guardAnimator.SetBool(IsPatrolling, true);
+            _guardRb2D.gravityScale = _gravityScaleAtStart;
             
             if (_viewDir == 1) {
                 if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
@@ -89,16 +102,7 @@ public class Guard1AI : MonoBehaviour
             _guardRb2D.velocity = new Vector2 (0f, 0f);
             _curHoldTime += Time.deltaTime;
             
-            if (_viewDir == 1) {
-                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
-                    _guardState = "Chase";
-                }
-            }
-            else if (_viewDir == -1) {
-                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
-                    _guardState = "Chase";
-                }
-            }
+            CheckForPlayer();
 
             if (_curHoldTime > holdTime) {
                 _viewDir = -_viewDir;
@@ -110,16 +114,7 @@ public class Guard1AI : MonoBehaviour
             _guardRb2D.velocity = new Vector2 (0f, 0f);
             _curHoldTime += Time.deltaTime;
 
-            if (_viewDir == 1) {
-                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
-                    _guardState = "Chase";
-                }
-            }
-            else if (_viewDir == -1) {
-                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
-                    _guardState = "Chase";
-                }
-            }
+            CheckForPlayer();
 
             if (_curHoldTime >= holdTime) {
                 _viewDir = -_viewDir;
@@ -132,30 +127,21 @@ public class Guard1AI : MonoBehaviour
             _guardRb2D.velocity = new Vector2 (0f, 0f);
             _curHoldTime += Time.deltaTime;
 
-            if (_viewDir == 1) {
-                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
-                    _guardState = "Chase";
-                }
-            }
-            else if (_viewDir == -1) {
-                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
-                    _guardState = "Chase";
-                }
-            }
+            CheckForPlayer();
 
             if (_curHoldTime >= holdTime) {
                 _viewDir = -_viewDir;
                 _curHoldTime = 0f;
                 _guardState = "ClimbLadder";
-                timeSinceLastClimb = 0f;
+                _timeSinceLastClimb = 0f;
             }
         }
         else if (_guardState == "ClimbLadder") {
             if (!_guardRb2D.IsTouchingLayers(LayerMask.GetMask("Ladder"))) {
-                _guardRb2D.gravityScale = gravityScaleAtStart;
+                _guardRb2D.gravityScale = _gravityScaleAtStart;
                 _guardState = "Patrol";
                 FlipGuardFacing();
-                timeSinceExitLadder = 0f;
+                _timeSinceExitLadder = 0f;
                 return;
             }
             Vector2 climbVelocity = new Vector2 (0f, guardClimbSpeed);
@@ -166,16 +152,7 @@ public class Guard1AI : MonoBehaviour
             _guardRb2D.velocity = new Vector2 (0f, 0f);
             _curHoldTime += Time.deltaTime;
 
-            if (_viewDir == 1) {
-                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
-                    _guardState = "Chase";
-                }
-            }
-            else if (_viewDir == -1) {
-                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
-                    _guardState = "Chase";
-                }
-            }
+            CheckForPlayer();
 
             if (_curHoldTime >= holdTime) {
                 _viewDir = -_viewDir;
@@ -188,22 +165,13 @@ public class Guard1AI : MonoBehaviour
             _guardRb2D.velocity = new Vector2 (0f, 0f);
             _curHoldTime += Time.deltaTime;
 
-            if (_viewDir == 1) {
-                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
-                    _guardState = "Chase";
-                }
-            }
-            else if (_viewDir == -1) {
-                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
-                    _guardState = "Chase";
-                }
-            }
+            CheckForPlayer();
 
             if (_curHoldTime >= holdTime) {
                 _viewDir = -_viewDir;
                 _curHoldTime = 0f;
                 _guardState = "ClimbLadderDown";
-                timeSinceLastClimb = 0f;
+                _timeSinceLastClimb = 0f;
             }
         }
         else if (_guardState == "ClimbLadderDown") {
@@ -213,37 +181,38 @@ public class Guard1AI : MonoBehaviour
         }
     }
 
+    #region Triggers and Collision
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.tag == "GuardStop") {
+        if (other.gameObject.CompareTag("GuardStop")) {
             _guardState = "Hold";
             _curHoldTime = 0f;
-            _guardAnimator.SetBool("isPatrolling", false);
+            _guardAnimator.SetBool(IsPatrolling, false);
         }
-        if (other.gameObject.tag == "GuardLadderBot") {
-            if (_guardState == "ClimbLadderDown") {
-                _guardRb2D.gravityScale = gravityScaleAtStart;
-                _guardState = "Patrol";
-                FlipGuardFacing();
-            }
+        else if (other.gameObject.CompareTag("GuardLadderBot"))
+        {
+            if (_guardState != "ClimbLadderDown") return;
+            _guardRb2D.gravityScale = _gravityScaleAtStart;
+            _guardState = "Patrol";
+            FlipGuardFacing();
         }
     }
-
+    
     private void OnTriggerStay2D(Collider2D other) {
-        if (other.gameObject.tag == "GuardLadderBot") {
-            if (transform.position.x < other.gameObject.transform.position.x + 0.02 && transform.position.x > other.gameObject.transform.position.x - 0.02) {
-                if (_guardState == "Patrol" && timeSinceLastClimb > climbCooldown) {
-                    _guardState = "HoldForLadder";
-                    _curHoldTime = 0f;
-                    _guardAnimator.SetBool("isPatrolling", false);
-                }
-            }
+        if (other.gameObject.CompareTag("GuardLadderBot"))
+        {
+            if (!(transform.position.x < other.gameObject.transform.position.x + 0.02) ||
+                !(transform.position.x > other.gameObject.transform.position.x - 0.02)) return;
+            if (_guardState != "Patrol" || !(_timeSinceLastClimb > climbCooldown)) return;
+            _guardState = "HoldForLadder";
+            _curHoldTime = 0f;
+            _guardAnimator.SetBool(IsPatrolling, false);
         }
-        else if (other.gameObject.tag == "GuardLadderTop") {
+        else if (other.gameObject.CompareTag("GuardLadderTop")) {
             if (transform.position.x < other.gameObject.transform.position.x + 0.02 && transform.position.x > other.gameObject.transform.position.x - 0.02) {
-                if (_guardState == "Patrol" && timeSinceLastClimb > climbCooldown) {
+                if (_guardState == "Patrol" && _timeSinceLastClimb > climbCooldown) {
                     _guardState = "HoldForLadderDown";
                     _curHoldTime = 0f;
-                    _guardAnimator.SetBool("isPatrolling", false);
+                    _guardAnimator.SetBool(IsPatrolling, false);
                 }
             }
         }
@@ -252,14 +221,18 @@ public class Guard1AI : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.transform.position = GameObject.FindWithTag("StartPos").transform.position;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            _playerController.ModifyAlive(false);
         }
     }
+    #endregion
 
-    private void showRange() {
-        _location = new Vector3(this.transform.position.x + (viewRange / 2),this.transform.position.y, this.transform.position.z);
-        GameObject _guardVision = Instantiate(guardVision, _location, Quaternion.identity, this.GetComponent<Transform>());
+    #region Utils
+    private void ShowRange() {
+        var transform1 = transform;
+        var position = transform1.position;
+        _location = new Vector3(position.x + (viewRange / 2),position.y, position.z);
+        var _guardVision = Instantiate(guardVision, _location, Quaternion.identity, this.GetComponent<Transform>());
         _guardVision.transform.localScale = new Vector3(viewRange, 2, 1);
     }
+    #endregion
 }
