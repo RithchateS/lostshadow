@@ -199,21 +199,20 @@ namespace Controller
 
         void OnShadowShift(InputValue value)
         {
-            if (value.isPressed && isShadow && isShiftAble && isPeeking && !isMoving && allowShift && !isClimbing)
+            if (value.isPressed && isShiftAble && isPeeking && !isMoving && allowShift && !isClimbing)
             {
                 var position = transform.position;
-                position = new Vector3(position.x, position.y - 100);
+                if (isShadow)
+                {
+                    position = new Vector3(position.x, position.y - 100);
+                    isShadow = false;
+                }
+                else
+                {
+                    position = new Vector3(position.x, position.y + 100);
+                    isShadow = true;
+                }
                 transform.position = position;
-                isShadow = false;
-                myAnimator.SetBool("isShifting", true);
-                ModifyShiftCount(-1);
-            }
-            else if (value.isPressed && !isShadow && isShiftAble && isPeeking && !isMoving && allowShift && !isClimbing)
-            {
-                var position = transform.position;
-                position = new Vector3(position.x, position.y + 100);
-                transform.position = position;
-                isShadow = true;
                 myAnimator.SetBool("isShifting", true);
                 ModifyShiftCount(-1);
             }
@@ -226,14 +225,10 @@ namespace Controller
 
         private void TogglePeek()
         {
-            if (isPeeking)
-            {
-                StartCoroutine(PeekAnimation());
-            }
-            else
-            {
-                StartCoroutine(PeekAnimation());
-            }
+            
+            StartCoroutine(PeekAnimation());
+            
+            
         }
 
         IEnumerator PeekAnimation()
@@ -268,10 +263,19 @@ namespace Controller
                 _isControllable = false;
                 isJumpAble = false;
                 isPeekAble = false;
+                isPeeking = true;
                 myAnimator.SetBool("isPeeking",true);
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Front";
                 while (_peek.sizeDelta.x < _peekSize)
                 {
+                    if (myAnimator.GetBool("isShifting"))
+                    {
+                        _peek.sizeDelta = new Vector2(0, 0);
+                        _peekMask.sizeDelta = new Vector2(0, 0);
+                        isPeeking = false;
+                        myAnimator.SetBool("isPeeking",false);
+                        break;
+                    }
                     if (playerColor.a >= 0.5f)
                     {
                         playerColor.a -= 0.01f;
@@ -283,7 +287,6 @@ namespace Controller
                 }
                 _isControllable = true;
                 isJumpAble = true;
-                isPeeking = true;
                 isPeekAble = true;
                 _isCancelled = false;
             }
