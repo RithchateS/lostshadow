@@ -295,7 +295,7 @@ public partial class @LostShadow : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""61233294-1942-4a55-97f2-e8208e6d0290"",
-                    ""path"": ""<Keyboard>/leftShift"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",

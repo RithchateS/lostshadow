@@ -65,7 +65,7 @@ namespace Controller
             {
                 Run();
                 ClimbLadder();
-                if (Input.GetKey(KeyCode.LeftControl))
+                if (Input.GetKey(KeyCode.LeftShift))
                 {
                     CalculateRun();
                 }

@@ -34,21 +34,21 @@ namespace Trigger
                 _objectID = col.gameObject.GetComponent<ObjectID>().objectID;
                 switch (_objectID)
                 {
-                    case 1:
+                    case 1: //Bronze Key
                         _bronzeBlock.GetComponent<Animator>().SetBool("Broken", true);
                         Destroy(col.gameObject);
                         break;
-                    case 2:
+                    case 2: //Silver Key
                         _silverBlock.GetComponent<Animator>().SetBool("Broken", true);
                         Destroy(col.gameObject);
                         break;
-                    case 3:
+                    case 3: //Gold Key
                         _goldBlock.GetComponent<Animator>().SetBool("Broken", true);
                         Destroy(col.gameObject);
                         break;
-                    case 4:
-                        _playerController.ModifyShiftCount(1);
-                        Destroy(col.gameObject);
+                    case 4: //Holy
+                        col.gameObject.GetComponent<Animator>().SetTrigger("Unlocked");
+                        _playerController.ModifyShiftCount(2);
                         break;
                 }
             }
