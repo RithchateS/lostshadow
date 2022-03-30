@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Runtime.CompilerServices;
 using Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,7 +10,7 @@ namespace Controller
         #region Variables
         Vector2 _moveInput;
         Rigidbody2D _myRigidbody;
-        [SerializeField] Animator _myAnimator;
+        [SerializeField] Animator myAnimator;
         BoxCollider2D _myBodyCollider;
         PolygonCollider2D _myFeetCollider;
         private GameObject _feet;
@@ -39,7 +38,7 @@ namespace Controller
             playerColor = gameObject.GetComponent<SpriteRenderer>().color;
             _feet = GameObject.FindWithTag("Feet");
             _myRigidbody = GetComponent<Rigidbody2D>();
-            _myAnimator = GetComponent<Animator>();
+            myAnimator = GetComponent<Animator>();
             _myBodyCollider = GetComponent<BoxCollider2D>();
             _myFeetCollider = _feet.GetComponent<PolygonCollider2D>();
             _gravityScaleAtStart = _myRigidbody.gravityScale;
@@ -64,18 +63,18 @@ namespace Controller
         {
             if (_isControllable)
             {
-                Run();
                 ClimbLadder();
-                if (Input.GetKey(KeyCode.LeftControl))
-                {
-                    CalculateRun();
-                }
-                else
-                {
-                    CalculateWalk();
-                }
+                
             }
-            
+            Run();
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                CalculateRun();
+            }
+            else
+            {
+                CalculateWalk();
+            }
             FlipSprite();
             CheckGround();
             CheckLadder();
@@ -91,12 +90,28 @@ namespace Controller
         private float _currentHorizontalSpeed;
         [SerializeField] private float deAcceleration = 30f;
         [SerializeField] private bool isMoving;
+        [SerializeField] private bool isPressingMove;
         
         void OnMove(InputValue value) {
-            _moveInput = value.Get<Vector2>();
+
+            if (_isControllable)
+            { 
+                _moveInput = value.Get<Vector2>();
+            }
+            else
+            {
+                _moveInput = new Vector2(0, 0);
+            }
+
+
+            if (_moveInput == new Vector2(0, 0))
+            {
+                isPressingMove = false;
+            }
             if (isPeeking && _moveInput.x != 0)
             {
                 _isCancelled = true;
+                myAnimator.SetBool("isPeeking",false);
             }
         }
         void Run() 
@@ -105,12 +120,12 @@ namespace Controller
             _myRigidbody.velocity = playerVelocity;
         
             bool playerHasHorizontalSpeed = Mathf.Abs(_currentHorizontalSpeed) > Mathf.Epsilon;
-            _myAnimator.SetBool(IsRunning, playerHasHorizontalSpeed);
+            myAnimator.SetBool(IsRunning, playerHasHorizontalSpeed);
             isMoving = playerHasHorizontalSpeed;
         }
         private void CalculateRun() {
             if (_moveInput.x != 0 && !isPeeking) {
-                _myAnimator.SetFloat("runAnimSpeed", 0.8f);
+                myAnimator.SetFloat("runAnimSpeed", 0.8f);
                 _currentHorizontalSpeed += _moveInput.x * acceleration * Time.deltaTime;
                         
                 _currentHorizontalSpeed = Mathf.Clamp(_currentHorizontalSpeed, -runSpeed, runSpeed);
@@ -124,7 +139,7 @@ namespace Controller
         
         private void CalculateWalk() {
             if (_moveInput.x != 0 && !isPeeking) {
-                _myAnimator.SetFloat("runAnimSpeed", 0.4f);
+                myAnimator.SetFloat("runAnimSpeed", 0.4f);
                 _currentHorizontalSpeed += _moveInput.x * acceleration/2 * Time.deltaTime;
                         
                 _currentHorizontalSpeed = Mathf.Clamp(_currentHorizontalSpeed, -runSpeed/2, runSpeed/2);
@@ -160,6 +175,7 @@ namespace Controller
                     if (isPeeking && value.isPressed)
                     {
                         _isCancelled = true;
+                        myAnimator.SetBool("isPeeking",false);
                     }
                 }
 
@@ -189,7 +205,7 @@ namespace Controller
                 position = new Vector3(position.x, position.y - 100);
                 transform.position = position;
                 isShadow = false;
-                _myAnimator.SetBool("isShifting", true);
+                myAnimator.SetBool("isShifting", true);
                 ModifyShiftCount(-1);
             }
             else if (value.isPressed && !isShadow && isShiftAble && isPeeking && !isMoving && allowShift && !isClimbing)
@@ -198,10 +214,10 @@ namespace Controller
                 position = new Vector3(position.x, position.y + 100);
                 transform.position = position;
                 isShadow = true;
-                _myAnimator.SetBool("isShifting", true);
+                myAnimator.SetBool("isShifting", true);
                 ModifyShiftCount(-1);
             }
-            if (value.isPressed && isPeekAble && !isMoving && allowShift)
+            if (value.isPressed && isPeekAble && !isPressingMove && allowShift && !isClimbing)
             {
                 TogglePeek();
             }
@@ -229,7 +245,7 @@ namespace Controller
                 isPeeking = false;
                 _isControllable = false;
                 isJumpAble = false;
-                _myAnimator.SetBool("isPeeking",false);
+                myAnimator.SetBool("isPeeking",false);
                 while (_peek.sizeDelta.x > 0)
                 {
                     if (playerColor.a < 1)
@@ -252,7 +268,7 @@ namespace Controller
                 _isControllable = false;
                 isJumpAble = false;
                 isPeekAble = false;
-                _myAnimator.SetBool("isPeeking",true);
+                myAnimator.SetBool("isPeeking",true);
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Front";
                 while (_peek.sizeDelta.x < _peekSize)
                 {
@@ -296,27 +312,27 @@ namespace Controller
                     _myRigidbody.velocity = climbVelocity;
                     _myRigidbody.gravityScale = 0f;
                     bool playerHasVerticalSpeed = Mathf.Abs(_myRigidbody.velocity.y) > Mathf.Epsilon;
-                    _myAnimator.SetBool("isClimbing", true);
+                    myAnimator.SetBool("isClimbing", true);
                     if (playerHasVerticalSpeed)
                     {
-                        _myAnimator.SetFloat("climbAnimSpeed",1);
+                        myAnimator.SetFloat("climbAnimSpeed",1);
                     }
                     else
                     {
-                        _myAnimator.SetFloat("climbAnimSpeed",0);
+                        myAnimator.SetFloat("climbAnimSpeed",0);
                     }
                 }
                 else
                 {
                     _myRigidbody.gravityScale = _gravityScaleAtStart;
-                    _myAnimator.SetBool("isClimbing", false);
+                    myAnimator.SetBool("isClimbing", false);
                 }
             }
             else
             {
                 isClimbing = false;
                 _myRigidbody.gravityScale = _gravityScaleAtStart;
-                _myAnimator.SetBool("isClimbing", false);
+                myAnimator.SetBool("isClimbing", false);
             }
                     
         }
@@ -369,17 +385,17 @@ namespace Controller
         public void Wakeup()
         {
             StartCoroutine(PauseMovement(6));
-            _myAnimator.Play("Wakeup");
+            myAnimator.Play("Wakeup");
         }
-        
-        IEnumerator PauseMovement(float pauseTime)
+
+        private IEnumerator PauseMovement(float pauseTime)
         {
 
             _isControllable = false;
             isJumpAble = false;
             isShiftAble = false;
 
-            //Setting Time Freezeeee Here
+            //Setting Time Freeze Here
             yield return new WaitForSeconds(pauseTime);
             
             isJumpAble = true;
@@ -405,11 +421,12 @@ namespace Controller
         private float _time;
         private static readonly int IsRunning = Animator.StringToHash("isRunning");
 
-        void CheckGround()
+        private void CheckGround()
         {
             if (_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
             {
                 isGrounded = true;
+                isClimbing = false;
             }
             else
             {
@@ -423,16 +440,16 @@ namespace Controller
             
             if (_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || isClimbing)
             {
-                _myAnimator.SetBool("isJumping", false);
+                myAnimator.SetBool("isJumping", false);
             }
             
             else if (!_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !isClimbing)
             {
-                _myAnimator.SetBool("isJumping", true);
+                myAnimator.SetBool("isJumping", true);
             }
         }
 
-        void CheckLadder()
+        private void CheckLadder()
         {
             if (_myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")))
             {
@@ -446,18 +463,10 @@ namespace Controller
 
         public void CheckIfInCollider(bool inCollider)
         {
-            if (inCollider)
-            {
-                isShiftAble = false;
-            }
-            else
-            {
-                isShiftAble = true;
-            }
-        
+            isShiftAble = !inCollider;
         }
 
-        void PeekCheck()
+        private void PeekCheck()
         {
             if (isPeeking && _isCancelled)
             {
@@ -465,7 +474,7 @@ namespace Controller
             }
         }
 
-        void UpdateColor()
+        private void UpdateColor()
         {
             gameObject.GetComponent<SpriteRenderer>().color = playerColor;
         }
@@ -492,7 +501,7 @@ namespace Controller
                 _isControllable = false;
                 isJumpAble = false;
                 allowShift = false;
-                _myAnimator.SetBool("isDead", true);
+                myAnimator.SetBool("isDead", true);
                 _myRigidbody.velocity = new Vector2(0,_myRigidbody.velocity.y);
             }
         }
