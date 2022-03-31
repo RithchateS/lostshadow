@@ -1,4 +1,5 @@
 using System.Collections;
+using Cinemachine;
 using Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,7 +16,7 @@ namespace Controller
         PolygonCollider2D _myFeetCollider;
         private GameObject _feet;
         float _gravityScaleAtStart;
-        bool _isControllable;
+        public bool IsControllable { get; private set; }
         private bool _isCancelled;
 
 
@@ -43,7 +44,7 @@ namespace Controller
             _myFeetCollider = _feet.GetComponent<PolygonCollider2D>();
             _gravityScaleAtStart = _myRigidbody.gravityScale;
             _peekMask = LevelManager.Instance.peekMask;
-            _isControllable = true;
+            IsControllable = true;
             isJumpAble = true;
             isShadow = true;
             isShiftAble = true;
@@ -61,9 +62,10 @@ namespace Controller
 
         void Update()
         {
-            if (_isControllable)
+            if (IsControllable)
             {
                 ClimbLadder();
+                LevelManager.Instance.cameraObj.GetComponent<Animator>().SetBool("Cutscene", false);
                 
             }
             Run();
@@ -80,6 +82,7 @@ namespace Controller
             CheckLadder();
             PeekCheck();
             UpdateColor();
+            LevelManager.Instance.mainCineCamera.GetComponent<ObjectAim>().GameObjectToTarget(gameObject);
         }
 
         #region InputSystem
@@ -94,7 +97,7 @@ namespace Controller
         
         void OnMove(InputValue value) {
 
-            if (_isControllable)
+            if (IsControllable)
             { 
                 _moveInput = value.Get<Vector2>();
             }
@@ -241,7 +244,7 @@ namespace Controller
             {
                 isPeekAble = false;
                 isPeeking = false;
-                _isControllable = false;
+                IsControllable = false;
                 isJumpAble = false;
                 myAnimator.SetBool("isPeeking",false);
                 LevelManager.Instance.shiftIndicator.SetBool("isPeeking", false);
@@ -258,14 +261,14 @@ namespace Controller
                     yield return new WaitForSeconds(0.01f);
                 }
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
-                _isControllable = true;
+                IsControllable = true;
                 isJumpAble = true;
                 isPeekAble = true;
                 _isCancelled = false;
             }
             else
             {
-                _isControllable = false;
+                IsControllable = false;
                 isJumpAble = false;
                 isPeekAble = false;
                 isPeeking = true;
@@ -293,7 +296,7 @@ namespace Controller
                     _peekMask.sizeDelta += new Vector2(25, 25);
                     yield return new WaitForSeconds(0.01f);
                 }
-                _isControllable = true;
+                IsControllable = true;
                 isJumpAble = true;
                 isPeekAble = true;
                 _isCancelled = false;
@@ -365,14 +368,14 @@ namespace Controller
                     if (isHiding)
                     {
                         isHiding = false;
-                        _isControllable = true;
+                        IsControllable = true;
                         isJumpAble = true;
                         playerColor.a = 1f;
                         Debug.Log(isHiding);
                     }
                     else if(!isHiding)
                     {
-                        _isControllable = false;
+                        IsControllable = false;
                         isJumpAble = false;
                         isHiding = true;
                         playerColor.a = 0.1f;
@@ -397,12 +400,13 @@ namespace Controller
         {
             StartCoroutine(PauseMovement(6));
             myAnimator.Play("Wakeup");
+            LevelManager.Instance.freeCamera.GetComponent<ObjectAim>().GameObjectToTarget(gameObject);
         }
 
-        private IEnumerator PauseMovement(float pauseTime)
+        public IEnumerator PauseMovement(float pauseTime)
         {
 
-            _isControllable = false;
+            IsControllable = false;
             isJumpAble = false;
             isShiftAble = false;
 
@@ -411,7 +415,7 @@ namespace Controller
             
             isJumpAble = true;
             isShiftAble = true;
-            _isControllable = true;
+            IsControllable = true;
             
         }
                 
@@ -510,7 +514,7 @@ namespace Controller
             IsAlive = status;
             if (!IsAlive)
             {
-                _isControllable = false;
+                IsControllable = false;
                 isJumpAble = false;
                 allowShift = false;
                 myAnimator.SetBool("isDead", true);
@@ -526,9 +530,7 @@ namespace Controller
             }
             else
             {
-                Debug.Log(shiftCount);
-                Debug.Log(LevelManager.Instance.ToRoman(shiftCount));
-                LevelManager.Instance.shiftCountText.text = $"{LevelManager.Instance.ToRoman(shiftCount)}";
+                LevelManager.Instance.shiftCountText.text = $"{(shiftCount)}";
             }
             
         }

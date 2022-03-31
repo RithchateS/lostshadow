@@ -71450,10 +71450,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
-    - target: {fileID: 1654213535037914277, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
-      propertyPath: m_Lens.OrthographicSize
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 2747867529235965782, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
@@ -71501,22 +71497,6 @@ PrefabInstance:
     - target: {fileID: 4031277433813240842, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6478720432099530728, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
-      propertyPath: m_ChildCameras.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8012728380391140824, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 15.304352
-      objectReference: {fileID: 0}
-    - target: {fileID: 8012728380391140824, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8.79237
-      objectReference: {fileID: 0}
-    - target: {fileID: 8054618152716081006, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
-      propertyPath: orthographic size
-      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}

@@ -5,6 +5,7 @@ using Old.Manager;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Manager
 {
@@ -22,6 +23,11 @@ namespace Manager
         public int shiftCountStart;
         public bool allowShift;
 
+        [Header("Camera")]
+        public GameObject freeCamera;
+        public GameObject mainCineCamera;
+        public GameObject objectCamera;
+        
         [Header("MapBounds")]
         [SerializeField] private CinemachineConfiner2D cameraBounds;
         [SerializeField] private Collider2D mapBoundsShadow;
@@ -39,6 +45,9 @@ namespace Manager
         private GameObject _overlayCamera;
         [SerializeField] public RectTransform peek; 
         [SerializeField] public RectTransform peekMask;
+        [SerializeField] public GameObject objectCam;
+        [SerializeField] public GameObject objectCamMask;
+
 
         #endregion
 
@@ -70,6 +79,12 @@ namespace Manager
         peekMask = GameObject.FindWithTag("PeekMask").GetComponent<RectTransform>();
         shiftCountText = GameObject.Find("ShiftCount").GetComponent<TMP_Text>();
         shiftIndicator = GameObject.Find("ShiftIndicator").GetComponent<Animator>();
+        freeCamera = GameObject.Find("FreeCamera");
+        mainCineCamera = GameObject.Find("MainCineCamera");
+        objectCamera = GameObject.Find("ObjectCamera");
+        objectCam = GameObject.Find("ObjectCam");
+        objectCamMask = GameObject.Find("ObjectCamMask");
+
 
         if (_player == null) {
             Instantiate(playerPrefab, startPos.position, startPos.rotation);
@@ -146,27 +161,28 @@ namespace Manager
         peek.transform.position = _mainCamera.transform.position;
         //_overlayCamera.transform.position = _playerClone.transform.position;
         _overlayCamera.GetComponent<Camera>().orthographicSize = _mainCamera.GetComponent<Camera>().orthographicSize;
+        objectCamera.GetComponent<Camera>().orthographicSize = _mainCamera.GetComponent<Camera>().orthographicSize;
     }
     
-    public string ToRoman(int number)
-    {
-        if ((number < 0) || (number > 3999)) throw new ArgumentOutOfRangeException("insert value betwheen 1 and 3999");
-        if (number < 1) return string.Empty;            
-        if (number >= 1000) return "M" + ToRoman(number - 1000);
-        if (number >= 900) return "CM" + ToRoman(number - 900); 
-        if (number >= 500) return "D" + ToRoman(number - 500);
-        if (number >= 400) return "CD" + ToRoman(number - 400);
-        if (number >= 100) return "C" + ToRoman(number - 100);            
-        if (number >= 90) return "XC" + ToRoman(number - 90);
-        if (number >= 50) return "L" + ToRoman(number - 50);
-        if (number >= 40) return "XL" + ToRoman(number - 40);
-        if (number >= 10) return "X" + ToRoman(number - 10);
-        if (number >= 9) return "IX" + ToRoman(number - 9);
-        if (number >= 5) return "V" + ToRoman(number - 5);
-        if (number >= 4) return "IV" + ToRoman(number - 4);
-        if (number >= 1) return "I" + ToRoman(number - 1);
-        throw new ArgumentOutOfRangeException("something bad happened");
-    }
+    // public string ToRoman(int number)
+    // {
+    //     if ((number < 0) || (number > 3999)) throw new ArgumentOutOfRangeException("insert value betwheen 1 and 3999");
+    //     if (number < 1) return string.Empty;            
+    //     if (number >= 1000) return "M" + ToRoman(number - 1000);
+    //     if (number >= 900) return "CM" + ToRoman(number - 900); 
+    //     if (number >= 500) return "D" + ToRoman(number - 500);
+    //     if (number >= 400) return "CD" + ToRoman(number - 400);
+    //     if (number >= 100) return "C" + ToRoman(number - 100);            
+    //     if (number >= 90) return "XC" + ToRoman(number - 90);
+    //     if (number >= 50) return "L" + ToRoman(number - 50);
+    //     if (number >= 40) return "XL" + ToRoman(number - 40);
+    //     if (number >= 10) return "X" + ToRoman(number - 10);
+    //     if (number >= 9) return "IX" + ToRoman(number - 9);
+    //     if (number >= 5) return "V" + ToRoman(number - 5);
+    //     if (number >= 4) return "IV" + ToRoman(number - 4);
+    //     if (number >= 1) return "I" + ToRoman(number - 1);
+    //     throw new ArgumentOutOfRangeException("something bad happened");
+    // }
 
     }
 }

@@ -28,7 +28,7 @@ namespace Controller
                 Destroy(gameObject);
             }
         }
-        
-        
+
+
     }
 }
