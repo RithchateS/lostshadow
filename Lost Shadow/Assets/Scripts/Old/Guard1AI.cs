@@ -58,7 +58,6 @@ public class Guard1AI : MonoBehaviour
     }
 
     void Update() {
-        Debug.Log(_distXtoPlayer);
         _timeSinceLastClimb += Time.deltaTime;
         _timeSinceExitLadder += Time.deltaTime;
         _player = GameObject.FindWithTag("Player");

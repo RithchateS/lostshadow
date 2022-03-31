@@ -55,7 +55,7 @@ namespace Controller
             allowShift = LevelManager.Instance.allowShift;
             _peekSize = 2000;
             _peek = LevelManager.Instance.peek;
-            LevelManager.Instance.shiftCountText.text = $"ShiftCount: {shiftCount}";
+            ModifyShiftCount(0);
             LevelManager.Instance.CheckCutScene();
         }
 
@@ -112,6 +112,7 @@ namespace Controller
             {
                 _isCancelled = true;
                 myAnimator.SetBool("isPeeking",false);
+                LevelManager.Instance.shiftIndicator.SetBool("isPeeking", false);
             }
         }
         void Run() 
@@ -176,6 +177,7 @@ namespace Controller
                     {
                         _isCancelled = true;
                         myAnimator.SetBool("isPeeking",false);
+                        LevelManager.Instance.shiftIndicator.SetBool("isPeeking", false);
                     }
                 }
 
@@ -214,6 +216,7 @@ namespace Controller
                 }
                 transform.position = position;
                 myAnimator.SetBool("isShifting", true);
+                LevelManager.Instance.shiftIndicator.SetTrigger("Shift");
                 ModifyShiftCount(-1);
             }
             if (value.isPressed && isPeekAble && !isPressingMove && allowShift && !isClimbing)
@@ -241,6 +244,8 @@ namespace Controller
                 _isControllable = false;
                 isJumpAble = false;
                 myAnimator.SetBool("isPeeking",false);
+                LevelManager.Instance.shiftIndicator.SetBool("isPeeking", false);
+
                 while (_peek.sizeDelta.x > 0)
                 {
                     if (playerColor.a < 1)
@@ -265,6 +270,7 @@ namespace Controller
                 isPeekAble = false;
                 isPeeking = true;
                 myAnimator.SetBool("isPeeking",true);
+                LevelManager.Instance.shiftIndicator.SetBool("isPeeking", true);
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Front";
                 while (_peek.sizeDelta.x < _peekSize)
                 {
@@ -274,6 +280,8 @@ namespace Controller
                         _peekMask.sizeDelta = new Vector2(0, 0);
                         isPeeking = false;
                         myAnimator.SetBool("isPeeking",false);
+                        LevelManager.Instance.shiftIndicator.SetBool("isPeeking", false);
+
                         break;
                     }
                     if (playerColor.a >= 0.5f)
@@ -421,9 +429,10 @@ namespace Controller
             }
         }
 
+        
         private float _time;
         private static readonly int IsRunning = Animator.StringToHash("isRunning");
-
+        
         private void CheckGround()
         {
             if (_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
@@ -511,7 +520,17 @@ namespace Controller
 
         private void ModifyShiftCountText()
         {
-            LevelManager.Instance.shiftCountText.text = $"ShiftCount: {shiftCount}";
+            if (shiftCount == 0)
+            {
+                LevelManager.Instance.shiftCountText.text = "-";
+            }
+            else
+            {
+                Debug.Log(shiftCount);
+                Debug.Log(LevelManager.Instance.ToRoman(shiftCount));
+                LevelManager.Instance.shiftCountText.text = $"{LevelManager.Instance.ToRoman(shiftCount)}";
+            }
+            
         }
 
         #endregion

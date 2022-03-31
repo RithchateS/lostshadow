@@ -1,3 +1,4 @@
+using System;
 using Cinemachine;
 using Controller;
 using Old.Manager;
@@ -26,8 +27,11 @@ namespace Manager
         [SerializeField] private Collider2D mapBoundsShadow;
         [SerializeField] private Collider2D mapBoundsLight;
 
-        [Header("Others")] 
+        [Header("Canvas Object")]
         public TMP_Text shiftCountText;
+        public Animator shiftIndicator;
+        
+        [Header("Others")]
         private GameObject _player;
         private GameObject _playerClone;
         public GameObject cameraObj;
@@ -51,8 +55,7 @@ namespace Manager
         {
             Destroy(this);
         }
-
-        //DontDestroyOnLoad(gameObject);
+        
     }
     
     private void Start()
@@ -66,6 +69,7 @@ namespace Manager
         peek = GameObject.FindWithTag("Peek").GetComponent<RectTransform>();
         peekMask = GameObject.FindWithTag("PeekMask").GetComponent<RectTransform>();
         shiftCountText = GameObject.Find("ShiftCount").GetComponent<TMP_Text>();
+        shiftIndicator = GameObject.Find("ShiftIndicator").GetComponent<Animator>();
 
         if (_player == null) {
             Instantiate(playerPrefab, startPos.position, startPos.rotation);
@@ -144,11 +148,25 @@ namespace Manager
         _overlayCamera.GetComponent<Camera>().orthographicSize = _mainCamera.GetComponent<Camera>().orthographicSize;
     }
     
+    public string ToRoman(int number)
+    {
+        if ((number < 0) || (number > 3999)) throw new ArgumentOutOfRangeException("insert value betwheen 1 and 3999");
+        if (number < 1) return string.Empty;            
+        if (number >= 1000) return "M" + ToRoman(number - 1000);
+        if (number >= 900) return "CM" + ToRoman(number - 900); 
+        if (number >= 500) return "D" + ToRoman(number - 500);
+        if (number >= 400) return "CD" + ToRoman(number - 400);
+        if (number >= 100) return "C" + ToRoman(number - 100);            
+        if (number >= 90) return "XC" + ToRoman(number - 90);
+        if (number >= 50) return "L" + ToRoman(number - 50);
+        if (number >= 40) return "XL" + ToRoman(number - 40);
+        if (number >= 10) return "X" + ToRoman(number - 10);
+        if (number >= 9) return "IX" + ToRoman(number - 9);
+        if (number >= 5) return "V" + ToRoman(number - 5);
+        if (number >= 4) return "IV" + ToRoman(number - 4);
+        if (number >= 1) return "I" + ToRoman(number - 1);
+        throw new ArgumentOutOfRangeException("something bad happened");
+    }
 
-    /*Void StartCutscene()
-        {
-            
-        }*/
-        
     }
 }

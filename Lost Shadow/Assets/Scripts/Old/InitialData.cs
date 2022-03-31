@@ -18,6 +18,7 @@ public class InitialData : MonoBehaviour
         LoadSceneManager.Instance.currentScene = SceneCollection.Persistant;
         LoadSceneManager.Instance.StartLoadingScene(startScene);
         Appdata.Instance.currentScene = startScene;
+        //SoundManager.Instance.Hello();
     }
 
 }
