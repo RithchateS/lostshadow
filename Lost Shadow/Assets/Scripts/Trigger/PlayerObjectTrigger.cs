@@ -107,6 +107,7 @@ namespace Trigger
                     case 4: //Holy
                         col.gameObject.GetComponent<Animator>().SetTrigger("Unlocked");
                         _playerController.ModifyShiftCount(2);
+                        Destroy(col.GetComponent<BoxCollider2D>());
                         break;
                 }
 
