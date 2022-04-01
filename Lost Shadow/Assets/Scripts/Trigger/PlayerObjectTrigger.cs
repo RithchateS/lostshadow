@@ -160,7 +160,7 @@ namespace Trigger
                 _objectID = col.gameObject.GetComponent<ObjectID>().objectID;
                 switch (_objectID)
                 {
-                    case 1000:
+                    case 1001:
                         _playerController.colliderID = 0;
                         break;
                 }

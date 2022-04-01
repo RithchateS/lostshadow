@@ -187,6 +187,6 @@ MonoBehaviour:
   patrolSpeed: 2
   chaseSpeed: 6
   holdTime: 2
-  viewRange: 5
+  viewRange: 10
   climbCooldown: 20
   guardVision: {fileID: 210946112129902648, guid: 514309181e005294f8be9a1ab9dae656, type: 3}

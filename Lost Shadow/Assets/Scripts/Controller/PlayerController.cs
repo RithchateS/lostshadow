@@ -14,13 +14,16 @@ namespace Controller
         [SerializeField] Animator myAnimator;
         BoxCollider2D _myBodyCollider;
         PolygonCollider2D _myFeetCollider;
+        PolygonCollider2D _myLArmCollider;
+        PolygonCollider2D _myRArmCollider;
         private GameObject _feet;
+        private GameObject _lArm;
+        private GameObject _rArm;
         float _gravityScaleAtStart;
         public bool IsControllable { get; private set; }
         private bool _isCancelled;
 
 
-        
         [SerializeField] float climbSpeed = 5f;
         [SerializeField] private bool isGrounded;
         [SerializeField] private bool isClimbable;
@@ -38,10 +41,14 @@ namespace Controller
             shiftCount = LevelManager.Instance.shiftCountStart;
             playerColor = gameObject.GetComponent<SpriteRenderer>().color;
             _feet = GameObject.FindWithTag("Feet");
+            _lArm = GameObject.FindWithTag("LArm");
+            _rArm = GameObject.FindWithTag("RArm");
             _myRigidbody = GetComponent<Rigidbody2D>();
             myAnimator = GetComponent<Animator>();
             _myBodyCollider = GetComponent<BoxCollider2D>();
             _myFeetCollider = _feet.GetComponent<PolygonCollider2D>();
+            _myLArmCollider = _lArm.GetComponent<PolygonCollider2D>();
+            _myRArmCollider = _rArm.GetComponent<PolygonCollider2D>();
             _gravityScaleAtStart = _myRigidbody.gravityScale;
             _peekMask = LevelManager.Instance.peekMask;
             IsControllable = true;
@@ -372,7 +379,13 @@ namespace Controller
                         isHiding = false;
                         IsControllable = true;
                         isJumpAble = true;
+                        _myRigidbody.velocity = new Vector2(0,0);
                         playerColor.a = 1f;
+                        _myBodyCollider.isTrigger = false;
+                        _myFeetCollider.isTrigger = false;
+                        _myLArmCollider.isTrigger = false;
+                        _myRArmCollider.isTrigger = false;
+                        _myRigidbody.gravityScale = _gravityScaleAtStart;
                         Debug.Log(isHiding);
                     }
                     else if(!isHiding)
@@ -380,6 +393,12 @@ namespace Controller
                         IsControllable = false;
                         isJumpAble = false;
                         isHiding = true;
+                        _myRigidbody.velocity = new Vector2(0,0);
+                        _myRigidbody.gravityScale = 0f;
+                        _myBodyCollider.isTrigger = true;
+                        _myFeetCollider.isTrigger = true;
+                        _myLArmCollider.isTrigger = true;
+                        _myRArmCollider.isTrigger = true;
                         playerColor.a = 0.1f;
                         Debug.Log(isHiding);
                     }
@@ -537,6 +556,15 @@ namespace Controller
             
         }
 
+        #endregion
+        
+        #region Getter
+
+        public bool GetIsHiding()
+        {
+            return isHiding;
+        }
+        
         #endregion
     }
 }

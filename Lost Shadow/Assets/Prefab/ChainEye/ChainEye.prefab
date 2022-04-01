@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eyeChaseSpeed: 5
   eyeBackSpeed: 2
-  eyeRange: 8
+  eyeRange: 12
   eyeVision: {fileID: 210946112129902648, guid: da23692f705f7a641aefa58c27694c83, type: 3}
 --- !u!61 &7878775139662392052
 BoxCollider2D:

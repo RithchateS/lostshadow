@@ -19,7 +19,6 @@ public class ChainEyeAI : MonoBehaviour
     void Start()
     {
         _startPos = transform.position;
-        showRange();
     }
 
     void Update()

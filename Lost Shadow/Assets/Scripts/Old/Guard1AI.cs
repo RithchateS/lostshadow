@@ -38,14 +38,17 @@ public class Guard1AI : MonoBehaviour
 
     void CheckForPlayer()
     {
-        if (_viewDir == 1) {
-            if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
-                _guardState = "Chase";
+        if (!_playerController.GetIsHiding())
+        {
+            if (_viewDir == 1) {
+                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
+                    _guardState = "Chase";
+                }
             }
-        }
-        else if (_viewDir == -1) {
-            if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
-                _guardState = "Chase";
+            else if (_viewDir == -1) {
+                if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer < Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
+                    _guardState = "Chase";
+                }
             }
         }
     }
@@ -54,7 +57,6 @@ public class Guard1AI : MonoBehaviour
         _guardAnimator = GetComponent<Animator>();
         _guardRb2D = GetComponent<Rigidbody2D>();
         _gravityScaleAtStart = 4f;
-        ShowRange();
     }
 
     void Update() {
@@ -218,7 +220,7 @@ public class Guard1AI : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !_playerController.GetIsHiding())
         {
             _playerController.ModifyAlive(false);
         }
