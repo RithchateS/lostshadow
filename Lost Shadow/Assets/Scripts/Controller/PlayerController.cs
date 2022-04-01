@@ -1,4 +1,5 @@
 using System.Collections;
+using Cinemachine;
 using Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -19,7 +20,7 @@ namespace Controller
         private GameObject _lArm;
         private GameObject _rArm;
         float _gravityScaleAtStart;
-        bool _isControllable;
+        public bool IsControllable { get; private set; }
         private bool _isCancelled;
 
 
@@ -50,7 +51,7 @@ namespace Controller
             _myRArmCollider = _rArm.GetComponent<PolygonCollider2D>();
             _gravityScaleAtStart = _myRigidbody.gravityScale;
             _peekMask = LevelManager.Instance.peekMask;
-            _isControllable = true;
+            IsControllable = true;
             isJumpAble = true;
             isShadow = true;
             isShiftAble = true;
@@ -62,16 +63,19 @@ namespace Controller
             allowShift = LevelManager.Instance.allowShift;
             _peekSize = 2000;
             _peek = LevelManager.Instance.peek;
-            LevelManager.Instance.shiftCountText.text = $"ShiftCount: {shiftCount}";
+            ModifyShiftCount(0);
+            StartCoroutine(PauseMovement(3));
             LevelManager.Instance.CheckCutScene();
+
         }
 
         void Update()
         {
-            if (_isControllable)
+            if (IsControllable)
             {
                 ClimbLadder();
-                
+                LevelManager.Instance.cameraObj.GetComponent<Animator>().SetBool("Cutscene", false);
+
             }
             Run();
             if (Input.GetKey(KeyCode.LeftShift))
@@ -87,6 +91,7 @@ namespace Controller
             CheckLadder();
             PeekCheck();
             UpdateColor();
+            LevelManager.Instance.mainCineCamera.GetComponent<ObjectAim>().GameObjectToTarget(gameObject);
         }
 
         #region InputSystem
@@ -101,7 +106,7 @@ namespace Controller
         
         void OnMove(InputValue value) {
 
-            if (_isControllable)
+            if (IsControllable)
             { 
                 _moveInput = value.Get<Vector2>();
             }
@@ -119,6 +124,7 @@ namespace Controller
             {
                 _isCancelled = true;
                 myAnimator.SetBool("isPeeking",false);
+                LevelManager.Instance.shiftIndicator.SetBool("isPeeking", false);
             }
         }
         void Run() 
@@ -183,6 +189,7 @@ namespace Controller
                     {
                         _isCancelled = true;
                         myAnimator.SetBool("isPeeking",false);
+                        LevelManager.Instance.shiftIndicator.SetBool("isPeeking", false);
                     }
                 }
 
@@ -206,22 +213,22 @@ namespace Controller
 
         void OnShadowShift(InputValue value)
         {
-            if (value.isPressed && isShadow && isShiftAble && isPeeking && !isMoving && allowShift && !isClimbing)
+            if (value.isPressed && isShiftAble && isPeeking && !isMoving && allowShift && !isClimbing)
             {
                 var position = transform.position;
-                position = new Vector3(position.x, position.y - 100);
+                if (isShadow)
+                {
+                    position = new Vector3(position.x, position.y - 100);
+                    isShadow = false;
+                }
+                else
+                {
+                    position = new Vector3(position.x, position.y + 100);
+                    isShadow = true;
+                }
                 transform.position = position;
-                isShadow = false;
                 myAnimator.SetBool("isShifting", true);
-                ModifyShiftCount(-1);
-            }
-            else if (value.isPressed && !isShadow && isShiftAble && isPeeking && !isMoving && allowShift && !isClimbing)
-            {
-                var position = transform.position;
-                position = new Vector3(position.x, position.y + 100);
-                transform.position = position;
-                isShadow = true;
-                myAnimator.SetBool("isShifting", true);
+                LevelManager.Instance.shiftIndicator.SetTrigger("Shift");
                 ModifyShiftCount(-1);
             }
             if (value.isPressed && isPeekAble && !isPressingMove && allowShift && !isClimbing)
@@ -233,14 +240,10 @@ namespace Controller
 
         private void TogglePeek()
         {
-            if (isPeeking)
-            {
-                StartCoroutine(PeekAnimation());
-            }
-            else
-            {
-                StartCoroutine(PeekAnimation());
-            }
+            
+            StartCoroutine(PeekAnimation());
+            
+            
         }
 
         IEnumerator PeekAnimation()
@@ -250,9 +253,11 @@ namespace Controller
             {
                 isPeekAble = false;
                 isPeeking = false;
-                _isControllable = false;
+                IsControllable = false;
                 isJumpAble = false;
                 myAnimator.SetBool("isPeeking",false);
+                LevelManager.Instance.shiftIndicator.SetBool("isPeeking", false);
+
                 while (_peek.sizeDelta.x > 0)
                 {
                     if (playerColor.a < 1)
@@ -265,20 +270,32 @@ namespace Controller
                     yield return new WaitForSeconds(0.01f);
                 }
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
-                _isControllable = true;
+                IsControllable = true;
                 isJumpAble = true;
                 isPeekAble = true;
                 _isCancelled = false;
             }
             else
             {
-                _isControllable = false;
+                IsControllable = false;
                 isJumpAble = false;
                 isPeekAble = false;
+                isPeeking = true;
                 myAnimator.SetBool("isPeeking",true);
+                LevelManager.Instance.shiftIndicator.SetBool("isPeeking", true);
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Front";
                 while (_peek.sizeDelta.x < _peekSize)
                 {
+                    if (myAnimator.GetBool("isShifting"))
+                    {
+                        _peek.sizeDelta = new Vector2(0, 0);
+                        _peekMask.sizeDelta = new Vector2(0, 0);
+                        isPeeking = false;
+                        myAnimator.SetBool("isPeeking",false);
+                        LevelManager.Instance.shiftIndicator.SetBool("isPeeking", false);
+
+                        break;
+                    }
                     if (playerColor.a >= 0.5f)
                     {
                         playerColor.a -= 0.01f;
@@ -288,9 +305,8 @@ namespace Controller
                     _peekMask.sizeDelta += new Vector2(25, 25);
                     yield return new WaitForSeconds(0.01f);
                 }
-                _isControllable = true;
+                IsControllable = true;
                 isJumpAble = true;
-                isPeeking = true;
                 isPeekAble = true;
                 _isCancelled = false;
             }
@@ -361,7 +377,7 @@ namespace Controller
                     if (isHiding)
                     {
                         isHiding = false;
-                        _isControllable = true;
+                        IsControllable = true;
                         isJumpAble = true;
                         _myRigidbody.velocity = new Vector2(0,0);
                         playerColor.a = 1f;
@@ -374,7 +390,7 @@ namespace Controller
                     }
                     else if(!isHiding)
                     {
-                        _isControllable = false;
+                        IsControllable = false;
                         isJumpAble = false;
                         isHiding = true;
                         _myRigidbody.velocity = new Vector2(0,0);
@@ -405,12 +421,13 @@ namespace Controller
         {
             StartCoroutine(PauseMovement(6));
             myAnimator.Play("Wakeup");
+            LevelManager.Instance.freeCamera.GetComponent<ObjectAim>().GameObjectToTarget(gameObject);
         }
 
-        private IEnumerator PauseMovement(float pauseTime)
+        public IEnumerator PauseMovement(float pauseTime)
         {
 
-            _isControllable = false;
+            IsControllable = false;
             isJumpAble = false;
             isShiftAble = false;
 
@@ -419,7 +436,7 @@ namespace Controller
             
             isJumpAble = true;
             isShiftAble = true;
-            _isControllable = true;
+            IsControllable = true;
             
         }
                 
@@ -437,9 +454,10 @@ namespace Controller
             }
         }
 
+        
         private float _time;
         private static readonly int IsRunning = Animator.StringToHash("isRunning");
-
+        
         private void CheckGround()
         {
             if (_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
@@ -517,7 +535,7 @@ namespace Controller
             IsAlive = status;
             if (!IsAlive)
             {
-                _isControllable = false;
+                IsControllable = false;
                 isJumpAble = false;
                 allowShift = false;
                 myAnimator.SetBool("isDead", true);
@@ -527,7 +545,15 @@ namespace Controller
 
         private void ModifyShiftCountText()
         {
-            LevelManager.Instance.shiftCountText.text = $"ShiftCount: {shiftCount}";
+            if (shiftCount == 0)
+            {
+                LevelManager.Instance.shiftCountText.text = "-";
+            }
+            else
+            {
+                LevelManager.Instance.shiftCountText.text = $"{(shiftCount)}";
+            }
+            
         }
 
         #endregion
