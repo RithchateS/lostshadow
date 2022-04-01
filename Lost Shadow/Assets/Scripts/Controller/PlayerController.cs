@@ -57,7 +57,9 @@ namespace Controller
             _peekSize = 2000;
             _peek = LevelManager.Instance.peek;
             ModifyShiftCount(0);
+            StartCoroutine(PauseMovement(3));
             LevelManager.Instance.CheckCutScene();
+
         }
 
         void Update()
@@ -66,7 +68,7 @@ namespace Controller
             {
                 ClimbLadder();
                 LevelManager.Instance.cameraObj.GetComponent<Animator>().SetBool("Cutscene", false);
-                
+
             }
             Run();
             if (Input.GetKey(KeyCode.LeftShift))

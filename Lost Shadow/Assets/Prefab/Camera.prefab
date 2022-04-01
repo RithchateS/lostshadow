@@ -409,7 +409,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 2
+    OrthographicSize: 3
     NearClipPlane: 0
     FarClipPlane: 50
     Dutch: 0
@@ -720,8 +720,8 @@ MonoBehaviour:
   m_LayerIndex: 0
   m_ShowDebugText: 0
   m_ChildCameras:
-  - {fileID: 1654213535037914277}
-  - {fileID: 8796872901763836737}
+  - {fileID: 0}
+  - {fileID: 0}
   m_Instructions:
   - m_FullHash: 1839989770
     m_VirtualCamera: {fileID: 1654213535037914277}

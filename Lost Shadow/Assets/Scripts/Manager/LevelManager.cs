@@ -1,11 +1,9 @@
-using System;
 using Cinemachine;
 using Controller;
 using Old.Manager;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace Manager
 {
@@ -105,10 +103,9 @@ namespace Manager
         mapBoundsShadow = GameObject.Find("MapBoundsShadow").GetComponent<Collider2D>();
         cameraBounds.m_BoundingShape2D = mapBoundsShadow;
         playerController = _player.GetComponent<PlayerController>();
-        
         GameSaveManager.Instance.SaveGame();
         Debug.Log(Appdata.Instance.currentScene);
-        
+
     }
 
     private void Update()
@@ -120,9 +117,10 @@ namespace Manager
     {
         if (SceneManager.GetActiveScene().name == "Tutorial01")
         {
-            cameraObj.GetComponent<Animator>().SetBool("Cutscene",true);
             playerController.Wakeup();
         }
+        cameraObj.GetComponent<Animator>().SetBool("Cutscene",true);
+
     }
 
 

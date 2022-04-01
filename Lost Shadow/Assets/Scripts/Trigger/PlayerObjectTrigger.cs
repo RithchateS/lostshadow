@@ -1,23 +1,16 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using Cinemachine;
 using Controller;
 using Identifier;
 using Manager;
 using Old.Manager;
-using Unity.Burst.Intrinsics;
 using UnityEngine;
-using UnityEngine.UI;
-using Debug = UnityEngine.Debug;
 
 namespace Trigger
 {
     public class PlayerObjectTrigger : MonoBehaviour
     {
         private int _objectID;
-        private int _doorID;
+        private bool _isShadow;
         private GameObject _bronzeBlock;
         private GameObject _silverBlock;
         private GameObject _goldBlock;
@@ -40,20 +33,21 @@ namespace Trigger
         }
         
 
-        IEnumerator ObjectCamAnimation()
+        IEnumerator ObjectCamAnimation(GameObject object1)
         {
-            while (_objectCamMask.sizeDelta.x < 500)
+            while (_objectCamMask.rect.width < 500)
             {
-                _objectCam.sizeDelta += new Vector2(10,10);
-                _objectCamMask.sizeDelta += new Vector2(10,10);
-                //yield return new WaitForSeconds(0.01f);
+                _objectCam.sizeDelta += new Vector2(15,11);
+                _objectCamMask.sizeDelta += new Vector2(14,10);
+                yield return new WaitForSeconds(0.01f);
             }
+            object1.GetComponent<Animator>().SetBool("Broken", true);
             yield return new WaitForSeconds(3);
-            while (_objectCamMask.sizeDelta.x > 0)
+            while (_objectCamMask.rect.width > 0)
             {
-                _objectCam.sizeDelta -= new Vector2(10,10);
-                _objectCamMask.sizeDelta -= new Vector2(10,10); 
-                //yield return new WaitForSeconds(0.01f);
+                _objectCam.sizeDelta -= new Vector2(15,11);
+                _objectCamMask.sizeDelta -= new Vector2(14,10); 
+                yield return new WaitForSeconds(0.01f);
             }
             
         }
@@ -62,28 +56,55 @@ namespace Trigger
             if (col.CompareTag("Object"))
             {
                 _objectID = col.gameObject.GetComponent<ObjectID>().objectID;
+                _isShadow = col.gameObject.GetComponent<ObjectID>().isShadow;
                 switch (_objectID)
                 {
                     case 1: //Bronze Key
-                        StartCoroutine(ObjectCamAnimation());
-                        LevelManager.Instance.objectCamera.transform.position = _bronzeBlock.transform.position;
-                        _bronzeBlock.GetComponent<Animator>().SetBool("Broken", true);
+                        if (_isShadow == _bronzeBlock.GetComponent<ObjectID>().isShadow)
+                        {
+                            StartCoroutine(gameObject.GetComponent<PlayerController>().PauseMovement(3));
+                            LevelManager.Instance.cameraObj.GetComponent<Animator>().SetBool("Cutscene", true);
+                            LevelManager.Instance.freeCamera.GetComponent<ObjectAim>().GameObjectToTarget(_bronzeBlock);
+                            _bronzeBlock.GetComponent<Animator>().SetBool("Broken", true);
+                        }
+                        else
+                        {
+                            StartCoroutine(ObjectCamAnimation(_bronzeBlock));
+                            LevelManager.Instance.objectCamera.transform.position = _bronzeBlock.transform.position;
+                        }
                         Destroy(col.gameObject);
                         break;
                     case 2: //Silver Key
-                        StartCoroutine(ObjectCamAnimation());
-                        LevelManager.Instance.objectCamera.transform.position = _silverBlock.transform.position;
-                        _silverBlock.GetComponent<Animator>().SetBool("Broken", true);
+                        if (_isShadow == _silverBlock.GetComponent<ObjectID>().isShadow)
+                        {
+                            StartCoroutine(gameObject.GetComponent<PlayerController>().PauseMovement(3));
+                            LevelManager.Instance.cameraObj.GetComponent<Animator>().SetBool("Cutscene", true);
+                            LevelManager.Instance.freeCamera.GetComponent<ObjectAim>().GameObjectToTarget(_silverBlock);
+                            _silverBlock.GetComponent<Animator>().SetBool("Broken", true);
+                        }
+                        else
+                        {
+                            StartCoroutine(ObjectCamAnimation(_silverBlock));
+                            LevelManager.Instance.objectCamera.transform.position = _silverBlock.transform.position;
+                        }
                         Destroy(col.gameObject);
                         break;
                     case 3: //Gold Key
-                        StartCoroutine(ObjectCamAnimation());
-                        LevelManager.Instance.objectCamera.transform.position = _goldBlock.transform.position;
-                        _goldBlock.GetComponent<Animator>().SetBool("Broken", true);
+                        if (_isShadow == _goldBlock.GetComponent<ObjectID>().isShadow)
+                        {
+                            StartCoroutine(gameObject.GetComponent<PlayerController>().PauseMovement(3));
+                            LevelManager.Instance.cameraObj.GetComponent<Animator>().SetBool("Cutscene", true);
+                            LevelManager.Instance.freeCamera.GetComponent<ObjectAim>().GameObjectToTarget(_goldBlock);
+                            _silverBlock.GetComponent<Animator>().SetBool("Broken", true);
+                        }
+                        else
+                        {
+                            StartCoroutine(ObjectCamAnimation(_goldBlock));
+                            LevelManager.Instance.objectCamera.transform.position = _goldBlock.transform.position;
+                        }
                         Destroy(col.gameObject);
                         break;
                     case 4: //Holy
-                        StartCoroutine(ObjectCamAnimation());
                         col.gameObject.GetComponent<Animator>().SetTrigger("Unlocked");
                         _playerController.ModifyShiftCount(2);
                         break;

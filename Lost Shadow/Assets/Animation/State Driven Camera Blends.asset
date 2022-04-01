@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CustomBlends:
   - m_From: '**ANY CAMERA**'
-    m_To: Cutscene Camera
+    m_To: FreeCamera
     m_Blend:
       m_Style: 1
-      m_Time: 0
+      m_Time: 1
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
