@@ -293,7 +293,7 @@ namespace Controller
                         isPeeking = false;
                         myAnimator.SetBool("isPeeking",false);
                         LevelManager.Instance.shiftIndicator.SetBool("isPeeking", false);
-
+                        playerColor.a = 1f;
                         break;
                     }
                     if (playerColor.a >= 0.5f)
@@ -430,6 +430,7 @@ namespace Controller
             IsControllable = false;
             isJumpAble = false;
             isShiftAble = false;
+            isPeekAble = false;
 
             //Setting Time Freeze Here
             yield return new WaitForSeconds(pauseTime);
@@ -437,7 +438,8 @@ namespace Controller
             isJumpAble = true;
             isShiftAble = true;
             IsControllable = true;
-            
+            isPeekAble = true;
+
         }
                 
 

@@ -120,8 +120,11 @@ namespace Manager
         {
             playerController.Wakeup();
         }
-
-        StartCoroutine(playerController.PauseMovement(3));
+        else
+        {
+            StartCoroutine(playerController.PauseMovement(3));
+        }
+        
         cameraObj.GetComponent<Animator>().SetBool("Cutscene",true);
 
     }
