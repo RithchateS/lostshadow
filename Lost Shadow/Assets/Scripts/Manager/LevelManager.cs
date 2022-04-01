@@ -102,6 +102,7 @@ namespace Manager
         }
         mapBoundsShadow = GameObject.Find("MapBoundsShadow").GetComponent<Collider2D>();
         cameraBounds.m_BoundingShape2D = mapBoundsShadow;
+        freeCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = mapBoundsShadow;
         playerController = _player.GetComponent<PlayerController>();
         GameSaveManager.Instance.SaveGame();
         Debug.Log(Appdata.Instance.currentScene);
