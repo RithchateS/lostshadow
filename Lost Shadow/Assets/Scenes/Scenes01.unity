@@ -76931,7 +76931,7 @@ PrefabInstance:
       objectReference: {fileID: 1268994051}
     - target: {fileID: 569054390, guid: 2e11483be3c128845bdeab15d688b82b, type: 3}
       propertyPath: shiftCountStart
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1210396995, guid: 2e11483be3c128845bdeab15d688b82b, type: 3}
       propertyPath: m_Alpha
