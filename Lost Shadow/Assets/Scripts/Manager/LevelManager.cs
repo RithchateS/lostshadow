@@ -75,8 +75,6 @@ namespace Manager
         cameraBounds = GameObject.Find("MainCineCamera").GetComponent<CinemachineConfiner2D>();
         peek = GameObject.FindWithTag("Peek").GetComponent<RectTransform>();
         peekMask = GameObject.FindWithTag("PeekMask").GetComponent<RectTransform>();
-        shiftCountText = GameObject.Find("ShiftCount").GetComponent<TMP_Text>();
-        shiftIndicator = GameObject.Find("ShiftIndicator").GetComponent<Animator>();
         freeCamera = GameObject.Find("FreeCamera");
         mainCineCamera = GameObject.Find("MainCineCamera");
         objectCamera = GameObject.Find("ObjectCamera");
@@ -84,6 +82,12 @@ namespace Manager
         objectCamMask = GameObject.Find("ObjectCamMask");
 
 
+        if (allowShift)
+        {
+            shiftCountText = GameObject.Find("ShiftCount").GetComponent<TMP_Text>();
+            shiftIndicator = GameObject.Find("ShiftIndicator").GetComponent<Animator>();
+        }
+        
         if (_player == null) {
             Instantiate(playerPrefab, startPos.position, startPos.rotation);
             Instantiate(playerClonePrefab, startPos.position, startPos.rotation);
@@ -118,10 +122,12 @@ namespace Manager
     {
         if (SceneManager.GetActiveScene().name == "Tutorial01")
         {
+            Debug.Log("6 sec");
             playerController.Wakeup();
         }
         else
         {
+            Debug.Log("3Sec");
             StartCoroutine(playerController.PauseMovement(3));
         }
         

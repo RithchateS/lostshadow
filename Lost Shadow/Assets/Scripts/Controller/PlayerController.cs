@@ -63,8 +63,10 @@ namespace Controller
             allowShift = LevelManager.Instance.allowShift;
             _peekSize = 2000;
             _peek = LevelManager.Instance.peek;
-            ModifyShiftCount(0);
-            StartCoroutine(PauseMovement(3));
+            if (allowShift)
+            {
+                ModifyShiftCount(0);
+            }
             LevelManager.Instance.CheckCutScene();
 
         }
