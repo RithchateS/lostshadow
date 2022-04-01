@@ -23,6 +23,8 @@ TagManager:
   - Object
   - Interact
   - TriggerObject
+  - LArm
+  - RArm
   layers:
   - Default
   - TransparentFX
