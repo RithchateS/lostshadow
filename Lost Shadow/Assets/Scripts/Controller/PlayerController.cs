@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Cinemachine;
 using Manager;
@@ -381,6 +382,8 @@ namespace Controller
                         isHiding = false;
                         IsControllable = true;
                         isJumpAble = true;
+                        isPeekAble = true;
+                        isShiftAble = true;
                         _myRigidbody.velocity = new Vector2(0,0);
                         playerColor.a = 1f;
                         _myBodyCollider.isTrigger = false;
@@ -395,6 +398,8 @@ namespace Controller
                         IsControllable = false;
                         isJumpAble = false;
                         isHiding = true;
+                        isPeekAble = false;
+                        isShiftAble = false;
                         _myRigidbody.velocity = new Vector2(0,0);
                         _myRigidbody.gravityScale = 0f;
                         _myBodyCollider.isTrigger = true;
@@ -413,6 +418,22 @@ namespace Controller
 
         [Header("InteractFunction")] 
         [SerializeField] private bool isHiding;
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (col.gameObject.CompareTag("Interact"))
+            {
+                col.GetComponent<Hider>().ActivateInteract();
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.gameObject.CompareTag("Interact"))
+            {
+                other.GetComponent<Hider>().DeactivateInteract();
+            }
+        }
 
         #endregion
         

@@ -222,6 +222,7 @@ public class Guard1AI : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Player") && !_playerController.GetIsHiding())
         {
+            _guardRb2D.velocity = new Vector2(0, 0);
             _playerController.ModifyAlive(false);
         }
     }
