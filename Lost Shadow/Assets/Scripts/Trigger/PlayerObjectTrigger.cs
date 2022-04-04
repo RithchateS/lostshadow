@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace Trigger
 {
+    /// <summary>
+    /// This class is used to check every trigger from player.
+    /// </summary>
     public class PlayerObjectTrigger : MonoBehaviour
     {
         private int _objectID;
@@ -35,6 +38,12 @@ namespace Trigger
         }
         
 
+        /// <summary>
+        /// ObjectCamera Animation depending on the isShadow value
+        /// </summary>
+        /// <param name="object1">object to target</param>
+        /// <param name="audioClipData">sound data</param>
+        /// <returns></returns>
         IEnumerator ObjectCamAnimation(GameObject object1, AudioClipData audioClipData)
         {
             while (_objectCamMask.sizeDelta.x < 500)
@@ -55,6 +64,13 @@ namespace Trigger
             
         }
 
+        /// <summary>
+        /// Play Animation After sound
+        /// </summary>
+        /// <param name="object1">object to target</param>
+        /// <param name="audioClipData">sound data</param>
+        /// <param name="objectID">id of an object (redundant)</param>
+        /// <returns></returns>
         IEnumerator BreakDelay(GameObject object1, AudioClipData audioClipData,int objectID)
         {
             switch (objectID)
@@ -74,6 +90,7 @@ namespace Trigger
 
             
         }
+        
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (col.CompareTag("Object"))
@@ -172,6 +189,24 @@ namespace Trigger
                         break;
                     case 2005: //To Scenes04
                         StartCoroutine(GameSaveManager.Instance.GoNextScene(8));
+                        break;
+                    case 2006: //To Scenes05
+                        StartCoroutine(GameSaveManager.Instance.GoNextScene(9));
+                        break;
+                    case 2007: //To Scenes06
+                        StartCoroutine(GameSaveManager.Instance.GoNextScene(10));
+                        break;
+                    case 2008: //To Scenes07
+                        StartCoroutine(GameSaveManager.Instance.GoNextScene(11));
+                        break;
+                    case 2009: //To Scenes08
+                        StartCoroutine(GameSaveManager.Instance.GoNextScene(12));
+                        break;
+                    case 2010: //To Scenes09
+                        StartCoroutine(GameSaveManager.Instance.GoNextScene(13));
+                        break;
+                    case 2011: //To Scenes10
+                        StartCoroutine(GameSaveManager.Instance.GoNextScene(14));
                         break;
                     case 3001: //Death
                         _playerController.ModifyAlive(false);

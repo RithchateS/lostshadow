@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 
 namespace Manager
 {
+    /// <summary>
+    /// This class is responsible for managing the level.
+    /// </summary>
     public class LevelManager : MonoBehaviour
     {
         #region Variables
@@ -131,6 +134,9 @@ namespace Manager
         FollowMain();
     }
 
+    /// <summary>
+    /// Check if the animator should play cutscene animation
+    /// </summary>
     public void CheckCutScene()
     {
         freeCamera.GetComponent<ObjectAim>().GameObjectToTarget(_player);
@@ -165,6 +171,14 @@ namespace Manager
     //     _camera.GetComponent<BoxCollider2D>().size = new Vector2(width, height);
     // }
 
+    /// <summary>
+    /// Everything follow
+    /// <para>Overlay Cam Follow Main Cam</para>
+    /// <para>PlayerClone Follow Player</para>
+    /// <para>Assign Map Bounds</para>
+    /// <para> overlaycam ortho size = maincam ortho size</para>
+    /// <para> objectcam ortho size = maincam ortho size</para>
+    /// </summary>
     void FollowMain()
     {
         if (playerController.isShadow)

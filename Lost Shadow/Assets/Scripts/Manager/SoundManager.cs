@@ -1,9 +1,11 @@
-using System;
 using UnityEngine;
-using Random = UnityEngine.Random;
+
 
 namespace Manager
 {
+    /// <summary>
+    /// This class is used to manage sound effects.
+    /// </summary>
     public class SoundManager : Singleton<SoundManager>
     {
         public AudioSource effectsSource;
@@ -24,11 +26,21 @@ namespace Manager
 
         }
 
+        /// <summary>
+        /// Play Effect one time
+        /// </summary>
+        /// <param name="clip">Sound Effect you want to play</param>
+        /// <param name="volume">Volume of the Sound effect</param>
         public void PlayEffect(AudioClip clip, float volume)
         {
             effectsSource.PlayOneShot(clip, volume);
         }
         
+        /// <summary>
+        /// Play Music in loop
+        /// </summary>
+        /// <param name="clip">Music you want to play</param>
+        /// <param name="volume">volume of the music (change globally)</param>
         public void PlayMusic(AudioClip clip, float volume)
         {
             musicSource.clip = clip;
@@ -36,7 +48,11 @@ namespace Manager
             musicSource.volume = volume;
             musicSource.Play();
         }
-        
+        /// <summary>
+        /// Randomize the sound effect and pitch
+        /// </summary>
+        /// <param name="clips">Array of clips to random from</param>
+        /// <param name="volume">Volume of the sound effect</param>
         public void RandomSoundEffect(AudioClip[] clips, float volume)
         {
             int randomIndex = Random.Range(0, clips.Length);

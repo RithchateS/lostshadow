@@ -4,9 +4,11 @@ using UnityEngine;
 
 namespace Controller
 {
+    /// <summary>
+    /// This class is responsible for scene transitions.
+    /// </summary>
     public class TransitionController : MonoBehaviour
     {
-        
         private Animator _animator;
         public static TransitionController Instance;
         private bool _isLevel;
@@ -22,18 +24,24 @@ namespace Controller
             {
                 Destroy(this);
             }
+
             _animator = transform.GetChild(0).GetComponent<Animator>();
         }
 
         private void Start()
         {
-            
+
             if (LevelManager.Instance != null)
             {
                 _isLevel = true;
             }
         }
 
+        /// <summary>
+        /// End transition in the scene
+        /// Also Decrease the volume of the music
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator EndTransition()
         {
             _animator.SetTrigger("End");
@@ -49,11 +57,18 @@ namespace Controller
                         LevelManager.Instance.LightAudio.volume -= 0.01f;
                         yield return new WaitForSeconds(0.01f);
                     }
-                    
+
                 }
             }
+
             _animator.ResetTrigger("Start");
         }
+
+        /// <summary>
+        /// Start transition in the scene.
+        /// Also Increase the volume of the music.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator StartTransition()
         {
             _animator.ResetTrigger("End");

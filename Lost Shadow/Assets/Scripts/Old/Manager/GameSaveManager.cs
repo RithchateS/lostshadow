@@ -64,22 +64,22 @@ namespace Old.Manager
             if (saveSlot == CurrectSlot.Slot1)
             {
                 Appdata.Instance.isUsed1 = true;
-                Appdata.Instance.PlayerPosition1 = GameObject.FindGameObjectWithTag("Player").transform.position;
-                Appdata.Instance.SceneInSave1 = Appdata.Instance.currentScene;
+                Appdata.Instance.playerPosition1 = GameObject.FindGameObjectWithTag("Player").transform.position;
+                Appdata.Instance.sceneInSave1 = Appdata.Instance.currentScene;
                 Appdata.Instance.chapterNum1 = Appdata.Instance.currentChapter;
             }
             else if (saveSlot == CurrectSlot.Slot2)
             {
                 Appdata.Instance.isUsed2 = true;
-                Appdata.Instance.PlayerPosition2 = GameObject.FindGameObjectWithTag("Player").transform.position;
-                Appdata.Instance.SceneInSave2 = Appdata.Instance.currentScene;
+                Appdata.Instance.playerPosition2 = GameObject.FindGameObjectWithTag("Player").transform.position;
+                Appdata.Instance.sceneInSave2 = Appdata.Instance.currentScene;
                 Appdata.Instance.chapterNum2 = Appdata.Instance.currentChapter;
             }
             else if (saveSlot == CurrectSlot.Slot3)
             {
                 Appdata.Instance.isUsed3 = true;
-                Appdata.Instance.PlayerPosition3 = GameObject.FindGameObjectWithTag("Player").transform.position;
-                Appdata.Instance.SceneInSave3 = Appdata.Instance.currentScene;
+                Appdata.Instance.playerPosition3 = GameObject.FindGameObjectWithTag("Player").transform.position;
+                Appdata.Instance.sceneInSave3 = Appdata.Instance.currentScene;
                 Appdata.Instance.chapterNum3 = Appdata.Instance.currentChapter;
             }
             if (!IsSaveFile())
@@ -198,18 +198,18 @@ namespace Old.Manager
         {
             if (slot == 1)
             {
-                Appdata.Instance.SceneInSave1 = SceneCollection.Tutorial01;
-                Appdata.Instance.PlayerPosition1 = new Vector3(0f,0f,0f);
+                Appdata.Instance.sceneInSave1 = SceneCollection.Tutorial01;
+                Appdata.Instance.playerPosition1 = new Vector3(0f,0f,0f);
             }
             else if (slot == 2)
             {
-                Appdata.Instance.SceneInSave2 = SceneCollection.Tutorial01;
-                Appdata.Instance.PlayerPosition2 = new Vector3(0f,0f,0f);
+                Appdata.Instance.sceneInSave2 = SceneCollection.Tutorial01;
+                Appdata.Instance.playerPosition2 = new Vector3(0f,0f,0f);
             }
             else if (slot == 3)
             {
-                Appdata.Instance.SceneInSave3 = SceneCollection.Tutorial01;
-                Appdata.Instance.PlayerPosition3 = new Vector3(0f,0f,0f);
+                Appdata.Instance.sceneInSave3 = SceneCollection.Tutorial01;
+                Appdata.Instance.playerPosition3 = new Vector3(0f,0f,0f);
             }
             if (!IsSaveFile())
             {

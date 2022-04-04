@@ -90,7 +90,7 @@ public class MenuController : MonoBehaviour
                 menu.ChangePage(Menulist.Main);
             }
 
-            if (GUILayout.Button("New"))
+            if (GUILayout.Button("Play"))
             {
                 menu.ChangePage(Menulist.Play);
             }

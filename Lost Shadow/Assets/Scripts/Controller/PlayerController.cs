@@ -8,6 +8,9 @@ using UnityEngine.InputSystem;
 
 namespace Controller
 {
+    /// <summary>
+    /// This class is responsible for the player's movement and skills.
+    /// </summary>
     public class PlayerController : MonoBehaviour
     {
         #region Variables
@@ -139,6 +142,10 @@ namespace Controller
                 LevelManager.Instance.shiftIndicator.SetBool("isPeeking", false);
             }
         }
+        
+        /// <summary>
+        ///  Move the player in the direction of the input
+        /// </summary>
         void Run() 
         {
             Vector2 playerVelocity = new Vector2 (_currentHorizontalSpeed, _myRigidbody.velocity.y);
@@ -148,6 +155,9 @@ namespace Controller
             myAnimator.SetBool(IsRunning, playerHasHorizontalSpeed);
             isMoving = playerHasHorizontalSpeed;
         }
+        /// <summary>
+        /// Calculate the speed of the player when running 
+        /// </summary>
         private void CalculateRun() {
             if (_moveInput.x != 0 && !isPeeking) {
                 myAnimator.SetFloat("runAnimSpeed", 0.8f);
@@ -161,7 +171,9 @@ namespace Controller
             }
                     
         }
-        
+        /// <summary>
+        /// Calculate the speed of the player when walking 
+        /// </summary>
         private void CalculateWalk() {
             if (_moveInput.x != 0 && !isPeeking) {
                 myAnimator.SetFloat("runAnimSpeed", 0.4f);
@@ -205,6 +217,12 @@ namespace Controller
                     }
                 }
 
+        /// <summary>
+        /// prevent the player from jumping again until lateJumpTime has passed;
+        /// </summary>
+        /// <returns>
+        /// IEnumerator for the lateJumpTime
+        /// </returns>
         private IEnumerator IsJumpAble()
         {
             isJumpAble = false;
@@ -250,17 +268,18 @@ namespace Controller
             }
             if (value.isPressed && isPeekAble && !isPressingMove && allowShift && !isClimbing)
             {
-                TogglePeek();
+                StartCoroutine(TogglePeekAnimation());
             }
         }
         
+         /// <summary>
+         /// Toggle the peek animation
+         /// <para>When the player is peeking, the player can't move, can't jump and climb</para>
+         /// <para>if player use ShadowShift during peeking, the player will be shifted to the other side immediately</para>
+         /// <para>Modify Peek-mask's size player opacity and eye-effect's size</para>
+         /// </summary>
 
-        private void TogglePeek()
-        {
-            StartCoroutine(PeekAnimation());
-        }
-
-        IEnumerator PeekAnimation()
+         IEnumerator TogglePeekAnimation()
         {
 
             if (isPeeking)
@@ -332,6 +351,11 @@ namespace Controller
         }
         #endregion
         #region Climb
+        /// <summary>
+        /// Check if the player is climbing or not
+        /// if the player is climbing, the player can't move, jump and peek
+        /// <para>Add vertical force to the player to make him climb</para>
+        /// </summary>
         void ClimbLadder()
         {
             if (isClimbable)
@@ -454,7 +478,9 @@ namespace Controller
         
         
         #region Animation
-        
+        /// <summary>
+        /// Wakeup Animation
+        /// </summary>
         public void Wakeup()
         {
             StartCoroutine(PauseMovement(8));
@@ -462,6 +488,11 @@ namespace Controller
             LevelManager.Instance.freeCamera.GetComponent<ObjectAim>().GameObjectToTarget(gameObject);
         }
 
+        /// <summary>
+        /// Pause Movement for a given time
+        /// </summary>
+        /// <param name="pauseTime"> the time used to pause everything </param>
+        /// <returns></returns>
         public IEnumerator PauseMovement(float pauseTime)
         {
 
@@ -486,6 +517,9 @@ namespace Controller
         #endregion
         
         #region Passive
+        /// <summary>
+        /// Passive: Flip the player when he is looking at the other side
+        /// </summary>
         void FlipSprite() {
             bool playerHasHorizontalSpeed = Mathf.Abs(_myRigidbody.velocity.x) > Mathf.Epsilon;
         
@@ -498,6 +532,10 @@ namespace Controller
         private float _time;
         private static readonly int IsRunning = Animator.StringToHash("isRunning");
         
+        /// <summary>
+        /// Passive: Check if player is touching the ground
+        /// <para>Also Check the Late Jump Time</para>
+        /// </summary>
         private void CheckGround()
         {
             if (_myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
@@ -526,6 +564,9 @@ namespace Controller
             }
         }
 
+        /// <summary>
+        /// Check if player is touching the Ladder
+        /// </summary>
         private void CheckLadder()
         {
             if (_myBodyCollider.IsTouchingLayers(LayerMask.GetMask("Ladder")))
@@ -538,19 +579,29 @@ namespace Controller
             }
         }
 
+        /// <summary>
+        /// Check if PlayerClone is int the wall
+        /// </summary>
+        /// <param name="inCollider"> sent from PlayerClone TriggerEnter2D</param>
         public void CheckIfInCollider(bool inCollider)
         {
             isShiftAble = !inCollider;
         }
 
+        /// <summary>
+        /// Check if player cancels the peek
+        /// </summary>
         private void PeekCheck()
         {
             if (isPeeking && _isCancelled)
             {
-                TogglePeek();
+                StartCoroutine(TogglePeekAnimation());
             }
         }
 
+        /// <summary>
+        /// Update the player opacity
+        /// </summary>
         private void UpdateColor()
         {
             gameObject.GetComponent<SpriteRenderer>().color = playerColor;
@@ -559,6 +610,11 @@ namespace Controller
 
         #region ModifyRules
 
+        /// <summary>
+        /// Modify player shift count
+        /// <para> Player Shift Count Can't be below zero</para>
+        /// </summary>
+        /// <param name="count">can be negative</param>
         public void ModifyShiftCount(int count)
         {
             shiftCount += count;
@@ -570,6 +626,11 @@ namespace Controller
             ModifyShiftCountText();
         }
 
+        /// <summary>
+        /// Modify Player Alive Status.
+        /// only Use when player is dead
+        /// </summary>
+        /// <param name="status"> true for alive false for dead</param>
         public void ModifyAlive(bool status)
         {
             IsAlive = status;
@@ -585,6 +646,9 @@ namespace Controller
             }
         }
 
+        /// <summary>
+        /// Modify the shift count text by using the shift count
+        /// </summary>
         private void ModifyShiftCountText()
         {
             if (shiftCount == 0)
