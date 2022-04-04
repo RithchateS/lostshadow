@@ -1,18 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum Menulist
 {
     Main,
-    New,
-    Load,
-    Setting
+    Play,
+    Credit
 }
 
 public class MenuController : MonoBehaviour
@@ -29,19 +24,17 @@ public class MenuController : MonoBehaviour
             OnMenuListChange();
         }
     }
-
-    [SerializeField] private TMP_Text pageTitle;
+    
 
     // GameObject
+    [SerializeField] private GameObject logo;
     [SerializeField] private GameObject mainMenu;
-    [SerializeField] private GameObject newGamePage;
-    [SerializeField] private GameObject loadGamePage;
-    [SerializeField] private GameObject settingPage;
+    [SerializeField] private GameObject playPage;
+    [SerializeField] private GameObject creditPage;
 
     private void Start()
     {
         back_Button.GetComponent<Button>().onClick.AddListener(delegate { ChangePage(0); });
-        pageTitle.text = "";
     }
 
     public void ChangePage(Menulist page)
@@ -56,33 +49,28 @@ public class MenuController : MonoBehaviour
 
     private void OnMenuListChange()
     {
+        logo.SetActive(false);
         mainMenu.SetActive(false);
-        settingPage.SetActive(false);
-        loadGamePage.SetActive(false);
-        newGamePage.SetActive(false);
+        creditPage.SetActive(false);
+        playPage.SetActive(false);
         back_Button.SetActive(false);
 
         switch (CurrentPage)
         {
             case Menulist.Main:
+                logo.SetActive(true);
                 mainMenu.SetActive(true);
                 back_Button.SetActive(false);
-                pageTitle.text = "";
                 break;
-            case Menulist.New:
-                newGamePage.SetActive(true);
+            case Menulist.Play:
+                logo.SetActive(false);
+                playPage.SetActive(true);
                 back_Button.SetActive(true);
-                pageTitle.text = "New Game";
                 break;
-            case Menulist.Load:
-                loadGamePage.SetActive(true);
+            case Menulist.Credit:
+                logo.SetActive(false);
+                creditPage.SetActive(true);
                 back_Button.SetActive(true);
-                pageTitle.text = "Load Game";
-                break;
-            case Menulist.Setting:
-                settingPage.SetActive(true);
-                back_Button.SetActive(true);
-                pageTitle.text = "Setting";
                 break;
         }
     }
@@ -105,17 +93,12 @@ public class MenuController : MonoBehaviour
 
             if (GUILayout.Button("New"))
             {
-                menu.ChangePage(Menulist.New);
+                menu.ChangePage(Menulist.Play);
             }
 
-            if (GUILayout.Button("Load"))
+            if (GUILayout.Button("Credit"))
             {
-                menu.ChangePage(Menulist.Load);
-            }
-
-            if (GUILayout.Button("Setting"))
-            {
-                menu.ChangePage(Menulist.Setting);
+                menu.ChangePage(Menulist.Credit);
             }
 
         }

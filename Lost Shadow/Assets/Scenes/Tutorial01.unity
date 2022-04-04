@@ -7166,6 +7166,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Transitions
       objectReference: {fileID: 0}
+    - target: {fileID: 7129748754751255649, guid: e72b93486b29a2a489661a73d8546ab1, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 100754746}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e72b93486b29a2a489661a73d8546ab1, type: 3}
 --- !u!1 &374711802
