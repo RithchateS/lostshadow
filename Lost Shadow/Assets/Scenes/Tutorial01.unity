@@ -27194,6 +27194,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 57619388}
     - target: {fileID: 569054390, guid: 2e11483be3c128845bdeab15d688b82b, type: 3}
+      propertyPath: allowShift
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 569054390, guid: 2e11483be3c128845bdeab15d688b82b, type: 3}
       propertyPath: isShiftAble
       value: 0
       objectReference: {fileID: 0}

@@ -1,5 +1,6 @@
 using Cinemachine;
 using Controller;
+using Data;
 using Old.Manager;
 using TMPro;
 using UnityEngine;
@@ -41,11 +42,15 @@ namespace Manager
         [SerializeField] public GameObject eyeEffect;
         
         [Header("Others")]
-        private GameObject _player;
+        [SerializeField] private GameObject _player;
         private GameObject _playerClone;
         public GameObject cameraObj;
         private GameObject _mainCamera;
         private GameObject _overlayCamera;
+        public AudioClipData AudioClipData { get; private set; }
+        public AudioSource ShadowAudio { get; private set; }
+        public AudioSource LightAudio{ get; private set; }
+        
         
 
 
@@ -83,21 +88,21 @@ namespace Manager
         objectCam = GameObject.Find("ObjectCam");
         objectCamMask = GameObject.Find("ObjectCamMask");
         eyeEffect = GameObject.Find("EyeEffect");
-
-
+        AudioClipData = GetComponent<AudioClipData>();
+        
         if (allowShift)
         {
             shiftCountText = GameObject.Find("ShiftCount").GetComponent<TMP_Text>();
             shiftIndicator = GameObject.Find("ShiftIndicator").GetComponent<Animator>();
         }
-        
+
         if (_player == null) {
             Instantiate(playerPrefab, startPos.position, startPos.rotation);
             Instantiate(playerClonePrefab, startPos.position, startPos.rotation);
             _playerClone = GameObject.FindWithTag("PlayerClone");
             _player = GameObject.FindWithTag("Player");
         }
-            
+        
         if (cameraObj == null)
         {
             Instantiate(cameraPrefab, startPos.position, startPos.rotation);
@@ -111,6 +116,9 @@ namespace Manager
         cameraBounds.m_BoundingShape2D = mapBoundsShadow;
         freeCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = mapBoundsShadow;
         playerController = _player.GetComponent<PlayerController>();
+        ShadowAudio = transform.GetChild(1).GetComponent<AudioSource>();
+        LightAudio = transform.GetChild(2).GetComponent<AudioSource>();
+        ShadowAudio.Play();
         GameSaveManager.Instance.SaveGame();
         Debug.Log(Appdata.Instance.currentScene);
 

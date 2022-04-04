@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Manager
 {
@@ -7,29 +9,42 @@ namespace Manager
         public AudioSource effectsSource;
         public AudioSource musicSource;
         
-        //public float LowPitchRange = .95f;
-        //public float HighPitchRange = 1.05f;
-        
-        public void PlayEffect(AudioClip clip, int volume)
+        public float lowPitchRange = .95f;
+        public float highPitchRange = 1.05f;
+
+        public void Start()
         {
-            effectsSource.clip = clip;
+            if (GetComponent<AudioSource>() == null)
+            {
+                gameObject.AddComponent<AudioSource>();
+            }
+
+            effectsSource = GetComponent<AudioSource>();
+            musicSource = GetComponent<AudioSource>();
+
+        }
+
+        public void PlayEffect(AudioClip clip, float volume)
+        {
             effectsSource.PlayOneShot(clip, volume);
         }
         
-        public void PlayMusic(AudioClip clip)
+        public void PlayMusic(AudioClip clip, float volume)
         {
             musicSource.clip = clip;
+            musicSource.loop = true;
+            musicSource.volume = volume;
             musicSource.Play();
         }
         
-        public void RandomSoundEffect(params AudioClip[] clips)
+        public void RandomSoundEffect(AudioClip[] clips, float volume)
         {
             int randomIndex = Random.Range(0, clips.Length);
-            //float randomPitch = Random.Range(LowPitchRange, HighPitchRange);
-
-            //effectsSource.pitch = randomPitch;
+            float randomPitch = Random.Range(lowPitchRange, highPitchRange);
+            
+            effectsSource.pitch = randomPitch;
             effectsSource.clip = clips[randomIndex];
-            effectsSource.Play();
+            effectsSource.PlayOneShot(clips[randomIndex], volume);
         }
     }
 }

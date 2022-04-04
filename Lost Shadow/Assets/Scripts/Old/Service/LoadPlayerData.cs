@@ -1,3 +1,5 @@
+using Data;
+using Manager;
 using Old.Manager;
 using UnityEngine;
 
@@ -17,6 +19,7 @@ public class LoadPlayerData : MonoBehaviour
             GameSaveManager.Instance.LoadGame();
         }
         Appdata.Instance.CheckPlayerData();
+        SoundManager.Instance.PlayMusic(GetComponent<AudioClipData>().GetAudioClip(0),0.3f);
     }
     
     
