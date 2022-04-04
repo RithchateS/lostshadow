@@ -48,14 +48,20 @@ public class Hider : MonoBehaviour
         {
             _myAnimator.SetBool("isInteracting", false);
         }
-        
-        if (Mathf.Abs(_distXtoPlayer) < 1 && Mathf.Abs(_distYtoPlayer) < 1 && !_playerController.GetIsHiding())
-        {
-            _myAnimator.SetBool("isInteractable", true);
-        }
-        else
+
+        if (_playerController.GetIsHiding())
         {
             _myAnimator.SetBool("isInteractable", false);
         }
+    }
+
+    public void ActivateInteract()
+    {
+        _myAnimator.SetBool("isInteractable", true);
+    }
+
+    public void DeactivateInteract()
+    {
+        _myAnimator.SetBool("isInteractable", false);
     }
 }

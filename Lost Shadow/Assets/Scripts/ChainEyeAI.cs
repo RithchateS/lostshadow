@@ -15,10 +15,12 @@ public class ChainEyeAI : MonoBehaviour
     private GameObject _player;
     private PlayerController _playerController;
     [SerializeField] GameObject eyeVision;
+    private bool _playerDead;
     
     void Start()
     {
         _startPos = transform.position;
+        _playerDead = false;
     }
 
     void Update()
@@ -30,7 +32,7 @@ public class ChainEyeAI : MonoBehaviour
         else {
             _rotation = Quaternion.LookRotation(_player.transform.position - transform.position, transform.TransformDirection(Vector3.up));
             transform.rotation = new Quaternion(0, 0, _rotation.z, _rotation.w);
-            if (checkPlayerInRange()) {
+            if (checkPlayerInRange() && !_playerController.GetIsHiding() && !_playerDead) {
                 NormalizeDirection();
                 transform.position += _normalize * eyeChaseSpeed * Time.deltaTime;
             }
@@ -54,9 +56,10 @@ public class ChainEyeAI : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !_playerController.GetIsHiding())
         {
             _playerController.ModifyAlive(false);
+            _playerDead = true;
         }
     }
 
