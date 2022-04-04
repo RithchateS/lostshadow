@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -5701217123174058383}
   - component: {fileID: 1656127263015499981}
   - component: {fileID: 6673348855442553003}
+  - component: {fileID: -713654883690823916}
   m_Layer: 11
   m_Name: Guard
   m_TagString: Enemy
@@ -96,7 +97,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1545557543
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 659b8d3509df36c4bb3938cc82c45d39, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -188,5 +189,21 @@ MonoBehaviour:
   chaseSpeed: 6
   holdTime: 2
   viewRange: 10
+  guardClimbSpeed: 5
   climbCooldown: 20
   guardVision: {fileID: 210946112129902648, guid: 514309181e005294f8be9a1ab9dae656, type: 3}
+--- !u!114 &-713654883690823916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3837368660905546741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c58662d281f334f814c70ffdfd2001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 273ab3814221f9c4f9788c776c6d3d9c, type: 3}
+  - {fileID: 8300000, guid: 52471ebc6c090ec43833f48eeaa0f2d1, type: 3}
