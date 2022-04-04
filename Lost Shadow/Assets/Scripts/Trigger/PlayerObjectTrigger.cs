@@ -1,11 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using Controller;
 using Data;
 using Identifier;
 using Manager;
 using Old.Manager;
-using UnityEditor.Networking.PlayerConnection;
 using UnityEngine;
 
 namespace Trigger

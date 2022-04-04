@@ -22,7 +22,7 @@ namespace Controller
         private GameObject _lArm;
         private GameObject _rArm;
         float _gravityScaleAtStart;
-        public bool IsControllable { get; private set; }
+        private bool IsControllable { get; set; }
         private bool _isCancelled;
 
 
@@ -230,11 +230,16 @@ namespace Controller
                 var position = transform.position;
                 if (isShadow)
                 {
+                    LevelManager.Instance.LightAudio.volume = 0.2f;
+                    LevelManager.Instance.ShadowAudio.volume = 0;
                     position = new Vector3(position.x, position.y - 100);
                     isShadow = false;
                 }
                 else
                 {
+                    LevelManager.Instance.LightAudio.volume = 0;
+                    LevelManager.Instance.ShadowAudio.volume = 0.2f;
+                    SoundManager.Instance.PlayMusic(LevelManager.Instance.AudioClipData.GetAudioClip(0),0.3f);
                     position = new Vector3(position.x, position.y + 100);
                     isShadow = true;
                 }
@@ -453,7 +458,7 @@ namespace Controller
         
         public void Wakeup()
         {
-            StartCoroutine(PauseMovement(6));
+            StartCoroutine(PauseMovement(8));
             myAnimator.Play("Wakeup");
             LevelManager.Instance.freeCamera.GetComponent<ObjectAim>().GameObjectToTarget(gameObject);
         }
@@ -576,7 +581,7 @@ namespace Controller
                 allowShift = false;
                 myAnimator.SetBool("isDead", true);
                 _myRigidbody.velocity = new Vector2(0,_myRigidbody.velocity.y);
-                SoundManager.Instance.RandomSoundEffect(_audioSource, _audioClipData.GetAudioClipGroup(2,4), 0.3f);
+                SoundManager.Instance.RandomSoundEffect(_audioClipData.GetAudioClipGroup(2,4), 0.3f);
                 
             }
         }

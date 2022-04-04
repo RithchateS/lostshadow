@@ -77093,10 +77093,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 569054390, guid: 2e11483be3c128845bdeab15d688b82b, type: 3}
-      propertyPath: allowShift
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 569054390, guid: 2e11483be3c128845bdeab15d688b82b, type: 3}
       propertyPath: cameraBounds
       value: 
       objectReference: {fileID: 1444433085}
@@ -77108,14 +77104,6 @@ PrefabInstance:
       propertyPath: mapBoundsShadow
       value: 
       objectReference: {fileID: 1268994051}
-    - target: {fileID: 569054390, guid: 2e11483be3c128845bdeab15d688b82b, type: 3}
-      propertyPath: shiftCountStart
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1210396995, guid: 2e11483be3c128845bdeab15d688b82b, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1534091955244292839, guid: 2e11483be3c128845bdeab15d688b82b, type: 3}
       propertyPath: m_Name
       value: LevelManager

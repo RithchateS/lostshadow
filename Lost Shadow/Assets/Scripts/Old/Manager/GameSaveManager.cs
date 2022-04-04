@@ -169,7 +169,6 @@ namespace Old.Manager
                 LoadGame();
             });
             _audioClipData = GetComponent<AudioClipData>();
-            Debug.Log("TEst");
         }
         public int GetSlot()
         {

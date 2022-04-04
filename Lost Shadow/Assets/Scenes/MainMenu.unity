@@ -8178,6 +8178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1380137865}
   - component: {fileID: 1380137866}
+  - component: {fileID: 1380137867}
   m_Layer: 0
   m_Name: LoadData
   m_TagString: Untagged
@@ -8212,6 +8213,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 645d0b3435c5743439d350eb1f937bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1380137867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380137864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c58662d281f334f814c70ffdfd2001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 251162e01518cd3409226c78dc0d1975, type: 3}
 --- !u!1 &1380961823
 GameObject:
   m_ObjectHideFlags: 0
