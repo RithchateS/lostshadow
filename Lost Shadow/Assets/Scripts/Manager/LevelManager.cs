@@ -50,8 +50,8 @@ namespace Manager
         public AudioClipData AudioClipData { get; private set; }
         public AudioSource ShadowAudio { get; private set; }
         public AudioSource LightAudio{ get; private set; }
-        
-        
+
+
 
 
         #endregion
@@ -89,7 +89,7 @@ namespace Manager
         objectCamMask = GameObject.Find("ObjectCamMask");
         eyeEffect = GameObject.Find("EyeEffect");
         AudioClipData = GetComponent<AudioClipData>();
-        
+
         if (allowShift)
         {
             shiftCountText = GameObject.Find("ShiftCount").GetComponent<TMP_Text>();
@@ -121,6 +121,7 @@ namespace Manager
         SoundManager.Instance.PlayMusic(null, 1f);
         ShadowAudio.Play();
         LightAudio.Play();
+        TransitionController.Instance.StartTransition();
         GameSaveManager.Instance.SaveGame();
         Debug.Log(Appdata.Instance.currentScene);
 

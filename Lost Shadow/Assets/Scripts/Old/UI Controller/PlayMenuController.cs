@@ -1,3 +1,5 @@
+using Controller;
+using Manager;
 using Old.Manager;
 using TMPro;
 using UnityEngine;
@@ -48,6 +50,8 @@ public class PlayMenuController : MonoBehaviour
 
     private void PlayGame()
     {
+        StartCoroutine(TransitionController.Instance.EndTransition());
+        SoundManager.Instance.PlayMusic(null,1f);
         SceneManager.LoadScene("LoadScene");
     }
 }

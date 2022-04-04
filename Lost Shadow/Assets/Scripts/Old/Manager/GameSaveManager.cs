@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Controller;
 using Data;
 using Manager;
 using UnityEngine;
@@ -126,9 +128,11 @@ namespace Old.Manager
         }
 
         // Use For Select Next Scene In game component
-        public void GoNextScene(int nextLevel)
+        public IEnumerator GoNextScene(int nextLevel)
         {
+            StartCoroutine(TransitionController.Instance.EndTransition());
             SoundManager.Instance.PlayEffect(_audioClipData.GetAudioClip(1),0.3f);
+            yield return new WaitForSeconds(2.5f);
             LoadSceneManager.Instance.StartLoadingScene(SceneCollection.LoadScene);
             Appdata.Instance.currentChapter = 0;
             Appdata.Instance.sceneToLoad = (SceneCollection)nextLevel;

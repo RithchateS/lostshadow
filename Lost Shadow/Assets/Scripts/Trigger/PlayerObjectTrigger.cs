@@ -133,6 +133,7 @@ namespace Trigger
                         Destroy(col.gameObject);
                         break;
                     case 4: //Holy
+                        Destroy(col.GetComponent<BoxCollider2D>());
                         SoundManager.Instance.PlayEffect(audioClipData.GetAudioClip(0),0.3f);
                         _playerController.ModifyShiftCount(2);
                         StartCoroutine(BreakDelay(col.gameObject, audioClipData,_objectID));
@@ -158,19 +159,19 @@ namespace Trigger
                 switch (_objectID)
                 {
                     case 2001: //To Tutorial02
-                        GameSaveManager.Instance.GoNextScene(4);
+                        StartCoroutine(GameSaveManager.Instance.GoNextScene(4));
                         break;
                     case 2002: //To Scenes01
-                        GameSaveManager.Instance.GoNextScene(5);
+                        StartCoroutine(GameSaveManager.Instance.GoNextScene(5));
                         break;
                     case 2003: //To Scenes02
-                        GameSaveManager.Instance.GoNextScene(6);
+                        StartCoroutine(GameSaveManager.Instance.GoNextScene(6));
                         break;
                     case 2004: //To Scenes03
-                        GameSaveManager.Instance.GoNextScene(7);
+                        StartCoroutine(GameSaveManager.Instance.GoNextScene(7));
                         break;
                     case 2005: //To Scenes04
-                        GameSaveManager.Instance.GoNextScene(8);
+                        StartCoroutine(GameSaveManager.Instance.GoNextScene(8));
                         break;
                     case 3001: //Death
                         _playerController.ModifyAlive(false);
