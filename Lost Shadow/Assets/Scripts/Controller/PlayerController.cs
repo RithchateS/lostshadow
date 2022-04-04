@@ -34,6 +34,10 @@ namespace Controller
         public bool IsAlive { get; private set; }
         [SerializeField] private bool allowShift;
         [SerializeField] public Color playerColor;
+
+        private RectTransform _eyeEffect;
+        
+        
         #endregion
         
         
@@ -41,15 +45,16 @@ namespace Controller
         {
             shiftCount = LevelManager.Instance.shiftCountStart;
             playerColor = gameObject.GetComponent<SpriteRenderer>().color;
-            _feet = GameObject.FindWithTag("Feet");
-            _lArm = GameObject.FindWithTag("LArm");
-            _rArm = GameObject.FindWithTag("RArm");
+            _feet = transform.GetChild(0).gameObject;
+            _lArm = transform.GetChild(1).gameObject;
+            _rArm = transform.GetChild(2).gameObject;
             _myRigidbody = GetComponent<Rigidbody2D>();
             myAnimator = GetComponent<Animator>();
-            _myBodyCollider = GetComponent<BoxCollider2D>();
+            _myBodyCollider = transform.GetChild(3).gameObject.GetComponent<BoxCollider2D>();
             _myFeetCollider = _feet.GetComponent<PolygonCollider2D>();
             _myLArmCollider = _lArm.GetComponent<PolygonCollider2D>();
             _myRArmCollider = _rArm.GetComponent<PolygonCollider2D>();
+            _eyeEffect = LevelManager.Instance.eyeEffect.GetComponent<RectTransform>();
             _gravityScaleAtStart = _myRigidbody.gravityScale;
             _peekMask = LevelManager.Instance.peekMask;
             IsControllable = true;
@@ -268,6 +273,7 @@ namespace Controller
                         playerColor.a += 0.01f;
                     }
                     playerColor.a = 1;
+                    _eyeEffect.sizeDelta += new Vector2(24, 20);
                     _peek.sizeDelta += new Vector2(-50, -50);
                     _peekMask.sizeDelta += new Vector2(-50, -50);
                     yield return new WaitForSeconds(0.01f);
@@ -297,6 +303,7 @@ namespace Controller
                         myAnimator.SetBool("isPeeking",false);
                         LevelManager.Instance.shiftIndicator.SetBool("isPeeking", false);
                         playerColor.a = 1f;
+                        _eyeEffect.sizeDelta = new Vector2(2960, 2300);
                         break;
                     }
                     if (playerColor.a >= 0.5f)
@@ -304,6 +311,7 @@ namespace Controller
                         playerColor.a -= 0.01f;
                     }
                     playerColor.a = 0.5f;
+                    _eyeEffect.sizeDelta += new Vector2(-12, -10);
                     _peek.sizeDelta += new Vector2(25, 25);
                     _peekMask.sizeDelta += new Vector2(25, 25);
                     yield return new WaitForSeconds(0.01f);
@@ -456,11 +464,11 @@ namespace Controller
             isPeekAble = false;
 
             //Setting Time Freeze Here
-            yield return new WaitForSeconds(pauseTime);
-            
-            isJumpAble = true;
-            isShiftAble = true;
+            yield return new WaitForSeconds(pauseTime -2);
             IsControllable = true;
+            isJumpAble = true;
+            yield return new WaitForSeconds(2);
+            isShiftAble = true;
             isPeekAble = true;
 
         }

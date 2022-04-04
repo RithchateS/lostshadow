@@ -25,7 +25,7 @@ namespace Trigger
             _bronzeBlock = GameObject.Find("BronzeSquare");
             _silverBlock = GameObject.Find("SilverSquare");
             _goldBlock = GameObject.Find("GoldSquare");
-            _playerController = gameObject.GetComponent<PlayerController>();
+            _playerController = transform.parent.GetComponent<PlayerController>();
             if (_bronzeBlock == null || _silverBlock == null || _goldBlock == null)
             {
                 
@@ -35,7 +35,7 @@ namespace Trigger
 
         IEnumerator ObjectCamAnimation(GameObject object1)
         {
-            while (_objectCamMask.rect.width < 500)
+            while (_objectCamMask.sizeDelta.x < 500)
             {
                 _objectCam.sizeDelta += new Vector2(15,11);
                 _objectCamMask.sizeDelta += new Vector2(14,10);
@@ -43,7 +43,7 @@ namespace Trigger
             }
             object1.GetComponent<Animator>().SetBool("Broken", true);
             yield return new WaitForSeconds(3);
-            while (_objectCamMask.rect.width > 0)
+            while (_objectCamMask.sizeDelta.x > 0)
             {
                 _objectCam.sizeDelta -= new Vector2(15,11);
                 _objectCamMask.sizeDelta -= new Vector2(14,10); 

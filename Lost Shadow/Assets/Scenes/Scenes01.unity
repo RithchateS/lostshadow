@@ -83080,14 +83080,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 895686125, guid: 1f4ce2af6a9b10047afcd2e57ea25416, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 895686125, guid: 1f4ce2af6a9b10047afcd2e57ea25416, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1366115966206709062, guid: 1f4ce2af6a9b10047afcd2e57ea25416, type: 3}
       propertyPath: m_Camera
       value: 
