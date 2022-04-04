@@ -67645,23 +67645,23 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 1
-          tangentMode: 0
+          time: 0.010639191
+          value: 0.2702675
+          inSlope: -0.17949003
+          outSlope: -0.17949003
+          tangentMode: 34
           weightedMode: 0
-          inWeight: 0.33333334
+          inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 1
-          value: 1
-          inSlope: 1
-          outSlope: 0
-          tangentMode: 0
+          time: 0.98934937
+          value: 0.09459877
+          inSlope: -0.17949003
+          outSlope: -0.17949003
+          tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
-          outWeight: 0.33333334
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -67751,7 +67751,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: 10d63dbd639ebc049bed5b450cb454ad, type: 3}
+    - sprite: {fileID: 21300000, guid: cceed19982effc84abc1cd4e1c203a0f, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
