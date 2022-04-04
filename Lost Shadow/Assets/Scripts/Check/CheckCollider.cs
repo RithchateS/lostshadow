@@ -1,6 +1,7 @@
+using Controller;
 using UnityEngine;
 
-namespace Controller
+namespace Check
 {
     public class CheckCollider : MonoBehaviour
     {

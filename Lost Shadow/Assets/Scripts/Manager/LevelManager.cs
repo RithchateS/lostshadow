@@ -34,6 +34,11 @@ namespace Manager
         [Header("Canvas Object")]
         public TMP_Text shiftCountText;
         public Animator shiftIndicator;
+        [SerializeField] public RectTransform peek;
+        [SerializeField] public RectTransform peekMask;
+        [SerializeField] public GameObject objectCam;
+        [SerializeField] public GameObject objectCamMask;
+        [SerializeField] public GameObject eyeEffect;
         
         [Header("Others")]
         private GameObject _player;
@@ -41,10 +46,7 @@ namespace Manager
         public GameObject cameraObj;
         private GameObject _mainCamera;
         private GameObject _overlayCamera;
-        [SerializeField] public RectTransform peek; 
-        [SerializeField] public RectTransform peekMask;
-        [SerializeField] public GameObject objectCam;
-        [SerializeField] public GameObject objectCamMask;
+        
 
 
         #endregion
@@ -80,6 +82,7 @@ namespace Manager
         objectCamera = GameObject.Find("ObjectCamera");
         objectCam = GameObject.Find("ObjectCam");
         objectCamMask = GameObject.Find("ObjectCamMask");
+        eyeEffect = GameObject.Find("EyeEffect");
 
 
         if (allowShift)
@@ -120,15 +123,14 @@ namespace Manager
 
     public void CheckCutScene()
     {
+        freeCamera.GetComponent<ObjectAim>().GameObjectToTarget(_player);
         if (SceneManager.GetActiveScene().name == "Tutorial01")
         {
-            Debug.Log("6 sec");
             playerController.Wakeup();
         }
         else
         {
-            Debug.Log("3Sec");
-            StartCoroutine(playerController.PauseMovement(3));
+            StartCoroutine(playerController.PauseMovement(5));
         }
         
         cameraObj.GetComponent<Animator>().SetBool("Cutscene",true);
