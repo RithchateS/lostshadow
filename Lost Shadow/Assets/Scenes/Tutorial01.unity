@@ -6606,9 +6606,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1178663189
-  m_SortingLayer: 10
-  m_SortingOrder: 0
+  m_SortingLayerID: 1072784087
+  m_SortingLayer: 4
+  m_SortingOrder: 1
   m_Sprite: {fileID: 113166102, guid: 9a3d9f10fd94d544ea382124ca92da40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -27351,9 +27351,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1178663189
-  m_SortingLayer: 10
-  m_SortingOrder: 0
+  m_SortingLayerID: 1072784087
+  m_SortingLayer: 4
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1129260174, guid: 9077fe457386a8d4c961f049adb0504b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -31053,15 +31053,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8012728380391140824, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.5205936
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8012728380391140824, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.48548996
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8054618152716081006, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
       propertyPath: orthographic size
-      value: 4.5
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
@@ -33141,9 +33141,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1178663189
-  m_SortingLayer: 10
-  m_SortingOrder: 0
+  m_SortingLayerID: 1072784087
+  m_SortingLayer: 4
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1609951225, guid: e8887e788f3e6d141bb5aec01df76986, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
