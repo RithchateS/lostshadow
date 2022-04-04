@@ -41,7 +41,7 @@ namespace Manager
         [SerializeField] public GameObject eyeEffect;
         
         [Header("Others")]
-        private GameObject _player;
+        [SerializeField] private GameObject _player;
         private GameObject _playerClone;
         public GameObject cameraObj;
         private GameObject _mainCamera;
@@ -83,21 +83,20 @@ namespace Manager
         objectCam = GameObject.Find("ObjectCam");
         objectCamMask = GameObject.Find("ObjectCamMask");
         eyeEffect = GameObject.Find("EyeEffect");
-
-
+        
         if (allowShift)
         {
             shiftCountText = GameObject.Find("ShiftCount").GetComponent<TMP_Text>();
             shiftIndicator = GameObject.Find("ShiftIndicator").GetComponent<Animator>();
         }
-        
+
         if (_player == null) {
             Instantiate(playerPrefab, startPos.position, startPos.rotation);
             Instantiate(playerClonePrefab, startPos.position, startPos.rotation);
             _playerClone = GameObject.FindWithTag("PlayerClone");
             _player = GameObject.FindWithTag("Player");
         }
-            
+        
         if (cameraObj == null)
         {
             Instantiate(cameraPrefab, startPos.position, startPos.rotation);

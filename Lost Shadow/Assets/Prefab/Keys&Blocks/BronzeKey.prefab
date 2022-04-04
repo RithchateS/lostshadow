@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 1241410559295140356}
   - component: {fileID: 1241410559295140359}
   - component: {fileID: 287557973}
+  - component: {fileID: -2066680825531185643}
   m_Layer: 0
   m_Name: BronzeKey
   m_TagString: Object
@@ -417,3 +418,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectID: 1
   isShadow: 1
+--- !u!114 &-2066680825531185643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241410559295140355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c58662d281f334f814c70ffdfd2001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: d5d5503be4ea3de4aa73e8c52b8ca572, type: 3}
+  - {fileID: 8300000, guid: 273ab3814221f9c4f9788c776c6d3d9c, type: 3}

@@ -1357,6 +1357,7 @@ GameObject:
   - component: {fileID: 1896237759}
   - component: {fileID: 1896237758}
   - component: {fileID: 1896237760}
+  - component: {fileID: 1896237761}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1418,6 +1419,22 @@ MonoBehaviour:
   restartButton: {fileID: 1261581627}
   menuButton: {fileID: 1659490393}
   pauseOverlay: {fileID: 780005639}
+--- !u!114 &1896237761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896237757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c58662d281f334f814c70ffdfd2001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 251162e01518cd3409226c78dc0d1975, type: 3}
+  - {fileID: 8300000, guid: aaa55cf3943403449b6196d53cb0b72e, type: 3}
+  - {fileID: 8300000, guid: 71ac3aa9b5e86ed47a4fbfa82bf826ec, type: 3}
 --- !u!1 &2050391426
 GameObject:
   m_ObjectHideFlags: 0

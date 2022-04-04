@@ -1,3 +1,4 @@
+using Manager;
 using UnityEngine;
 
 public class InitialData : MonoBehaviour
@@ -18,6 +19,7 @@ public class InitialData : MonoBehaviour
         LoadSceneManager.Instance.currentScene = SceneCollection.Persistant;
         LoadSceneManager.Instance.StartLoadingScene(startScene);
         Appdata.Instance.currentScene = startScene;
+        SoundManager.Instance.Start();
         //SoundManager.Instance.Hello();
     }
 

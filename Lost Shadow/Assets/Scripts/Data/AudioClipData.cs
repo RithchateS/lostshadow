@@ -1,12 +1,28 @@
+using System;
 using UnityEngine;
 
-public class AudioClipData: MonoBehaviour
+namespace Data
 {
-    [SerializeField]private AudioClip[] _audioClips;
-
-
-    public AudioClip GetAudioClip(int index)
+    public class AudioClipData: MonoBehaviour
     {
-        return _audioClips[index];
+        [SerializeField]private AudioClip[] audioClips;
+
+
+        public AudioClip GetAudioClip(int index)
+        {
+            return audioClips[index];
+        }
+
+        public AudioClip[] GetAudioClipGroup(int startIndex, int endIndex)
+        {
+            AudioClip[] aud = new AudioClip[endIndex - startIndex + 1];
+            int x = 0;
+            for (int i = startIndex; i <= endIndex; i++)
+            {
+                aud[x] = audioClips[i];
+                x++;
+            }
+            return aud;
+        }
     }
 }

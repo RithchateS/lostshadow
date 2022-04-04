@@ -1,5 +1,6 @@
 using System.Collections;
 using Cinemachine;
+using Data;
 using Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -35,6 +36,8 @@ namespace Controller
         [SerializeField] public Color playerColor;
 
         private RectTransform _eyeEffect;
+        private AudioClipData _audioClipData;
+        private AudioSource _audioSource;
         
         
         #endregion
@@ -68,6 +71,7 @@ namespace Controller
             allowShift = LevelManager.Instance.allowShift;
             _peekSize = 2000;
             _peek = LevelManager.Instance.peek;
+            _audioClipData = GetComponent<AudioClipData>();
             if (allowShift)
             {
                 ModifyShiftCount(0);
@@ -236,6 +240,7 @@ namespace Controller
                 transform.position = position;
                 myAnimator.SetBool("isShifting", true);
                 LevelManager.Instance.shiftIndicator.SetTrigger("Shift");
+                SoundManager.Instance.PlayEffect(_audioClipData.GetAudioClip(1), 0.3f);
                 ModifyShiftCount(-1);
             }
             if (value.isPressed && isPeekAble && !isPressingMove && allowShift && !isClimbing)
@@ -247,10 +252,7 @@ namespace Controller
 
         private void TogglePeek()
         {
-            
             StartCoroutine(PeekAnimation());
-            
-            
         }
 
         IEnumerator PeekAnimation()
@@ -285,6 +287,7 @@ namespace Controller
             }
             else
             {
+                SoundManager.Instance.PlayEffect(_audioClipData.GetAudioClip(0), 0.3f);
                 IsControllable = false;
                 isJumpAble = false;
                 isPeekAble = false;
@@ -552,6 +555,8 @@ namespace Controller
                 allowShift = false;
                 myAnimator.SetBool("isDead", true);
                 _myRigidbody.velocity = new Vector2(0,_myRigidbody.velocity.y);
+                SoundManager.Instance.RandomSoundEffect(_audioSource, _audioClipData.GetAudioClipGroup(2,4), 0.3f);
+                
             }
         }
 

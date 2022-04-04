@@ -1,6 +1,8 @@
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Data;
+using Manager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,6 +18,7 @@ namespace Old.Manager
         [SerializeField] private GameObject restartButton;
         [SerializeField] private GameObject menuButton;
         [SerializeField] private GameObject pauseOverlay;
+        private AudioClipData _audioClipData;
         public bool IsSaveFile()
         {
             return Directory.Exists(Application.persistentDataPath + "/Game_Save");
@@ -34,6 +37,7 @@ namespace Old.Manager
             playerData = Appdata.Instance.GetComponent<Appdata>();
             DontDestroyOnLoad(this);
         }
+        
     
         private void Update()
         {
@@ -124,6 +128,7 @@ namespace Old.Manager
         // Use For Select Next Scene In game component
         public void GoNextScene(int nextLevel)
         {
+            SoundManager.Instance.PlayEffect(_audioClipData.GetAudioClip(1),0.3f);
             LoadSceneManager.Instance.StartLoadingScene(SceneCollection.LoadScene);
             Appdata.Instance.currentChapter = 0;
             Appdata.Instance.sceneToLoad = (SceneCollection)nextLevel;
@@ -133,6 +138,7 @@ namespace Old.Manager
         public void PauseGame()
         {
             pauseOverlay.SetActive(true);
+            SoundManager.Instance.PlayEffect(_audioClipData.GetAudioClip(2),0.3f);
             Time.timeScale = 0;
             _paused = true;
         }
@@ -162,6 +168,8 @@ namespace Old.Manager
                 LoadSceneManager.Instance.StartLoadingScene(SceneCollection.MainMenu);
                 LoadGame();
             });
+            _audioClipData = GetComponent<AudioClipData>();
+            Debug.Log("TEst");
         }
         public int GetSlot()
         {
