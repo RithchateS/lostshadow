@@ -239,7 +239,6 @@ namespace Controller
                 {
                     LevelManager.Instance.LightAudio.volume = 0;
                     LevelManager.Instance.ShadowAudio.volume = 0.2f;
-                    SoundManager.Instance.PlayMusic(LevelManager.Instance.AudioClipData.GetAudioClip(0),0.3f);
                     position = new Vector3(position.x, position.y + 100);
                     isShadow = true;
                 }
