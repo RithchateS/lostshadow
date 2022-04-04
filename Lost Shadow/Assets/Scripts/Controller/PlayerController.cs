@@ -550,7 +550,7 @@ namespace Controller
             if (shiftCount <= 0)
             {
                 shiftCount = 0;
-                isShiftAble = false;
+                allowShift = false;
             }
             ModifyShiftCountText();
         }
