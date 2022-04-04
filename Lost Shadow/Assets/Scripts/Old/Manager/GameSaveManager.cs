@@ -45,7 +45,7 @@ namespace Old.Manager
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (Appdata.Instance.currentScene == SceneCollection.MainMenu || Appdata.Instance.currentScene == SceneCollection.LoadScene) { return; }
+                if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2) { return; }
                 {
                     if (_paused)
                     {

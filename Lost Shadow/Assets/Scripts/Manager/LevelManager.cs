@@ -142,7 +142,7 @@ namespace Manager
         {
             StartCoroutine(playerController.PauseMovement(5));
         }
-        
+
         cameraObj.GetComponent<Animator>().SetBool("Cutscene",true);
 
     }

@@ -1,7 +1,4 @@
-
 using System.Collections;
-using System.Collections.Generic;
-using Cinemachine;
 using Manager;
 using UnityEngine;
 
@@ -25,11 +22,12 @@ namespace Controller
             {
                 Destroy(this);
             }
+            _animator = transform.GetChild(0).GetComponent<Animator>();
         }
 
         private void Start()
         {
-            _animator = transform.GetChild(0).GetComponent<Animator>();
+            
             if (LevelManager.Instance != null)
             {
                 _isLevel = true;
@@ -54,9 +52,11 @@ namespace Controller
                     
                 }
             }
+            _animator.ResetTrigger("Start");
         }
         public IEnumerator StartTransition()
         {
+            _animator.ResetTrigger("End");
             while (SoundManager.Instance.musicSource.volume < 1)
             {
                 yield return new WaitForSeconds(0.01f);
