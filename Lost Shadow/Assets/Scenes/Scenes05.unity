@@ -2548,6 +2548,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 267437895}
     m_Modifications:
+    - target: {fileID: 1618780207, guid: 32357e9d01b585349802318201ebc5da, type: 3}
+      propertyPath: isShadow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5015196622042363141, guid: 32357e9d01b585349802318201ebc5da, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -4140,6 +4144,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 267437895}
     m_Modifications:
+    - target: {fileID: 287557973, guid: d3eed76d2cffa84479eed42699b0a01b, type: 3}
+      propertyPath: isShadow
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1241410559295140355, guid: d3eed76d2cffa84479eed42699b0a01b, type: 3}
       propertyPath: m_Name
       value: BronzeKey
@@ -75019,6 +75027,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 267437895}
     m_Modifications:
+    - target: {fileID: 416715791, guid: 6a08e0fbb7137c646a68a838ad8197fb, type: 3}
+      propertyPath: isShadow
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3630980471008190409, guid: 6a08e0fbb7137c646a68a838ad8197fb, type: 3}
       propertyPath: m_RootOrder
       value: 2

@@ -3,7 +3,7 @@ using Cinemachine;
 
 public class ObjectAim : MonoBehaviour
 { 
-    GameObject objectTarget;
+    GameObject _objectTarget;
     CinemachineVirtualCamera _cam;
 
     void Start()
@@ -14,19 +14,21 @@ public class ObjectAim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (objectTarget != null)
+        if (_objectTarget != null)
         {
-            _cam.m_Follow = objectTarget.transform;
+            _cam.m_Follow = _objectTarget.transform;
         }
         
     }
 
     public void GameObjectToTarget(GameObject target)
     {
-        objectTarget = target;
-        if (objectTarget != null)
+        _objectTarget = target;
+        Debug.Log(_objectTarget.name);
+        if (_objectTarget != null)
         {
-            _cam.m_Follow = objectTarget.transform;
+            Debug.Log(_objectTarget.name);
+            _cam.m_Follow = _objectTarget.transform;
         }
     }
     

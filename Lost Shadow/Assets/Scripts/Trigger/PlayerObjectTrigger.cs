@@ -1,10 +1,12 @@
 using System.Collections;
+using System.Diagnostics;
 using Controller;
 using Data;
 using Identifier;
 using Manager;
 using Old.Manager;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Trigger
 {
@@ -24,7 +26,6 @@ namespace Trigger
 
         private void Start()
         {
-            
             _objectCam = LevelManager.Instance.objectCam.GetComponent<RectTransform>();
             _objectCamMask = LevelManager.Instance.objectCamMask.GetComponent<RectTransform>();
             _bronzeBlock = GameObject.Find("BronzeSquare");

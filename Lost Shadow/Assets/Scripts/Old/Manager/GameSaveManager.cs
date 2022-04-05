@@ -16,7 +16,7 @@ namespace Old.Manager
         public static GameSaveManager Instance { get; private set; }
         [Range(0f, 1f)] public float volume;
         private bool _paused;
-        private bool _allowPause;
+        public bool allowPause;
         [SerializeField] private CurrectSlot saveSlot;
         [SerializeField] private GameObject resumeButton;
         [SerializeField] private GameObject restartButton;
@@ -51,7 +51,7 @@ namespace Old.Manager
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2 || _allowPause == false) { return; }
+                if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2 || allowPause == false) { return; }
                 {
                     if (_paused)
                     {
@@ -136,7 +136,7 @@ namespace Old.Manager
         // Use For Select Next Scene In game component
         public IEnumerator GoNextScene(int nextLevel)
         {
-            _allowPause = false;
+            allowPause = false;
             StartCoroutine(TransitionController.Instance.EndTransition());
             SoundManager.Instance.PlayEffect(_audioClipData.GetAudioClip(1),0.3f);
             yield return new WaitForSeconds(2.5f);

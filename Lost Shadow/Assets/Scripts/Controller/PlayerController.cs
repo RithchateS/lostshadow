@@ -96,6 +96,7 @@ namespace Controller
             {
                 ModifyShiftCount(0);
             }
+            LevelManager.Instance.mainCineCamera.GetComponent<ObjectAim>().GameObjectToTarget(gameObject);
             LevelManager.Instance.CheckCutScene();
 
         }
@@ -122,7 +123,6 @@ namespace Controller
             CheckLadder();
             PeekCheck();
             UpdateColor();
-            LevelManager.Instance.mainCineCamera.GetComponent<ObjectAim>().GameObjectToTarget(gameObject);
         }
 
         #region InputSystem

@@ -123,6 +123,7 @@ namespace Manager
             //LightAudio.Play();
             CheckBeforeStart();
             StartCoroutine(TransitionController.Instance.StartTransition());
+            GameSaveManager.Instance.allowPause = true;
 
         }
 
