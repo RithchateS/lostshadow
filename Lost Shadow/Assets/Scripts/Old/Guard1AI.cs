@@ -240,13 +240,16 @@ public class Guard1AI : MonoBehaviour
         if (Mathf.Abs(_distXtoPlayer) < soundRange && Mathf.Abs(_distYtoPlayer) < soundRange)
         {
             _timeSinceLastGrunt += Time.deltaTime;
+            
+            if (_timeSinceLastGrunt >= Random.Range(5f, 15f))
+            {
+                _timeSinceLastGrunt = 0;
+                SoundManager.Instance.RandomSoundEffect(_audioClipData.GetAudioClipGroup(0,1),0.3f);
+                Debug.Log("Guard Grunt");
+            }
         }
 
-        if (_timeSinceLastGrunt >= Random.Range(5f, 15f))
-        {
-            _timeSinceLastGrunt = 0;
-            SoundManager.Instance.RandomSoundEffect(_audioClipData.GetAudioClipGroup(0,1),0.3f);
-        }
+        
     }
     #endregion
     #region Utils
