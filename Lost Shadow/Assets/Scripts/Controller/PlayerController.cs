@@ -5,6 +5,7 @@ using Data;
 using Manager;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace Controller
 {
@@ -42,9 +43,23 @@ namespace Controller
         private RectTransform _eyeEffect;
         private AudioClipData _audioClipData;
         private AudioSource _audioSource;
-        
-        
         #endregion
+        
+        public static PlayerController Instance;
+
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
+
+        }
         
         
         void Start()
@@ -642,7 +657,9 @@ namespace Controller
                 myAnimator.SetBool("isDead", true);
                 _myRigidbody.velocity = new Vector2(0,_myRigidbody.velocity.y);
                 SoundManager.Instance.RandomSoundEffect(_audioClipData.GetAudioClipGroup(2,4), 0.3f);
-                
+                LevelManager.Instance.ShadowAudio.volume = 0f;
+                LevelManager.Instance.LightAudio.volume = 0f;
+
             }
         }
 

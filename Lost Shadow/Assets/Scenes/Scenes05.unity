@@ -72631,15 +72631,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8012728380391140824, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.075672
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8012728380391140824, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.0019712
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8054618152716081006, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
       propertyPath: orthographic size
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
@@ -79903,7 +79903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d690f97adba543458e2fda92191b1c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectID: 2002
+  objectID: 2007
   isShadow: 0
 --- !u!1 &1978421146
 GameObject:

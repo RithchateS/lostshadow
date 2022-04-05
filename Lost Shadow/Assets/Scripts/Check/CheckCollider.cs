@@ -9,7 +9,7 @@ namespace Check
 
         private void Start()
         {
-            player = GameObject.FindWithTag("Player");
+            player = PlayerController.Instance.gameObject;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
