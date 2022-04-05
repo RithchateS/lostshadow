@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Security.Cryptography;
 using Cinemachine;
 using Data;
 using Manager;
@@ -659,6 +660,10 @@ namespace Controller
                 SoundManager.Instance.RandomSoundEffect(_audioClipData.GetAudioClipGroup(2,4), 0.3f);
                 LevelManager.Instance.ShadowAudio.volume = 0f;
                 LevelManager.Instance.LightAudio.volume = 0f;
+                Destroy(_myBodyCollider);
+                Destroy(_myFeetCollider);
+                Destroy(_myLArmCollider);
+                Destroy(_myRArmCollider);
 
             }
         }

@@ -37,14 +37,17 @@ namespace Old.UI_Controller
             deleteSave1.GetComponent<Button>().onClick.AddListener(delegate
             {
                 GameSaveManager.Instance.DeleteSave(1);
+                Appdata.Instance.isUsed1 = false;
                 LoadSaveInfo();
             });deleteSave2.GetComponent<Button>().onClick.AddListener(delegate
             {
                 GameSaveManager.Instance.DeleteSave(2);
+                Appdata.Instance.isUsed2 = false;
                 LoadSaveInfo();
             });deleteSave3.GetComponent<Button>().onClick.AddListener(delegate
             {
                 GameSaveManager.Instance.DeleteSave(3);
+                Appdata.Instance.isUsed3 = false;
                 LoadSaveInfo();
             });
             saveSlot1.GetComponent<Button>().onClick.AddListener(delegate
