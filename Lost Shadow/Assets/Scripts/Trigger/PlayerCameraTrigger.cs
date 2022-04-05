@@ -7,15 +7,16 @@ namespace Trigger
 {
     public class PlayerCameraTrigger : MonoBehaviour
     {
-        CinemachineVirtualCamera _virtualCamera;
+        CinemachineVirtualCamera _mainCineCamera;
         private bool _cameraSizeIsChangable;
         private float _orthoSize;
-
+        
+        //TODO: Remove this script
         private void Start()
         {
             _orthoSize = 3;
             _cameraSizeIsChangable = true;
-            _virtualCamera = GameObject.Find("MainCineCamera").GetComponent<CinemachineVirtualCamera>();
+            _mainCineCamera = GameObject.Find("MainCineCamera").GetComponent<CinemachineVirtualCamera>();
         }
 
         private void OnTriggerEnter2D(Collider2D col)
@@ -37,28 +38,28 @@ namespace Trigger
         }
         IEnumerator CameraAnimation()
         {
-            if (_virtualCamera.m_Lens.OrthographicSize < _orthoSize)
+            if (_mainCineCamera.m_Lens.OrthographicSize < _orthoSize)
             {
                 _cameraSizeIsChangable = false;
-                while (_virtualCamera.m_Lens.OrthographicSize < _orthoSize)
+                while (_mainCineCamera.m_Lens.OrthographicSize < _orthoSize)
                 {
-                    _virtualCamera.m_Lens.OrthographicSize += 0.1f;
+                    _mainCineCamera.m_Lens.OrthographicSize += 0.1f;
                     yield return new WaitForSeconds(0.01f);
                 }
 
-                _virtualCamera.m_Lens.OrthographicSize = Mathf.Round(_virtualCamera.m_Lens.OrthographicSize);
+                _mainCineCamera.m_Lens.OrthographicSize = Mathf.Round(_mainCineCamera.m_Lens.OrthographicSize);
                 _cameraSizeIsChangable = true;
             }
-            else if (_virtualCamera.m_Lens.OrthographicSize > _orthoSize)
+            else if (_mainCineCamera.m_Lens.OrthographicSize > _orthoSize)
             {
                 _cameraSizeIsChangable = false;
-                while (_virtualCamera.m_Lens.OrthographicSize > _orthoSize)
+                while (_mainCineCamera.m_Lens.OrthographicSize > _orthoSize)
                 {
-                    _virtualCamera.m_Lens.OrthographicSize -= 0.1f;
+                    _mainCineCamera.m_Lens.OrthographicSize -= 0.1f;
                     yield return new WaitForSeconds(0.01f);
                 }
 
-                _virtualCamera.m_Lens.OrthographicSize = Mathf.Round(_virtualCamera.m_Lens.OrthographicSize);
+                _mainCineCamera.m_Lens.OrthographicSize = Mathf.Round(_mainCineCamera.m_Lens.OrthographicSize);
                 _cameraSizeIsChangable = true;
             }
         }

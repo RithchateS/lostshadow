@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Controller;
 using Data;
 using Manager;
 using UnityEngine;
@@ -43,7 +45,7 @@ namespace Old.Manager
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (Appdata.Instance.currentScene == SceneCollection.MainMenu || Appdata.Instance.currentScene == SceneCollection.LoadScene) { return; }
+                if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2) { return; }
                 {
                     if (_paused)
                     {
@@ -62,22 +64,22 @@ namespace Old.Manager
             if (saveSlot == CurrectSlot.Slot1)
             {
                 Appdata.Instance.isUsed1 = true;
-                Appdata.Instance.PlayerPosition1 = GameObject.FindGameObjectWithTag("Player").transform.position;
-                Appdata.Instance.SceneInSave1 = Appdata.Instance.currentScene;
+                Appdata.Instance.playerPosition1 = GameObject.FindGameObjectWithTag("Player").transform.position;
+                Appdata.Instance.sceneInSave1 = Appdata.Instance.currentScene;
                 Appdata.Instance.chapterNum1 = Appdata.Instance.currentChapter;
             }
             else if (saveSlot == CurrectSlot.Slot2)
             {
                 Appdata.Instance.isUsed2 = true;
-                Appdata.Instance.PlayerPosition2 = GameObject.FindGameObjectWithTag("Player").transform.position;
-                Appdata.Instance.SceneInSave2 = Appdata.Instance.currentScene;
+                Appdata.Instance.playerPosition2 = GameObject.FindGameObjectWithTag("Player").transform.position;
+                Appdata.Instance.sceneInSave2 = Appdata.Instance.currentScene;
                 Appdata.Instance.chapterNum2 = Appdata.Instance.currentChapter;
             }
             else if (saveSlot == CurrectSlot.Slot3)
             {
                 Appdata.Instance.isUsed3 = true;
-                Appdata.Instance.PlayerPosition3 = GameObject.FindGameObjectWithTag("Player").transform.position;
-                Appdata.Instance.SceneInSave3 = Appdata.Instance.currentScene;
+                Appdata.Instance.playerPosition3 = GameObject.FindGameObjectWithTag("Player").transform.position;
+                Appdata.Instance.sceneInSave3 = Appdata.Instance.currentScene;
                 Appdata.Instance.chapterNum3 = Appdata.Instance.currentChapter;
             }
             if (!IsSaveFile())
@@ -126,9 +128,11 @@ namespace Old.Manager
         }
 
         // Use For Select Next Scene In game component
-        public void GoNextScene(int nextLevel)
+        public IEnumerator GoNextScene(int nextLevel)
         {
+            StartCoroutine(TransitionController.Instance.EndTransition());
             SoundManager.Instance.PlayEffect(_audioClipData.GetAudioClip(1),0.3f);
+            yield return new WaitForSeconds(2.5f);
             LoadSceneManager.Instance.StartLoadingScene(SceneCollection.LoadScene);
             Appdata.Instance.currentChapter = 0;
             Appdata.Instance.sceneToLoad = (SceneCollection)nextLevel;
@@ -194,18 +198,18 @@ namespace Old.Manager
         {
             if (slot == 1)
             {
-                Appdata.Instance.SceneInSave1 = SceneCollection.Tutorial01;
-                Appdata.Instance.PlayerPosition1 = new Vector3(0f,0f,0f);
+                Appdata.Instance.sceneInSave1 = SceneCollection.Tutorial01;
+                Appdata.Instance.playerPosition1 = new Vector3(0f,0f,0f);
             }
             else if (slot == 2)
             {
-                Appdata.Instance.SceneInSave2 = SceneCollection.Tutorial01;
-                Appdata.Instance.PlayerPosition2 = new Vector3(0f,0f,0f);
+                Appdata.Instance.sceneInSave2 = SceneCollection.Tutorial01;
+                Appdata.Instance.playerPosition2 = new Vector3(0f,0f,0f);
             }
             else if (slot == 3)
             {
-                Appdata.Instance.SceneInSave3 = SceneCollection.Tutorial01;
-                Appdata.Instance.PlayerPosition3 = new Vector3(0f,0f,0f);
+                Appdata.Instance.sceneInSave3 = SceneCollection.Tutorial01;
+                Appdata.Instance.playerPosition3 = new Vector3(0f,0f,0f);
             }
             if (!IsSaveFile())
             {

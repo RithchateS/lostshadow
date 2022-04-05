@@ -17,18 +17,18 @@ public class Appdata : Singleton<Appdata>
     public SceneCollection sceneToLoad;
     public int currentChapter;
     // Save 1
-    public Vector3 PlayerPosition1;
-    public SceneCollection SceneInSave1;
+    public Vector3 playerPosition1;
+    public SceneCollection sceneInSave1;
     public bool isUsed1 = false;
     public int chapterNum1 = 0;
     // Save 2
-    public Vector3 PlayerPosition2;
-    public SceneCollection SceneInSave2;
+    public Vector3 playerPosition2;
+    public SceneCollection sceneInSave2;
     public bool isUsed2 = false;
     public int chapterNum2 = 0;
     // Save 3
-    public Vector3 PlayerPosition3;
-    public SceneCollection SceneInSave3;
+    public Vector3 playerPosition3;
+    public SceneCollection sceneInSave3;
     public bool isUsed3 = false;
     public int chapterNum3 = 0;
 
@@ -36,36 +36,36 @@ public class Appdata : Singleton<Appdata>
     {
         if (!isUsed1)
         {
-            SceneInSave1 = SceneCollection.Tutorial01;
+            sceneInSave1 = SceneCollection.Tutorial01;
         }
         if (!isUsed2)
         {
-            SceneInSave2 = SceneCollection.Tutorial01;
+            sceneInSave2 = SceneCollection.Tutorial01;
         }
         if (!isUsed3)
         {
-            SceneInSave3 = SceneCollection.Tutorial01;
+            sceneInSave3 = SceneCollection.Tutorial01;
         }
         
         // Already Play
         
         if (isUsed1)
         {
-            PlayerPosition1 = GameSaveManager.Instance.playerData.PlayerPosition1;
-            SceneInSave1 = GameSaveManager.Instance.playerData.SceneInSave1;
-            sceneToLoad = SceneInSave1;
+            playerPosition1 = GameSaveManager.Instance.playerData.playerPosition1;
+            sceneInSave1 = GameSaveManager.Instance.playerData.sceneInSave1;
+            sceneToLoad = sceneInSave1;
         }
         if (isUsed2)
         {
-            PlayerPosition2 = GameSaveManager.Instance.playerData.PlayerPosition2;
-            SceneInSave2 = GameSaveManager.Instance.playerData.SceneInSave2;
-            sceneToLoad = SceneInSave2;
+            playerPosition2 = GameSaveManager.Instance.playerData.playerPosition2;
+            sceneInSave2 = GameSaveManager.Instance.playerData.sceneInSave2;
+            sceneToLoad = sceneInSave2;
         }
         if (isUsed3)
         {
-            PlayerPosition3 = GameSaveManager.Instance.playerData.PlayerPosition3;
-            SceneInSave3 = GameSaveManager.Instance.playerData.SceneInSave3;
-            sceneToLoad = SceneInSave3;
+            playerPosition3 = GameSaveManager.Instance.playerData.playerPosition3;
+            sceneInSave3 = GameSaveManager.Instance.playerData.sceneInSave3;
+            sceneToLoad = sceneInSave3;
         }
     }
     

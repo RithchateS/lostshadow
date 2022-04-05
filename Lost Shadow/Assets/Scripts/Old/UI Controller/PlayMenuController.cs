@@ -1,53 +1,115 @@
+using System.Collections;
+using Controller;
+using Manager;
 using Old.Manager;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PlayMenuController : MonoBehaviour
+namespace Old.UI_Controller
 {
-    [SerializeField]private GameObject saveSlot1;
-    [SerializeField]private GameObject saveSlot2;
-    [SerializeField]private GameObject saveSlot3;
-    [SerializeField] private GameObject deleteSave;
-
-    [SerializeField] private TMP_Text chaperterName1;
-    [SerializeField] private TMP_Text chaperterName2;
-    [SerializeField] private TMP_Text chaperterName3;
-    private void Start()
+    public class PlayMenuController : MonoBehaviour
     {
-        Appdata.Instance.currentScene = SceneCollection.MainMenu;
-        deleteSave.GetComponent<Button>().onClick.AddListener(delegate
+        [SerializeField] private GameObject saveSlot1;
+        [SerializeField] private GameObject saveSlot2;
+        [SerializeField] private GameObject saveSlot3;
+        [SerializeField] private GameObject deleteSave1;
+        [SerializeField] private GameObject deleteSave2;
+        [SerializeField] private GameObject deleteSave3;
+        [SerializeField] private TMP_Text save1Info;
+        [SerializeField] private TMP_Text save2Info;
+        [SerializeField] private TMP_Text save3Info;
+        private void Start()
         {
-            GameSaveManager.Instance.DeleteSave(1);
-            GameSaveManager.Instance.DeleteSave(2);
-            GameSaveManager.Instance.DeleteSave(3);
-        });
-        saveSlot1.GetComponent<Button>().onClick.AddListener(delegate
-        {
-            GameSaveManager.Instance.SelectSaveSlot(0);
-            Appdata.Instance.sceneToLoad = Appdata.Instance.SceneInSave1;
-            Appdata.Instance.currentScene = Appdata.Instance.sceneToLoad;
-            PlayGame();
-        });
-        saveSlot2.GetComponent<Button>().onClick.AddListener(delegate
-        {
-            GameSaveManager.Instance.SelectSaveSlot(1);
-            Appdata.Instance.sceneToLoad = Appdata.Instance.SceneInSave2;
-            Appdata.Instance.currentScene = Appdata.Instance.sceneToLoad;
-            PlayGame();
-        });
-        saveSlot3.GetComponent<Button>().onClick.AddListener(delegate
-        {
-            GameSaveManager.Instance.SelectSaveSlot(2);
-            Appdata.Instance.sceneToLoad = Appdata.Instance.SceneInSave3;
-            Appdata.Instance.currentScene = Appdata.Instance.sceneToLoad;
-            PlayGame();
-        });
-    }
+            LoadSaveInfo();
+            AssignButtonFunctions();
+        }
 
-    private void PlayGame()
-    {
-        SceneManager.LoadScene("LoadScene");
+
+
+        /// <summary>
+        /// Assign Functions to buttons in the Play Menu UI
+        /// </summary>
+        private void AssignButtonFunctions()
+        {
+            Appdata.Instance.currentScene = SceneCollection.MainMenu;
+            deleteSave1.GetComponent<Button>().onClick.AddListener(delegate
+            {
+                GameSaveManager.Instance.DeleteSave(1);
+                LoadSaveInfo();
+            });deleteSave2.GetComponent<Button>().onClick.AddListener(delegate
+            {
+                GameSaveManager.Instance.DeleteSave(2);
+                LoadSaveInfo();
+            });deleteSave3.GetComponent<Button>().onClick.AddListener(delegate
+            {
+                GameSaveManager.Instance.DeleteSave(3);
+                LoadSaveInfo();
+            });
+            saveSlot1.GetComponent<Button>().onClick.AddListener(delegate
+            {
+                GameSaveManager.Instance.SelectSaveSlot(0);
+                Appdata.Instance.sceneToLoad = Appdata.Instance.sceneInSave1;
+                Appdata.Instance.currentScene = Appdata.Instance.sceneToLoad;
+                StartCoroutine(PlayGame());
+            });
+            saveSlot2.GetComponent<Button>().onClick.AddListener(delegate
+            {
+                GameSaveManager.Instance.SelectSaveSlot(1);
+                Appdata.Instance.sceneToLoad = Appdata.Instance.sceneInSave2;
+                Appdata.Instance.currentScene = Appdata.Instance.sceneToLoad;
+                StartCoroutine(PlayGame());
+            });
+            saveSlot3.GetComponent<Button>().onClick.AddListener(delegate
+            {
+                GameSaveManager.Instance.SelectSaveSlot(2);
+                Appdata.Instance.sceneToLoad = Appdata.Instance.sceneInSave3;
+                Appdata.Instance.currentScene = Appdata.Instance.sceneToLoad;
+                StartCoroutine(PlayGame());
+            });
+        }
+
+        ///<summary>
+        ///Play the game with the selected save slot
+        ///</summary>
+        private IEnumerator PlayGame()
+        {
+            StartCoroutine(TransitionController.Instance.EndTransition());
+            yield return new WaitForSeconds(2.5f);
+            SoundManager.Instance.PlayMusic(null,1f);
+            SceneManager.LoadScene("LoadScene");
+        }
+        
+        ///<summary>
+        ///Update the save info in the UI.
+        ///</summary>
+        public void LoadSaveInfo()
+        {
+            if (Appdata.Instance.isUsed1)
+            {
+                save1Info.text = $"Save1 : {Appdata.Instance.sceneInSave1.ToString()}";
+            }
+            else
+            {
+                save1Info.text = "Save Empty";
+            }
+            if (Appdata.Instance.isUsed2)
+            {
+                save2Info.text = $"Save2 : {Appdata.Instance.sceneInSave2.ToString()}";
+            }
+            else
+            {
+                save2Info.text = "Save Empty";
+            }
+            if (Appdata.Instance.isUsed3)   
+            {
+                save3Info.text = $"Save3 : {Appdata.Instance.sceneInSave3.ToString()}";
+            }
+            else
+            {
+                save3Info.text = "Save Empty";
+            }  
+        }
     }
 }

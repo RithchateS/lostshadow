@@ -9,17 +9,17 @@ public class LoadPlayerLocation : MonoBehaviour
     {
         if (GameSaveManager.Instance.GetSlot() == 1)
         {
-            GameObject.FindGameObjectWithTag("Player").transform.position = Appdata.Instance.PlayerPosition1;
+            GameObject.FindGameObjectWithTag("Player").transform.position = Appdata.Instance.playerPosition1;
         }
 
         if (GameSaveManager.Instance.GetSlot() == 2)
         {
-            GameObject.FindGameObjectWithTag("Player").transform.position = Appdata.Instance.PlayerPosition2;
+            GameObject.FindGameObjectWithTag("Player").transform.position = Appdata.Instance.playerPosition2;
         }
 
         if (GameSaveManager.Instance.GetSlot() == 3)
         {
-            GameObject.FindGameObjectWithTag("Player").transform.position = Appdata.Instance.PlayerPosition3;
+            GameObject.FindGameObjectWithTag("Player").transform.position = Appdata.Instance.playerPosition3;
         }
     }
 }

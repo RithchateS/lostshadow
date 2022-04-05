@@ -1,4 +1,5 @@
 using System;
+using Old.Manager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -32,7 +33,9 @@ namespace Controller
         {
             ToggleGameOverCheck();
         }
-
+        /// <summary>
+        /// Toggle the game over screen if the player is dead
+        /// </summary>
         void ToggleGameOverCheck()
         {
             if (_playerController == null)
