@@ -135,6 +135,7 @@ namespace Old.Manager
         // Use For Select Next Scene In game component
         public IEnumerator GoNextScene(int nextLevel)
         {
+            StartCoroutine(PlayerController.Instance.PauseMovement(2.5f));
             allowPause = false;
             StartCoroutine(TransitionController.Instance.EndTransition());
             SoundManager.Instance.PlayEffect(_audioClipData.GetAudioClip(1),0.3f);

@@ -118,11 +118,16 @@ namespace Controller
             {
                 CalculateWalk();
             }
-            FlipSprite();
-            CheckGround();
-            CheckLadder();
-            PeekCheck();
-            UpdateColor();
+
+            if (IsAlive)
+            {
+               FlipSprite();
+               CheckGround();
+               CheckLadder();
+               PeekCheck();
+               UpdateColor(); 
+            }
+            
         }
 
         #region InputSystem
@@ -327,11 +332,11 @@ namespace Controller
             }
             else
             {
-                SoundManager.Instance.PlayEffect(_audioClipData.GetAudioClip(0), 0.3f);
                 IsControllable = false;
                 isJumpAble = false;
                 isPeekAble = false;
                 isPeeking = true;
+                SoundManager.Instance.PlayEffect(_audioClipData.GetAudioClip(0), 0.3f);
                 myAnimator.SetBool("isPeeking",true);
                 LevelManager.Instance.shiftIndicator.SetBool("isPeeking", true);
                 gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Front";
