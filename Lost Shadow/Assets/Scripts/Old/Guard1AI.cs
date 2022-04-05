@@ -67,10 +67,17 @@ public class Guard1AI : MonoBehaviour
     }
 
     void Update() {
+        if (_player == null)
+        {
+            _player = GameObject.FindWithTag("Player");
+        }
+        if (_playerController == null)
+        {
+            _playerController = _player.GetComponent<PlayerController>();
+        }
         _timeSinceLastClimb += Time.deltaTime;
         _timeSinceExitLadder += Time.deltaTime;
-        _player = GameObject.FindWithTag("Player");
-        _playerController = _player.GetComponent<PlayerController>();
+        
         var position = _player.transform.position;
         var position1 = transform.position;
         _distXtoPlayer = position.x - position1.x;
@@ -245,11 +252,8 @@ public class Guard1AI : MonoBehaviour
             {
                 _timeSinceLastGrunt = 0;
                 SoundManager.Instance.RandomSoundEffect(_audioClipData.GetAudioClipGroup(0,1),0.3f);
-                Debug.Log("Guard Grunt");
             }
         }
-
-        
     }
     #endregion
     #region Utils
