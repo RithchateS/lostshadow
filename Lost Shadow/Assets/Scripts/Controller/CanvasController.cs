@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Old.Manager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,26 +10,40 @@ namespace Controller
     public class CanvasController : MonoBehaviour
     {
         private PlayerController _playerController;
-        [SerializeField] private GameObject _gameOver;
-        [SerializeField] private GameObject _restartButton;
-        [SerializeField] private GameObject _menuButton;
+        [SerializeField] private GameObject gameOver;
+        [SerializeField] private GameObject restartButton;
+        [SerializeField] private GameObject menuButton;
 
         private void Start()
         {
-            _gameOver = gameObject.transform.GetChild(1).gameObject;
-            _restartButton = _gameOver.transform.GetChild(1).gameObject;
-            _menuButton = _gameOver.transform.GetChild(2).gameObject;
-            _restartButton.GetComponent<Button>().onClick.AddListener(delegate
+            gameOver = transform.GetChild(1).gameObject;
+            restartButton = gameOver.transform.GetChild(1).gameObject;
+            menuButton = gameOver.transform.GetChild(2).gameObject;
+            restartButton.GetComponent<Button>().onClick.AddListener(delegate
             {
-                SceneManager.LoadScene(Enum.GetName(typeof (SceneCollection), Appdata.Instance.currentScene), LoadSceneMode.Single);
+                StartCoroutine(EndScene(restartButton));
             });
-            _menuButton.GetComponent<Button>().onClick.AddListener(delegate
+            menuButton.GetComponent<Button>().onClick.AddListener(delegate
             {
-                LoadSceneManager.Instance.StartLoadingScene(SceneCollection.MainMenu);
+                StartCoroutine(EndScene(menuButton));
             });
         }
-        
-        
+
+
+        IEnumerator EndScene(GameObject object1)
+        {
+            StartCoroutine(TransitionController.Instance.EndTransition());
+            yield return new WaitForSeconds(3);
+            if (object1 == menuButton)
+            {
+                LoadSceneManager.Instance.StartLoadingScene(SceneCollection.MainMenu);
+            }
+            if (object1 == restartButton)
+            {
+                SceneManager.LoadScene(Enum.GetName(typeof (SceneCollection), Appdata.Instance.currentScene), LoadSceneMode.Single);
+            }
+            
+        }
         private void Update()
         {
             ToggleGameOverCheck();
@@ -44,10 +59,10 @@ namespace Controller
             }
             if (_playerController.IsAlive)
             {
-                _gameOver.SetActive(false);
+                gameOver.SetActive(false);
                 return;
             }
-            _gameOver.SetActive(true);
+            gameOver.SetActive(true);
             
         }
     }
