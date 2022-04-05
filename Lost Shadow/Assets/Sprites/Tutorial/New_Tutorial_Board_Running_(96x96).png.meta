@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9077fe457386a8d4c961f049adb0504b
+guid: b7ec2bd62fe818e43908894c6c80b09f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -100,35 +100,11 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tutorial_Board_Running_(96x96)_0
+      name: New_Tutorial_Board_Running_(96x96)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8937f3e728ae56444954e6ee0a6d0367
-      internalID: 1129260174
+      spriteID: 748c3d28575f7b14b98faa23dd363c7b
+      internalID: 239512308
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Board_Running_(96x96)_1
+      name: New_Tutorial_Board_Running_(96x96)_1
       rect:
         serializedVersion: 2
         x: 96
@@ -163,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e229f1ccf805ed43a54a388f7cfda9e
-      internalID: -1640085642
+      spriteID: 1d6cc5b9815127a48a4aa36c841deb86
+      internalID: -403398243
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Board_Running_(96x96)_2
+      name: New_Tutorial_Board_Running_(96x96)_2
       rect:
         serializedVersion: 2
         x: 192
@@ -184,14 +160,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67d895b239264584d8eaa99c86a7d05a
-      internalID: 71217884
+      spriteID: fe7412d4bcce504459d334432d18ea31
+      internalID: 5106795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Board_Running_(96x96)_3
+      name: New_Tutorial_Board_Running_(96x96)_3
       rect:
         serializedVersion: 2
         x: 288
@@ -205,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3c73a4c261c05f4491e5fb9af16c572
-      internalID: -1384154155
+      spriteID: 88dfc3a4e0cc8af4093d1b1009e6bc96
+      internalID: -986164554
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Board_Running_(96x96)_4
+      name: New_Tutorial_Board_Running_(96x96)_4
       rect:
         serializedVersion: 2
         x: 384
@@ -226,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac731f8eaa0587f4cb9f0ffcf6b9f26a
-      internalID: 1104463499
+      spriteID: ad2ae36176c436f4b97f0a52c5934370
+      internalID: -1333641794
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Board_Running_(96x96)_5
+      name: New_Tutorial_Board_Running_(96x96)_5
       rect:
         serializedVersion: 2
         x: 480
@@ -247,14 +223,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e9929325a330a44789ee7bff6aac4b8
-      internalID: 189830754
+      spriteID: 775de83dba7cd4745947f0cdb97ae8d1
+      internalID: -213569878
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Board_Running_(96x96)_6
+      name: New_Tutorial_Board_Running_(96x96)_6
       rect:
         serializedVersion: 2
         x: 576
@@ -268,14 +244,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e575982c49a11924a984b9010c76e9d9
-      internalID: -1829874128
+      spriteID: e153964a403ca8c4fbbafb814c094573
+      internalID: -407490651
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Board_Running_(96x96)_7
+      name: New_Tutorial_Board_Running_(96x96)_7
       rect:
         serializedVersion: 2
         x: 672
@@ -289,14 +265,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5742ad0799f4c142855ef959c7ff45f
-      internalID: -1352664870
+      spriteID: d71fd9dc5850f5440894ee1ff2e87956
+      internalID: 977597971
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Board_Running_(96x96)_8
+      name: New_Tutorial_Board_Running_(96x96)_8
       rect:
         serializedVersion: 2
         x: 768
@@ -310,14 +286,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c97ef1eb386e304e8ba3eed5d3fb355
-      internalID: 1317632424
+      spriteID: e4cd4f88764d4394d8b45f04dd7506eb
+      internalID: -1410446131
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Board_Running_(96x96)_9
+      name: New_Tutorial_Board_Running_(96x96)_9
       rect:
         serializedVersion: 2
         x: 864
@@ -331,14 +307,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7bf7bb0cc27f13a4c9adedae4a49b9b2
-      internalID: -2038953121
+      spriteID: 9b745c3b87de85f4b97051e07ecce2fe
+      internalID: 673743517
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Board_Running_(96x96)_10
+      name: New_Tutorial_Board_Running_(96x96)_10
       rect:
         serializedVersion: 2
         x: 960
@@ -352,14 +328,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad60b5ea6df4f6a4eaf1d0d3b1834b15
-      internalID: 1752059017
+      spriteID: eab6439623bf1144c8dd7044f0fa13be
+      internalID: 1202240823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Board_Running_(96x96)_11
+      name: New_Tutorial_Board_Running_(96x96)_11
       rect:
         serializedVersion: 2
         x: 1056
@@ -373,14 +349,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8f17be691d9e4049ad7d02d42b86e6f
-      internalID: 371793638
+      spriteID: ed795cc24bfe2f74fac392971768491f
+      internalID: 1477042256
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Board_Running_(96x96)_12
+      name: New_Tutorial_Board_Running_(96x96)_12
       rect:
         serializedVersion: 2
         x: 1152
@@ -394,14 +370,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6678b6d592db8541830796b797bed05
-      internalID: -13005568
+      spriteID: 04a1a6925375d0c45a6e859c14866a7b
+      internalID: -703294075
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Board_Running_(96x96)_13
+      name: New_Tutorial_Board_Running_(96x96)_13
       rect:
         serializedVersion: 2
         x: 1248
@@ -415,14 +391,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0131dc9c00f47ea4b808675f8747aed7
-      internalID: -1800030297
+      spriteID: 1665432fc85e8354580e54bd4bff5f56
+      internalID: 1003903484
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Board_Running_(96x96)_14
+      name: New_Tutorial_Board_Running_(96x96)_14
       rect:
         serializedVersion: 2
         x: 1344
@@ -436,14 +412,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bb1e68a3f636aa48bfaa586d051bbef
-      internalID: 694738807
+      spriteID: bd4855d498ae60f4eb301c67c7fdf766
+      internalID: 436821852
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Board_Running_(96x96)_15
+      name: New_Tutorial_Board_Running_(96x96)_15
       rect:
         serializedVersion: 2
         x: 1440
@@ -457,14 +433,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af997e996fb00634996e4d7734560b3b
-      internalID: -1517270838
+      spriteID: 732de6f216f863844bb691197ba4442c
+      internalID: 781643817
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Board_Running_(96x96)_16
+      name: New_Tutorial_Board_Running_(96x96)_16
       rect:
         serializedVersion: 2
         x: 1536
@@ -478,14 +454,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0279865b5caead24886478742db632ac
-      internalID: -38780857
+      spriteID: 25515e6e617541848b057fdd6f60a389
+      internalID: -561767982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Board_Running_(96x96)_17
+      name: New_Tutorial_Board_Running_(96x96)_17
       rect:
         serializedVersion: 2
         x: 1632
@@ -499,8 +475,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3e3062646d7b744ba84102f5fa8d7d3
-      internalID: 1881425425
+      spriteID: 04d1853fc552d414ca73a5a0d66ef09b
+      internalID: 1558413997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: New_Tutorial_Board_Running_(96x96)_18
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e2f1ed88da1fed48876e690e8e7a4ad
+      internalID: 916018934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: New_Tutorial_Board_Running_(96x96)_19
+      rect:
+        serializedVersion: 2
+        x: 1824
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42b52367e9d47ef46a284e097f032cba
+      internalID: 489677539
       vertices: []
       indices: 
       edges: []
@@ -509,31 +527,33 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tutorial_Board_Running_(96x96)_1: -1640085642
-      Tutorial_Board_Running_(96x96)_5: 189830754
-      Tutorial_Board_Running_(96x96)_15: -1517270838
-      Tutorial_Board_Running_(96x96)_10: 1752059017
-      Tutorial_Board_Running_(96x96)_2: 71217884
-      Tutorial_Board_Running_(96x96)_0: 1129260174
-      Tutorial_Board_Running_(96x96)_4: 1104463499
-      Tutorial_Board_Running_(96x96)_9: -2038953121
-      Tutorial_Board_Running_(96x96)_3: -1384154155
-      Tutorial_Board_Running_(96x96)_12: -13005568
-      Tutorial_Board_Running_(96x96)_8: 1317632424
-      Tutorial_Board_Running_(96x96)_7: -1352664870
-      Tutorial_Board_Running_(96x96)_16: -38780857
-      Tutorial_Board_Running_(96x96)_11: 371793638
-      Tutorial_Board_Running_(96x96)_13: -1800030297
-      Tutorial_Board_Running_(96x96)_6: -1829874128
-      Tutorial_Board_Running_(96x96)_17: 1881425425
-      Tutorial_Board_Running_(96x96)_14: 694738807
+      New_Tutorial_Board_Running_(96x96)_15: 781643817
+      New_Tutorial_Board_Running_(96x96)_2: 5106795
+      New_Tutorial_Board_Running_(96x96)_7: 977597971
+      New_Tutorial_Board_Running_(96x96)_8: -1410446131
+      New_Tutorial_Board_Running_(96x96)_0: 239512308
+      New_Tutorial_Board_Running_(96x96)_17: 1558413997
+      New_Tutorial_Board_Running_(96x96)_14: 436821852
+      New_Tutorial_Board_Running_(96x96)_10: 1202240823
+      New_Tutorial_Board_Running_(96x96)_12: -703294075
+      New_Tutorial_Board_Running_(96x96)_3: -986164554
+      New_Tutorial_Board_Running_(96x96)_5: -213569878
+      New_Tutorial_Board_Running_(96x96)_11: 1477042256
+      New_Tutorial_Board_Running_(96x96)_16: -561767982
+      New_Tutorial_Board_Running_(96x96)_4: -1333641794
+      New_Tutorial_Board_Running_(96x96)_9: 673743517
+      New_Tutorial_Board_Running_(96x96)_13: 1003903484
+      New_Tutorial_Board_Running_(96x96)_19: 489677539
+      New_Tutorial_Board_Running_(96x96)_6: -407490651
+      New_Tutorial_Board_Running_(96x96)_1: -403398243
+      New_Tutorial_Board_Running_(96x96)_18: 916018934
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
