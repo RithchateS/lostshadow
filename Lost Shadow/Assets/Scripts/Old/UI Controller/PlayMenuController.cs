@@ -55,6 +55,7 @@ namespace Old.UI_Controller
                 GameSaveManager.Instance.SelectSaveSlot(0);
                 Appdata.Instance.sceneToLoad = Appdata.Instance.sceneInSave1;
                 Appdata.Instance.currentScene = Appdata.Instance.sceneToLoad;
+                Destroy(saveSlot1.GetComponent<Button>());
                 StartCoroutine(PlayGame());
             });
             saveSlot2.GetComponent<Button>().onClick.AddListener(delegate
@@ -62,6 +63,7 @@ namespace Old.UI_Controller
                 GameSaveManager.Instance.SelectSaveSlot(1);
                 Appdata.Instance.sceneToLoad = Appdata.Instance.sceneInSave2;
                 Appdata.Instance.currentScene = Appdata.Instance.sceneToLoad;
+                Destroy(saveSlot2.GetComponent<Button>());
                 StartCoroutine(PlayGame());
             });
             saveSlot3.GetComponent<Button>().onClick.AddListener(delegate
@@ -69,6 +71,7 @@ namespace Old.UI_Controller
                 GameSaveManager.Instance.SelectSaveSlot(2);
                 Appdata.Instance.sceneToLoad = Appdata.Instance.sceneInSave3;
                 Appdata.Instance.currentScene = Appdata.Instance.sceneToLoad;
+                Destroy(saveSlot3.GetComponent<Button>());
                 StartCoroutine(PlayGame());
             });
         }
