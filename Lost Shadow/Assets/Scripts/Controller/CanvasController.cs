@@ -55,7 +55,7 @@ namespace Controller
         {
             if (_playerController == null)
             {
-                _playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+                _playerController = PlayerController.Instance;
             }
             if (_playerController.IsAlive)
             {
