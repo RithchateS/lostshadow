@@ -1550,7 +1550,7 @@ TilemapRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129448681}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -72104,15 +72104,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8012728380391140824, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.304352
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8012728380391140824, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.79237
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8054618152716081006, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
       propertyPath: orthographic size
-      value: 12
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}

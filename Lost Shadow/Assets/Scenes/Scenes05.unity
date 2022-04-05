@@ -1872,7 +1872,7 @@ TilemapRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129448681}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -4663,7 +4663,7 @@ TilemapRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388387306}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -67253,6 +67253,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1936513919256555671, guid: 2e11483be3c128845bdeab15d688b82b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936513919256555671, guid: 2e11483be3c128845bdeab15d688b82b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.42
+      objectReference: {fileID: 0}
     - target: {fileID: 6124061577475474657, guid: 2e11483be3c128845bdeab15d688b82b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -68524,6 +68532,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 267437895}
     m_Modifications:
+    - target: {fileID: 1112163624870270374, guid: d0f11d530ec77cd468f32d6655bf0dd9, type: 3}
+      propertyPath: isShadow
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1348764643184489632, guid: d0f11d530ec77cd468f32d6655bf0dd9, type: 3}
       propertyPath: m_Name
       value: SilverKey
@@ -69439,6 +69451,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 267437895}
     m_Modifications:
+    - target: {fileID: -4057605128899625501, guid: 92c358ffbe7c6f941af729fbe3ff9abb, type: 3}
+      propertyPath: isShadow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8830596350389710307, guid: 92c358ffbe7c6f941af729fbe3ff9abb, type: 3}
       propertyPath: m_Name
       value: GoldKey
@@ -79586,7 +79602,7 @@ TilemapRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953027765}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
