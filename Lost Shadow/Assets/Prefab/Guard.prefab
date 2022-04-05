@@ -192,6 +192,7 @@ MonoBehaviour:
   guardClimbSpeed: 5
   climbCooldown: 20
   guardVision: {fileID: 210946112129902648, guid: 514309181e005294f8be9a1ab9dae656, type: 3}
+  soundRange: 5
 --- !u!114 &-713654883690823916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,5 +206,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: 273ab3814221f9c4f9788c776c6d3d9c, type: 3}
+  - {fileID: 8300000, guid: d679bf16e4cdbb14198439d7e06dc4f9, type: 3}
   - {fileID: 8300000, guid: 52471ebc6c090ec43833f48eeaa0f2d1, type: 3}
