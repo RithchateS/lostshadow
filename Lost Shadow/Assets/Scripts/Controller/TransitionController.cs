@@ -57,11 +57,10 @@ namespace Controller
                         LevelManager.Instance.LightAudio.volume -= 0.01f;
                         yield return new WaitForSeconds(0.01f);
                     }
-
                 }
             }
 
-            _animator.ResetTrigger("Start");
+            _animator.ResetTrigger("End");
         }
 
         /// <summary>
@@ -71,7 +70,7 @@ namespace Controller
         /// <returns></returns>
         public IEnumerator StartTransition()
         {
-            _animator.ResetTrigger("End");
+            _animator.SetTrigger("Start");
             while (SoundManager.Instance.musicSource.volume < 1)
             {
                 yield return new WaitForSeconds(0.01f);
@@ -86,7 +85,7 @@ namespace Controller
                     }
                 }
             }
-            _animator.SetTrigger("Start");
+            _animator.ResetTrigger("Start");
         }
     }
 }
