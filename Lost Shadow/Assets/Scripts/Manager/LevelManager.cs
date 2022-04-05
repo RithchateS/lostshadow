@@ -194,8 +194,7 @@ namespace Manager
             //playerController.peek.transform.position = _player.transform.position;
             peek.transform.position = _mainCamera.transform.position;
             //_overlayCamera.transform.position = _playerClone.transform.position;
-            _overlayCamera.GetComponent<Camera>().orthographicSize =
-                _mainCamera.GetComponent<Camera>().orthographicSize;
+            _overlayCamera.GetComponent<Camera>().orthographicSize = _mainCamera.GetComponent<Camera>().orthographicSize;
             objectCamera.GetComponent<Camera>().orthographicSize = _mainCamera.GetComponent<Camera>().orthographicSize;
         }
 
