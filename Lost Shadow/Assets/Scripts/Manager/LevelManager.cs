@@ -119,8 +119,8 @@ namespace Manager
             playerController = _player.GetComponent<PlayerController>();
             ShadowAudio = transform.GetChild(1).GetComponent<AudioSource>();
             LightAudio = transform.GetChild(2).GetComponent<AudioSource>();
-            //ShadowAudio.Play();
-            //LightAudio.Play();
+            ShadowAudio.Play();
+            LightAudio.Play();
             CheckBeforeStart();
             StartCoroutine(TransitionController.Instance.StartTransition());
             GameSaveManager.Instance.allowPause = true;

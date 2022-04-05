@@ -46,7 +46,7 @@ namespace Manager
         {
             musicSource.clip = clip;
             musicSource.loop = true;
-            musicSource.volume = volume * GameSaveManager.Instance.volume;
+            musicSource.volume = volume ;
             musicSource.Play();
         }
         
