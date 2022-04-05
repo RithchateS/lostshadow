@@ -38,6 +38,10 @@ namespace Old.Manager
             }
             playerData = Appdata.Instance.GetComponent<Appdata>();
             DontDestroyOnLoad(this);
+            if (Screen.fullScreen == false)
+            {
+                Screen.fullScreen = true;
+            }
         }
         
     
