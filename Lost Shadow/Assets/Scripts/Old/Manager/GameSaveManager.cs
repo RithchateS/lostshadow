@@ -14,6 +14,7 @@ namespace Old.Manager
     {
         public Appdata playerData;
         public static GameSaveManager Instance { get; private set; }
+        [Range(0f, 1f)] public float volume;
         private bool _paused;
         private bool _allowPause;
         [SerializeField] private CurrectSlot saveSlot;

@@ -1,3 +1,4 @@
+using Old.Manager;
 using UnityEngine;
 
 
@@ -45,7 +46,7 @@ namespace Manager
         {
             musicSource.clip = clip;
             musicSource.loop = true;
-            musicSource.volume = volume;
+            musicSource.volume = volume * GameSaveManager.Instance.volume;
             musicSource.Play();
         }
         /// <summary>
