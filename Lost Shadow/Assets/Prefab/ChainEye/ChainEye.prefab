@@ -508,6 +508,7 @@ GameObject:
   - component: {fileID: 7878775139662392053}
   - component: {fileID: 7878775139662392052}
   - component: {fileID: -1451782427007519831}
+  - component: {fileID: -1232478754648954159}
   m_Layer: 0
   m_Name: ChainEye
   m_TagString: Untagged
@@ -645,3 +646,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-1232478754648954159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7878775139662392051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c58662d281f334f814c70ffdfd2001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 452880f23944dfb4499da0cd0e14e51b, type: 3}

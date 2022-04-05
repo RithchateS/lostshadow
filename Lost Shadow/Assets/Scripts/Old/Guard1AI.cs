@@ -245,11 +245,8 @@ public class Guard1AI : MonoBehaviour
             {
                 _timeSinceLastGrunt = 0;
                 SoundManager.Instance.RandomSoundEffect(_audioClipData.GetAudioClipGroup(0,1),0.3f);
-                Debug.Log("Guard Grunt");
             }
         }
-
-        
     }
     #endregion
     #region Utils

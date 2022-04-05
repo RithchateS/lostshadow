@@ -48,6 +48,7 @@ namespace Manager
             musicSource.volume = volume;
             musicSource.Play();
         }
+        
         /// <summary>
         /// Randomize the sound effect and pitch
         /// </summary>
@@ -61,6 +62,14 @@ namespace Manager
             effectsSource.pitch = randomPitch;
             effectsSource.clip = clips[randomIndex];
             effectsSource.PlayOneShot(clips[randomIndex], volume);
+        }
+        
+        /// <summary>
+        /// Stop the sound effect
+        /// </summary>
+        public void StopMusic()
+        {
+            effectsSource.Stop();
         }
     }
 }
