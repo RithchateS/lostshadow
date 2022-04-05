@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Controller;
+using Data;
+using Manager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,9 +26,12 @@ public class Guard1AI : MonoBehaviour
     private float _gravityScaleAtStart;
     private float _timeSinceLastClimb;
     private float _timeSinceExitLadder;
+    private float _timeSinceLastGrunt;
     private PlayerController _playerController;
     [SerializeField] GameObject guardVision;
+    [SerializeField] private float soundRange = 5f;
     private Vector3 _location;
+    private AudioClipData _audioClipData;
     private static readonly int IsPatrolling = Animator.StringToHash("isPatrolling");
 
     #endregion
@@ -56,7 +61,9 @@ public class Guard1AI : MonoBehaviour
     private void Start() {
         _guardAnimator = GetComponent<Animator>();
         _guardRb2D = GetComponent<Rigidbody2D>();
+        _audioClipData = GetComponent<AudioClipData>();
         _gravityScaleAtStart = 4f;
+        _timeSinceLastGrunt = 16f;
     }
 
     void Update() {
@@ -69,6 +76,7 @@ public class Guard1AI : MonoBehaviour
         _distXtoPlayer = position.x - position1.x;
         _distYtoPlayer = position.y - position1.y;
 
+        GuardSound();
         if (_guardState == "Patrol") {
             if (_timeSinceExitLadder > 1f) {
                 _guardRb2D.gravityScale = 0f;
@@ -226,8 +234,21 @@ public class Guard1AI : MonoBehaviour
             _playerController.ModifyAlive(false);
         }
     }
-    #endregion
 
+    private void GuardSound()
+    {
+        if (Mathf.Abs(_distXtoPlayer) < soundRange && Mathf.Abs(_distYtoPlayer) < soundRange)
+        {
+            _timeSinceLastGrunt += Time.deltaTime;
+        }
+
+        if (_timeSinceLastGrunt >= Random.Range(5f, 15f))
+        {
+            _timeSinceLastGrunt = 0;
+            SoundManager.Instance.RandomSoundEffect(_audioClipData.GetAudioClipGroup(0,1),0.3f);
+        }
+    }
+    #endregion
     #region Utils
     private void ShowRange() {
         var transform1 = transform;
