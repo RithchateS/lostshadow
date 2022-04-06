@@ -25,6 +25,7 @@ namespace Old.Manager
         Scenes08,//12
         Scenes09,//13
         Scenes10,//14
+        Credit//15
 
     }
     public class LoadSceneManager : Singleton<LoadSceneManager>

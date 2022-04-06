@@ -14,6 +14,7 @@ namespace Old.UI_Controller
         [SerializeField] private GameObject saveSlot1;
         [SerializeField] private GameObject saveSlot2;
         [SerializeField] private GameObject saveSlot3;
+        [SerializeField] private GameObject secret;
         [SerializeField] private GameObject deleteSave1;
         [SerializeField] private GameObject deleteSave2;
         [SerializeField] private GameObject deleteSave3;
@@ -73,6 +74,10 @@ namespace Old.UI_Controller
                 Appdata.Instance.currentScene = Appdata.Instance.sceneToLoad;
                 Destroy(saveSlot3.GetComponent<Button>());
                 StartCoroutine(PlayGame());
+            });
+            secret.GetComponent<Button>().onClick.AddListener(delegate
+            {
+                LoadSceneManager.Instance.StartLoadingScene(SceneCollection.Credit);
             });
         }
 

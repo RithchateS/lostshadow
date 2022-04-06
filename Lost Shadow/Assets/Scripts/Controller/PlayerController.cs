@@ -107,6 +107,7 @@ namespace Controller
             {
                 ClimbLadder();
                 LevelManager.Instance.cameraObj.GetComponent<Animator>().SetBool("Cutscene", false);
+                myAnimator.SetBool("isShifting", false);
 
             }
             Run();
@@ -437,6 +438,8 @@ namespace Controller
                 }
                 else if (colliderID == 1001)
                 {
+                    _currentHorizontalSpeed = 0f;
+                    _moveInput = new Vector2(0, 0);
                     ToggleHide();
                 }
             }

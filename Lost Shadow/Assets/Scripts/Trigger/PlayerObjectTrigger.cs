@@ -1,12 +1,11 @@
 using System.Collections;
-using System.Diagnostics;
 using Controller;
 using Data;
 using Identifier;
 using Manager;
 using Old.Manager;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
+
 
 namespace Trigger
 {
@@ -17,6 +16,7 @@ namespace Trigger
     {
         private int _objectID;
         private bool _isShadow;
+        private bool _isHiding;
         private GameObject _bronzeBlock;
         private GameObject _silverBlock;
         private GameObject _goldBlock;
@@ -39,6 +39,7 @@ namespace Trigger
         }
         
 
+        
         /// <summary>
         /// ObjectCamera Animation depending on the isShadow value
         /// </summary>
