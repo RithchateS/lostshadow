@@ -215,7 +215,7 @@ namespace Trigger
                         _playerController.ModifyAlive(false);
                         break;
                     case 9999: //Quit Game MTFKKKKKK
-                        Application.Quit();
+                        LoadSceneManager.Instance.StartLoadingScene(SceneCollection.Credit);
                         break;
                 }
             }
