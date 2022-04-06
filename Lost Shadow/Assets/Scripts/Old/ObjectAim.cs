@@ -18,7 +18,6 @@ public class ObjectAim : MonoBehaviour
         {
             _cam.m_Follow = _objectTarget.transform;
         }
-        
     }
 
     public void GameObjectToTarget(GameObject target)
