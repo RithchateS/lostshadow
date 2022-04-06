@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using Cinemachine;
 using Data;
 using Manager;
+using Old;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -97,7 +98,7 @@ namespace Controller
                 ModifyShiftCount(0);
             }
             LevelManager.Instance.mainCineCamera.GetComponent<ObjectAim>().GameObjectToTarget(gameObject);
-            LevelManager.Instance.CheckCutScene();
+            StartCoroutine(LevelManager.Instance.CheckCutScene());
 
         }
 
