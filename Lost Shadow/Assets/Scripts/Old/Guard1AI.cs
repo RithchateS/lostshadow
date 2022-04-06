@@ -95,7 +95,7 @@ public class Guard1AI : MonoBehaviour
         else if (_guardState == "Chase") {
             _guardRb2D.velocity = new Vector2 (_viewDir * chaseSpeed, _guardRb2D.velocity.y);
             _guardAnimator.SetBool(IsPatrolling, true);
-            _guardRb2D.gravityScale = _gravityScaleAtStart;
+            _guardRb2D.gravityScale = 0f;
             
             if (_viewDir == 1) {
                 if (Mathf.Abs(_distXtoPlayer) < viewRange && _distXtoPlayer > Mathf.Epsilon && Mathf.Abs(_distYtoPlayer) < 1) {
