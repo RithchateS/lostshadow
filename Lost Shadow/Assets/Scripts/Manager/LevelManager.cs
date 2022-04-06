@@ -1,6 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using Cinemachine;
 using Controller;
 using Data;
+using Old;
 using Old.Manager;
 using TMPro;
 using UnityEngine;
@@ -134,7 +137,7 @@ namespace Manager
         /// <summary>
         /// Check if the animator should play cutscene animation
         /// </summary>
-        public void CheckCutScene()
+        public IEnumerator CheckCutScene()
         {
             freeCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = mapBoundsShadow;
             freeCamera.GetComponent<ObjectAim>().GameObjectToTarget(_player);
@@ -145,8 +148,9 @@ namespace Manager
             else
             {
                 StartCoroutine(playerController.PauseMovement(5));
+                yield return new WaitForSeconds(5);
+                freeCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = null;
             }
-            freeCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = null;
             cameraObj.GetComponent<Animator>().SetBool("Cutscene", true);
 
         }
