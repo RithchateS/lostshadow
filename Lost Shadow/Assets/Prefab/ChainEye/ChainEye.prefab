@@ -596,7 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27cefde4242bf5043b7bc4acdaa550f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eyeChaseSpeed: 5
+  eyeChaseSpeed: 2
   eyeBackSpeed: 2
   eyeRange: 12
   eyeVision: {fileID: 210946112129902648, guid: da23692f705f7a641aefa58c27694c83, type: 3}
