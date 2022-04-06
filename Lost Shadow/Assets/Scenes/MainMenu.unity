@@ -3806,12 +3806,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Version A-1.1.4
+  m_text: 'B - 1.1.5 Final
+
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 22e8ee94878cf7b4ea6dd2884f3967bd, type: 2}
-  m_sharedMaterial: {fileID: 6365858706365655054, guid: 22e8ee94878cf7b4ea6dd2884f3967bd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7bf48b600d6dd97459a69e67b773ff39, type: 2}
+  m_sharedMaterial: {fileID: 8983485028264631928, guid: 7bf48b600d6dd97459a69e67b773ff39, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
