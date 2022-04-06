@@ -1,10 +1,12 @@
 using System.Collections;
+using Cinemachine;
 using Controller;
 using Data;
 using Identifier;
 using Manager;
 using Old.Manager;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 
 namespace Trigger

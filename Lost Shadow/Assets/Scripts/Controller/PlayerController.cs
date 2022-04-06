@@ -677,11 +677,15 @@ namespace Controller
                 SoundManager.Instance.RandomSoundEffect(_audioClipData.GetAudioClipGroup(2,4), 0.3f);
                 LevelManager.Instance.ShadowAudio.volume = 0f;
                 LevelManager.Instance.LightAudio.volume = 0f;
-                _myRigidbody.gravityScale = 0f;
-                _myBodyCollider.isTrigger = true;
-                _myFeetCollider.isTrigger = true;
-                _myLArmCollider.isTrigger = true;
-                _myRArmCollider.isTrigger = true;
+                if (isGrounded)
+                {
+                   _myRigidbody.gravityScale = 0f;
+                    _myBodyCollider.isTrigger = true;
+                    _myFeetCollider.isTrigger = true;
+                    _myLArmCollider.isTrigger = true;
+                    _myRArmCollider.isTrigger = true; 
+                }
+                
 
             }
         }

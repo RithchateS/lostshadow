@@ -948,6 +948,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2068316358}
     m_Modifications:
+    - target: {fileID: 287557973, guid: d3eed76d2cffa84479eed42699b0a01b, type: 3}
+      propertyPath: isShadow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1241410559295140355, guid: d3eed76d2cffa84479eed42699b0a01b, type: 3}
       propertyPath: m_Name
       value: BronzeKey
@@ -54202,6 +54206,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2068316358}
     m_Modifications:
+    - target: {fileID: 1112163624870270374, guid: d0f11d530ec77cd468f32d6655bf0dd9, type: 3}
+      propertyPath: isShadow
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1348764643184489632, guid: d0f11d530ec77cd468f32d6655bf0dd9, type: 3}
       propertyPath: m_Name
       value: SilverKey
@@ -54249,6 +54257,10 @@ PrefabInstance:
     - target: {fileID: 1348764643184489637, guid: d0f11d530ec77cd468f32d6655bf0dd9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1348764643184489639, guid: d0f11d530ec77cd468f32d6655bf0dd9, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0f11d530ec77cd468f32d6655bf0dd9, type: 3}
@@ -68917,11 +68929,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5015196622042363141, guid: 32357e9d01b585349802318201ebc5da, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.1
+      value: 21.6
       objectReference: {fileID: 0}
     - target: {fileID: 5015196622042363141, guid: 32357e9d01b585349802318201ebc5da, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.99
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5015196622042363141, guid: 32357e9d01b585349802318201ebc5da, type: 3}
       propertyPath: m_LocalPosition.z
@@ -72137,15 +72149,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8012728380391140824, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 15.304352
       objectReference: {fileID: 0}
     - target: {fileID: 8012728380391140824, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 8.79237
       objectReference: {fileID: 0}
     - target: {fileID: 8054618152716081006, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}
       propertyPath: orthographic size
-      value: 3
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08b6460b220edca4a9db01bfa94bafb8, type: 3}

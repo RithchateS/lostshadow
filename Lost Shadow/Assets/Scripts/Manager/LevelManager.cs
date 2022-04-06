@@ -115,7 +115,6 @@ namespace Manager
 
             mapBoundsShadow = GameObject.Find("MapBoundsShadow").GetComponent<Collider2D>();
             cameraBounds.m_BoundingShape2D = mapBoundsShadow;
-            freeCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = mapBoundsShadow;
             playerController = _player.GetComponent<PlayerController>();
             ShadowAudio = transform.GetChild(1).GetComponent<AudioSource>();
             LightAudio = transform.GetChild(2).GetComponent<AudioSource>();
@@ -137,6 +136,7 @@ namespace Manager
         /// </summary>
         public void CheckCutScene()
         {
+            freeCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = mapBoundsShadow;
             freeCamera.GetComponent<ObjectAim>().GameObjectToTarget(_player);
             if (SceneManager.GetActiveScene().name == "Tutorial01")
             {
@@ -146,7 +146,7 @@ namespace Manager
             {
                 StartCoroutine(playerController.PauseMovement(5));
             }
-
+            freeCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = null;
             cameraObj.GetComponent<Animator>().SetBool("Cutscene", true);
 
         }
