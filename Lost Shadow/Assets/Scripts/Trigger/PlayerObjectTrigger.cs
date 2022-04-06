@@ -170,6 +170,7 @@ namespace Trigger
                         break;
                 }
             }
+            
 
             if (col.CompareTag("TriggerObject"))
             {

@@ -437,39 +437,44 @@ namespace Controller
                 }
                 else if (colliderID == 1001)
                 {
-                    if (isHiding)
-                    {
-                        isHiding = false;
-                        IsControllable = true;
-                        isJumpAble = true;
-                        isPeekAble = true;
-                        isShiftAble = true;
-                        _myRigidbody.velocity = new Vector2(0,0);
-                        playerColor.a = 1f;
-                        _myBodyCollider.isTrigger = false;
-                        _myFeetCollider.isTrigger = false;
-                        _myLArmCollider.isTrigger = false;
-                        _myRArmCollider.isTrigger = false;
-                        _myRigidbody.gravityScale = _gravityScaleAtStart;
-                        Debug.Log(isHiding);
-                    }
-                    else if(!isHiding)
-                    {
-                        IsControllable = false;
-                        isJumpAble = false;
-                        isHiding = true;
-                        isPeekAble = false;
-                        isShiftAble = false;
-                        _myRigidbody.velocity = new Vector2(0,0);
-                        _myRigidbody.gravityScale = 0f;
-                        _myBodyCollider.isTrigger = true;
-                        _myFeetCollider.isTrigger = true;
-                        _myLArmCollider.isTrigger = true;
-                        _myRArmCollider.isTrigger = true;
-                        playerColor.a = 0.1f;
-                        Debug.Log(isHiding);
-                    }
+                    ToggleHide();
                 }
+            }
+        }
+
+        void ToggleHide()
+        {
+            if (isHiding)
+            {
+                isHiding = false;
+                IsControllable = true;
+                isJumpAble = true;
+                isPeekAble = true;
+                isShiftAble = true;
+                _myRigidbody.velocity = new Vector2(0,0);
+                playerColor.a = 1f;
+                _myBodyCollider.isTrigger = false;
+                _myFeetCollider.isTrigger = false;
+                _myLArmCollider.isTrigger = false;
+                _myRArmCollider.isTrigger = false;
+                _myRigidbody.gravityScale = _gravityScaleAtStart;
+                Debug.Log(isHiding);
+            }
+            else if(!isHiding)
+            {
+                IsControllable = false;
+                isJumpAble = false;
+                isHiding = true;
+                isPeekAble = false;
+                isShiftAble = false;
+                _myRigidbody.velocity = new Vector2(0,0);
+                _myRigidbody.gravityScale = 0f;
+                _myBodyCollider.isTrigger = true;
+                _myFeetCollider.isTrigger = true;
+                _myLArmCollider.isTrigger = true;
+                _myRArmCollider.isTrigger = true;
+                playerColor.a = 0.1f;
+                Debug.Log(isHiding);
             }
         }
         #endregion
@@ -643,6 +648,10 @@ namespace Controller
             {
                 shiftCount = 0;
                 allowShift = false;
+            }
+            else
+            {
+                allowShift = true;
             }
             ModifyShiftCountText();
         }
